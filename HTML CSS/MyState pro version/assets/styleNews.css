@@ -1,0 +1,112 @@
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.conteiner>div:nth-child(2)>div>div:nth-child(2)>a{
+    text-decoration: underline;
+    color:  rgb(93, 16, 238);
+}
+
+body {
+    background-color: rgb(242, 242, 251);
+}
+
+.wrapper {
+    display: flex;
+    background-color: rgb(242, 242, 251);
+}
+
+.conteiner {
+    margin-top: 70px;
+    display: flex;
+    width: 80%;
+    max-width: 900px;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(242, 242, 251);
+    align-items: center;
+}
+
+
+.conteiner>div:nth-child(2),
+.conteiner>div:nth-child(1),
+.conteiner>div:nth-child(2)>div{
+    width: 100%;
+}
+
+.conteiner>div:nth-child(2)>div{
+    background-color: aliceblue;
+    border: 1px solid rgb(93, 16, 238);
+    border-radius: 15px;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.conteiner>div:nth-child(2)>div>div>img{
+    margin-top: 25px;
+    width: 180px;
+    height: max-content;
+    border-radius: 10px;
+}
+
+.conteiner>div:nth-child(2)>div>div{
+    display: flex;
+    flex-direction: row;
+}
+
+.conteiner>div:nth-child(2)>div>div>div{
+    margin-left: 15px;
+    width: 80%;
+    margin-top: 25px;
+}
+
+.conteiner>div:nth-child(2)>div>div>div>p{
+    margin: 0px;
+}
+
+.conteiner>div:nth-child(2)>div>div>div>p:nth-child(3){
+    margin-top: -10px;
+}
+
+.conteiner>div:nth-child(2)>div>div>div>p:nth-child(1){
+    color: rgb(163, 162, 162);
+    margin-bottom: -15px;
+}
+
+.conteiner>div:nth-child(2)>div>div:nth-child(2){
+    width: 98%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.conteiner>div:nth-child(2)>div>div:nth-child(2)>a>p{
+    margin: 0px;
+}
+
+@media screen and (max-width: 950px) {
+    .conteiner {
+        width: 90%;
+        margin-right: 0px;
+        margin-left: 15px;
+    }
+
+    .conteiner>div:nth-child(2)>div>div>img{
+        width: 100px;
+        height: auto;
+    }
+    .conteiner>div:nth-child(2)>div>div>div>h3{
+        display: none;
+    }
+
+    .conteiner>div:nth-child(2)>div>div>div>p:nth-child(3){
+        margin-top: 0;
+    }
+    
+    .conteiner>div:nth-child(2)>div>div>div>p:nth-child(1){
+        color: rgb(163, 162, 162);
+        margin-bottom: 5px;
+    }
+}
