@@ -1,0 +1,12 @@
+.wrapper{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+.wrapper>img{
+    width: 30%;
+}
+
+body{
+    background-color: rgb(242, 242, 251);
+}
