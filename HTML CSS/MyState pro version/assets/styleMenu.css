@@ -1,0 +1,310 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.menuLeftShadow,
+.menuLeft,
+.menuTop {
+    position: fixed;
+    background-color: white;
+    z-index: 20;
+}
+
+.menuLeftShadow {
+    top: 67.5px;
+    width: 300px;
+    height: 100vh;
+    border-right: 1px solid rgb(201, 201, 201);
+    overflow: auto;
+    display: none;
+    left: 0px;
+    z-index: 30;
+}
+
+.menuLeft {
+    top: 67.5px;
+    width: 70px;
+    height: 100vh;
+    border-right: 1px solid rgb(201, 201, 201);
+    left: 0px;
+    overflow-y: auto;
+}
+
+.menuTop {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    padding: 13px;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+}
+
+.fixedTopMenu {
+    position: fixed;
+    top: 0px;
+    left: 75px;
+    display: flex;
+    flex-direction: row;
+}
+
+.boxMenuLeft,
+.boxMenuTop {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuLeftShadow>.main>a>.boxMenuLeft,
+.menuLeftShadow>a>.boxMenuLeft {
+    width: 240px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
+    margin-left: 10px;
+}
+
+.menuLeftShadow>.main>a>.boxMenuLeft>p:nth-child(1),
+.menuLeftShadow>a>.boxMenuLeft>p:nth-child(1){
+    width: 30px;
+}
+
+.fixedTopMenu>.boxMenuTop {
+    margin-right: 20px;
+}
+
+.staticTopMenu {
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+}
+
+.staticTopMenu>.boxMenuTop {
+    margin-right: 10px;
+}
+
+.boxMenuLeft {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main {
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+
+.boxMenuLeft:hover {
+    background-color: rgb(226, 216, 248);
+    color: rgb(93, 16, 238);
+}
+
+.boxMenuLeft:hover>.popupWindow {
+    display: block;
+}
+
+.boxMenuTop {
+    background-color: rgb(226, 216, 248);
+}
+
+.boxMenuTop:hover {
+    background-color: rgb(93, 16, 238);
+    color: aliceblue;
+}
+
+.fixedTopMenu>img {
+    margin-top: 20px;
+}
+
+.settings {
+    position: absolute;
+    left: 40px;
+    margin-top: 1px;
+}
+
+.borderProfile {
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+
+.infoProfile {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.infoProfile>img,
+.infoProfile>a>img,
+.borderProfile>img,
+.borderProfile>a>img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: cornflowerblue;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.infopMenuLeftShadow {
+    width: max-content;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.infopMenuLeftShadow>p {
+    margin: 0px;
+}
+
+.infopMenuLeftShadow>p:nth-child(1) {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.infopMenuLeftShadow>p:nth-child(2) {
+    color: rgb(123, 123, 123);
+}
+
+.starProfile {
+    display: flex;
+    flex-direction: row;
+    width: 280px;
+    justify-content: center;
+}
+
+.star {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(226, 216, 248);
+    width: 45px;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.star:nth-child(1) {
+    width: 85px;
+    margin-left: -15px;
+}
+
+.star:nth-child(1),
+.star:nth-child(2) {
+    margin-right: 5px;
+}
+
+.star>p {
+    margin: 0px;
+    position: relative;
+    bottom: 1px;
+}
+
+.boxStar {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    text-align: center;
+    color: aliceblue;
+    margin-right: 3px;
+}
+
+.popupWindow {
+    position: fixed;
+    left: 60px;
+    display: none;
+}
+
+.shadow {
+    background-color: rgb(55, 55, 55);
+    padding: 5px;
+    color: rgb(245, 245, 245);
+    border-radius: 5px;
+}
+
+.butomTopMenu {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    border-radius: 20px;
+    top: 13px;
+    left: 15px;
+    z-index: 300;
+}
+
+.butomTopMenu:hover~.menuLeft {
+    display: none;
+}
+
+.butomTopMenu:hover~.menuLeftShadow {
+    display: block;
+}
+
+.butomTopMenu:hover {
+    width: 300px;
+    height: 68px;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px;
+}
+
+.butomTopMenu:hover .shadowbody {
+    display: block;
+}
+
+.butomTopMenu>.boxMenuTop {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+}
+
+.menuLeftShadow:hover {
+    display: block;
+}
+
+.menuLeftShadow:hover~.menuLeft {
+    display: none;
+}
+
+.menuLeftShadow:hover .shadowbody {
+    display: block;
+}
+
+.shadowbody {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: none;
+    left: 300px;
+    top: 66px;
+}
+
+.none {
+    height: 50px;
+}
+
+.boxMenuLeft:hover .popupWindow {
+    display: block;
+}
+
+@media screen and (max-width: 1200px) {
+    .menuLeft {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 636px) {
+    .boxMenuLeft:hover>.popupWindow {
+        display: none;
+    }
+
+    .menuLeft {
+        width: 80px;
+    }
+}
