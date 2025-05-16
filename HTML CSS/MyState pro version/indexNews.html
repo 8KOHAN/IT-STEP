@@ -1,0 +1,388 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/normalize.css">
+    <link rel="stylesheet" href="/assets/styleMenu.css">
+    <link rel="stylesheet" href="assets/styleNews.css">
+    <title>MyStat PRO Version</title>
+</head>
+
+<body>
+    <div class="menuWrapper">
+        <div class="butomTopMenu">
+            <div class="shadowbody"></div>
+            <div class="boxMenuTop">
+                <p>1</p>
+            </div>
+        </div>
+        <div class="menuTop">
+            <div class="fixedTopMenu">
+                <img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3MiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcxLjIyMDIgMTUuODAwMVYxOC43MDAxSDY5LjQ4MDJDNjguMjQwMiAxOC43MDAxIDY3LjI3MzUgMTguNDAwMSA2Ni41ODAyIDE3LjgwMDFDNjUuODg2OCAxNy4xODY3IDY1LjU0MDIgMTYuMTkzNCA2NS41NDAyIDE0LjgyMDFWMTAuMzgwMUg2NC4xODAyVjcuNTQwMDdINjUuNTQwMlY0LjgyMDA3SDY4Ljk2MDJWNy41NDAwN0g3MS4yMDAyVjEwLjM4MDFINjguOTYwMlYxNC44NjAxQzY4Ljk2MDIgMTUuMTkzNCA2OS4wNDAyIDE1LjQzMzQgNjkuMjAwMiAxNS41ODAxQzY5LjM2MDIgMTUuNzI2NyA2OS42MjY4IDE1LjgwMDEgNzAuMDAwMiAxNS44MDAxSDcxLjIyMDJaIiBmaWxsPSIjNkM1OUY1Ii8+CjxwYXRoIGQ9Ik01MC43NDU2IDEzLjA5OTlDNTAuNzQ1NiAxMS45NTMyIDUwLjk1ODkgMTAuOTQ2NSA1MS4zODU2IDEwLjA3OTlDNTEuODI1NiA5LjIxMzIyIDUyLjQxODkgOC41NDY1NSA1My4xNjU2IDguMDc5ODhDNTMuOTEyMyA3LjYxMzIyIDU0Ljc0NTYgNy4zNzk4OCA1NS42NjU2IDcuMzc5ODhDNTYuNDUyMyA3LjM3OTg4IDU3LjEzODkgNy41Mzk4OCA1Ny43MjU2IDcuODU5ODhDNTguMzI1NiA4LjE3OTg4IDU4Ljc4NTYgOC41OTk4OCA1OS4xMDU2IDkuMTE5ODhWNy41Mzk4OEg2Mi41MjU2VjE4LjY5OTlINTkuMTA1NlYxNy4xMTk5QzU4Ljc3MjMgMTcuNjM5OSA1OC4zMDU2IDE4LjA1OTkgNTcuNzA1NiAxOC4zNzk5QzU3LjExODkgMTguNjk5OSA1Ni40MzIzIDE4Ljg1OTkgNTUuNjQ1NiAxOC44NTk5QzU0LjczODkgMTguODU5OSA1My45MTIzIDE4LjYyNjYgNTMuMTY1NiAxOC4xNTk5QzUyLjQxODkgMTcuNjc5OSA1MS44MjU2IDE3LjAwNjUgNTEuMzg1NiAxNi4xMzk5QzUwLjk1ODkgMTUuMjU5OSA1MC43NDU2IDE0LjI0NjUgNTAuNzQ1NiAxMy4wOTk5Wk01OS4xMDU2IDEzLjExOTlDNTkuMTA1NiAxMi4yNjY2IDU4Ljg2NTYgMTEuNTkzMiA1OC4zODU2IDExLjA5OTlDNTcuOTE4OSAxMC42MDY1IDU3LjM0NTYgMTAuMzU5OSA1Ni42NjU2IDEwLjM1OTlDNTUuOTg1NiAxMC4zNTk5IDU1LjQwNTYgMTAuNjA2NSA1NC45MjU2IDExLjA5OTlDNTQuNDU4OSAxMS41Nzk5IDU0LjIyNTYgMTIuMjQ2NSA1NC4yMjU2IDEzLjA5OTlDNTQuMjI1NiAxMy45NTMyIDU0LjQ1ODkgMTQuNjMzMiA1NC45MjU2IDE1LjEzOTlDNTUuNDA1NiAxNS42MzMyIDU1Ljk4NTYgMTUuODc5OSA1Ni42NjU2IDE1Ljg3OTlDNTcuMzQ1NiAxNS44Nzk5IDU3LjkxODkgMTUuNjMzMiA1OC4zODU2IDE1LjEzOTlDNTguODY1NiAxNC42NDY1IDU5LjEwNTYgMTMuOTczMiA1OS4xMDU2IDEzLjExOTlaIiBmaWxsPSIjNkM1OUY1Ii8+CjxwYXRoIGQ9Ik00OS41MjEgMTUuODAwMVYxOC43MDAxSDQ3Ljc4MUM0Ni41NDEgMTguNzAwMSA0NS41NzQzIDE4LjQwMDEgNDQuODgxIDE3LjgwMDFDNDQuMTg3NiAxNy4xODY3IDQzLjg0MSAxNi4xOTM0IDQzLjg0MSAxNC44MjAxVjEwLjM4MDFINDIuNDgxVjcuNTQwMDdINDMuODQxVjQuODIwMDdINDcuMjYxVjcuNTQwMDdINDkuNTAxVjEwLjM4MDFINDcuMjYxVjE0Ljg2MDFDNDcuMjYxIDE1LjE5MzQgNDcuMzQxIDE1LjQzMzQgNDcuNTAxIDE1LjU4MDFDNDcuNjYxIDE1LjcyNjcgNDcuOTI3NiAxNS44MDAxIDQ4LjMwMSAxNS44MDAxSDQ5LjUyMVoiIGZpbGw9IiM2QzU5RjUiLz4KPHBhdGggZD0iTTM2LjA3NjIgMTguODRDMzUuMDQ5NSAxOC44NCAzNC4xMjk1IDE4LjY3MzMgMzMuMzE2MiAxOC4zNEMzMi41MDI5IDE4LjAwNjYgMzEuODQ5NSAxNy41MTMzIDMxLjM1NjIgMTYuODZDMzAuODc2MiAxNi4yMDY2IDMwLjYyMjkgMTUuNDIgMzAuNTk2MiAxNC41SDM0LjIzNjJDMzQuMjg5NSAxNS4wMiAzNC40Njk1IDE1LjQyIDM0Ljc3NjIgMTUuN0MzNS4wODI5IDE1Ljk2NjYgMzUuNDgyOSAxNi4xIDM1Ljk3NjIgMTYuMUMzNi40ODI5IDE2LjEgMzYuODgyOSAxNS45ODY2IDM3LjE3NjIgMTUuNzZDMzcuNDY5NSAxNS41MiAzNy42MTYyIDE1LjE5MzMgMzcuNjE2MiAxNC43OEMzNy42MTYyIDE0LjQzMzMgMzcuNDk2MiAxNC4xNDY2IDM3LjI1NjIgMTMuOTJDMzcuMDI5NSAxMy42OTMzIDM2Ljc0MjkgMTMuNTA2NiAzNi4zOTYyIDEzLjM2QzM2LjA2MjkgMTMuMjEzMyAzNS41ODI5IDEzLjA0NjYgMzQuOTU2MiAxMi44NkMzNC4wNDk1IDEyLjU4IDMzLjMwOTUgMTIuMyAzMi43MzYyIDEyLjAyQzMyLjE2MjkgMTEuNzQgMzEuNjY5NSAxMS4zMjY2IDMxLjI1NjIgMTAuNzhDMzAuODQyOSAxMC4yMzMzIDMwLjYzNjIgOS41MTk5NiAzMC42MzYyIDguNjM5OTZDMzAuNjM2MiA3LjMzMzI5IDMxLjEwOTUgNi4zMTMyOSAzMi4wNTYyIDUuNTc5OTZDMzMuMDAyOSA0LjgzMzI5IDM0LjIzNjIgNC40NTk5NiAzNS43NTYyIDQuNDU5OTZDMzcuMzAyOSA0LjQ1OTk2IDM4LjU0OTUgNC44MzMyOSAzOS40OTYyIDUuNTc5OTZDNDAuNDQyOSA2LjMxMzI5IDQwLjk0OTUgNy4zMzk5NiA0MS4wMTYyIDguNjU5OTZIMzcuMzE2MkMzNy4yODk1IDguMjA2NjMgMzcuMTIyOSA3Ljg1MzI5IDM2LjgxNjIgNy41OTk5NkMzNi41MDk1IDcuMzMzMjkgMzYuMTE2MiA3LjE5OTk2IDM1LjYzNjIgNy4xOTk5NkMzNS4yMjI5IDcuMTk5OTYgMzQuODg5NSA3LjMxMzI5IDM0LjYzNjIgNy41Mzk5NkMzNC4zODI5IDcuNzUzMjkgMzQuMjU2MiA4LjA2NjYzIDM0LjI1NjIgOC40Nzk5NkMzNC4yNTYyIDguOTMzMjkgMzQuNDY5NSA5LjI4NjYzIDM0Ljg5NjIgOS41Mzk5NkMzNS4zMjI5IDkuNzkzMjkgMzUuOTg5NSAxMC4wNjY2IDM2Ljg5NjIgMTAuMzZDMzcuODAyOSAxMC42NjY2IDM4LjUzNjIgMTAuOTYgMzkuMDk2MiAxMS4yNEMzOS42Njk1IDExLjUyIDQwLjE2MjkgMTEuOTI2NiA0MC41NzYyIDEyLjQ2QzQwLjk4OTUgMTIuOTkzMyA0MS4xOTYyIDEzLjY4IDQxLjE5NjIgMTQuNTJDNDEuMTk2MiAxNS4zMiA0MC45ODk1IDE2LjA0NjYgNDAuNTc2MiAxNi43QzQwLjE3NjIgMTcuMzUzMyAzOS41ODk1IDE3Ljg3MzMgMzguODE2MiAxOC4yNkMzOC4wNDI5IDE4LjY0NjYgMzcuMTI5NSAxOC44NCAzNi4wNzYyIDE4Ljg0WiIgZmlsbD0iIzZDNTlGNSIvPgo8cGF0aCBkPSJNMjkuNzU5NiA3LjU0MDA0TDIyLjc1OTYgMjRIMTkuMDc5NkwyMS42Mzk2IDE4LjMyTDE3LjA5OTYgNy41NDAwNEgyMC45MTk2TDIzLjQ5OTYgMTQuNTJMMjYuMDU5NiA3LjU0MDA0SDI5Ljc1OTZaIiBmaWxsPSIjNkM1OUY1Ii8+CjxwYXRoIGQ9Ik0xNS45IDQuNjU5OTFWMTguNjk5OUgxMi40OFYxMC4yNzk5TDkuMzQgMTguNjk5OUg2LjU4TDMuNDIgMTAuMjU5OVYxOC42OTk5SDBWNC42NTk5MUg0LjA0TDcuOTggMTQuMzc5OUwxMS44OCA0LjY1OTkxSDE1LjlaIiBmaWxsPSIjNkM1OUY1Ii8+Cjwvc3ZnPgo="
+                    alt="MyStat">
+            </div>
+            <div class="staticTopMenu">
+                <div class="boxMenuTop">
+                    <p>2</p>
+                </div>
+                <div class="boxMenuTop">
+                    <p>3</p>
+                </div>
+                <div class="boxMenuTop">
+                    <p>4</p>
+                </div>
+                <div class="boxMenuTop">
+                    <p>5</p>
+                </div>
+            </div>
+        </div>
+        <div class="menuLeft">
+            <div class="borderProfile">
+                <a href="indexPersonalData.html"><img
+                        src="https://fsx1.itstep.org/api/v1/files/R92D9VKe1fmMZ9ZLA6TnbqjhVjAWSQa4?r=face&h=250&f=webp"
+                        alt="profile"></a>
+            </div>
+            <div class="main">
+                <a href="indexHome.html">
+                    <div class="boxMenuLeft">
+                        <p>1</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Главная</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="indexNoData1.html">
+                    <div class="boxMenuLeft">
+                        <p>2</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Домашние задание</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="indexNoData2.html">
+                    <div class="boxMenuLeft">
+                        <p>3</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Расписание</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="indexNoData3.html">
+                    <div class="boxMenuLeft">
+                        <p>4</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Учебные материалы</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="indexNoData4.html">
+                    <div class="boxMenuLeft">
+                        <p>5</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Отзывы</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="indexAwards.html">
+                    <div class="boxMenuLeft">
+                        <p>6</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Награды</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="indexNoData5.html">
+                    <div class="boxMenuLeft">
+                        <p>7</p>
+                        <div class="popupWindow">
+                            <p class="shadow">Магазин</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <a href="indexNoData6.html">
+                <div class="boxMenuLeft">
+                    <p>8</p>
+                    <div class="popupWindow">
+                        <p class="shadow">Оплата</p>
+                    </div>
+                </div>
+            </a>
+            <a href="indexNews.html">
+                <div class="boxMenuLeft">
+                    <p>9</p>
+                    <div class="popupWindow">
+                        <p class="shadow">Новости</p>
+                    </div>
+                </div>
+            </a>
+            <a href="indexContacts.html">
+                <div class="boxMenuLeft">
+                    <p>10</p>
+                    <div class="popupWindow">
+                        <p class="shadow">Контакты</p>
+                    </div>
+                </div>
+            </a>
+            <div class="none"></div>
+            <div class="none"></div>
+        </div>
+        <div class="menuLeftShadow">
+            <div class="shadowbody"></div>
+            <div class="borderProfile">
+                <div class="infoProfile">
+                    <a href="indexPersonalData.html"><img
+                            src="https://fsx1.itstep.org/api/v1/files/R92D9VKe1fmMZ9ZLA6TnbqjhVjAWSQa4?r=face&h=250&f=webp"
+                            alt="profile"></a>
+                    <div class="infopMenuLeftShadow">
+                        <p>Олексій Кохан</p>
+                        <img class="settings" src="https://mystat.itstep.org/assets/icons/sidenav/settings.svg"
+                            alt="settings">
+                        <p>П42 (офф) / 131028533</p>
+                    </div>
+                </div>
+                <div class="starProfile">
+                    <div class="star">
+                        <div class="boxStar"><img src="https://mystat.itstep.org/assets/icons/medal-star.svg"
+                                alt="Star">
+                        </div>
+                        <p>9</p>
+                    </div>
+                    <div class="star">
+                        <div class="boxStar"><img src="https://mystat.itstep.org/assets/icons/coins.svg" alt="Star">
+                        </div>
+                        <p>374</p>
+                    </div>
+                    <div class="star">
+                        <div class="boxStar"><img src="https://mystat.itstep.org/assets/icons/diamonds.svg" alt="Star">
+                        </div>
+                        <p>249</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <a href="indexHome.html">
+                    <div class="boxMenuLeft">
+                        <p>1</p>
+                        <p>Главная</p>
+                    </div>
+                </a>
+                <a href="indexNoData1.html">
+                    <div class="boxMenuLeft">
+                        <p>2</p>
+                        <p>Домашние задание</p>
+                    </div>
+                </a>
+                <a href="indexNoData2.html">
+                    <div class="boxMenuLeft">
+                        <p>3</p>
+                        <p>Расписание</p>
+                    </div>
+                </a>
+                <a href="indexNoData3.html">
+                    <div class="boxMenuLeft">
+                        <p>4</p>
+                        <p>Учебные материалы</p>
+                    </div>
+                </a>
+                <a href="indexNoData4.html">
+                    <div class="boxMenuLeft">
+                        <p>5</p>
+                        <p>Отзывы</p>
+                    </div>
+                </a>
+                <a href="indexAwards.html">
+                    <div class="boxMenuLeft">
+                        <p>6</p>
+                        <p>Награды</p>
+                    </div>
+                </a>
+                <a href="indexNoData5.html">
+                    <div class="boxMenuLeft">
+                        <p>7</p>
+                        <p>Магазин</p>
+                    </div>
+                </a>
+            </div>
+            <a href="indexNoData6.html">
+                <div class="boxMenuLeft">
+                    <p>8</p>
+                    <p>Оплата</p>
+                </div>
+            </a>
+            <a href="indexNews.html">
+                <div class="boxMenuLeft">
+                    <p>9</p>
+                    <p>Новости</p>
+                </div>
+            </a>
+            <a href="indexContacts.html">
+                <div class="boxMenuLeft">
+                    <p>10</p>
+                    <p>Контакты</p>
+                </div>
+            </a>
+            <div class="none"></div>
+            <div class="none"></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="conteiner">
+            <div>
+                <h2>Новости</h2>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>26 февраля 2025 г.</p>
+                            <h3>Ярмарок на МАСЛЯНУ!</h3>
+                            <p>🎭🥞 Масляна в Академії! 🥞🎭У п’ятницю, 28.02, з 14:00 до 15:00 – велика Масляна
+                                ярмарка! Приносьте млинці з будь-якою начинкою, продавайте їх і трох...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>21 декабря 2024 г.</p>
+                            <h3>ЗИМОВІ КАНІКУЛИ</h3>
+                            <p>Шановні батьки та студенти!Нагадуємо, з 25.12.2024 по 07.01.2025 в академії ITSTEP зимові
+                                канікули!Гарних та спокійних свят!</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>11 декабря 2024 г.</p>
+                            <h3>Новорічний квест</h3>
+                            <p>ШАЛЕНА НОВИНА! 🎄 Жорик з Денисом підготували для дітей 7-14 років крутецький новорічний
+                                IT-квест, який пройде у нас в Академії 28 грудня. Щоб вам ...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>9 декабря 2024 г.</p>
+                            <h3>Конкурс різдвяних вінків! </h3>
+                            <p>Поринь у святкову атмосферу та створи власний шедевр! 🎄💫 Умови участі: 👉 Вінок може
+                                бути виготовлений з будь-яких матеріалів: природних, текстил...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>6 декабря 2024 г.</p>
+                            <h3>Конкурс Різдвяної ілюстрації !</h3>
+                            <p>Конкурс Різдвяної ілюстрації для студентів напрямку Комп'ютерна графіка та Дизайн. Тема:
+                                казкова ілюстрація дія якої відбувається взимку. Потрібно...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>27 ноября 2024 г.</p>
+                            <h3>Миколай в гостях у трансформерів</h3>
+                            <p>❄️ Скучили за крутими новорічними розвагами? Ми теж! 🎁 Запрошуємо дітей від 6 до 9 років
+                                на тематичне IT свято на честь дня Святого Миколая! На ва...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>26 ноября 2024 г.</p>
+                            <h3>ЗИМОВИЙ IT-ТАБІР!</h3>
+                            <p>🎄 Зимовий табір 2024-2025: запрошуємо у чарівну ІТ-пригоду! Хочете зробити зимові
+                                канікули вашої дитини справжньою пригодою? Ми створили унікальну п...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>25 ноября 2024 г.</p>
+                            <h3>ПЕРШИЙ СІМЕЙНИЙ ТАБІР ДЛЯ ДІТЕЙ</h3>
+                            <p>ПЕРШИЙ СІМЕЙНИЙ ТАБІР ДЛЯ ДІТЕЙ ВІД 6 ДО 15 РОКІВ ТА ЇХ БАТЬКІВ! 👨‍👩‍👧‍👦 Зимовий
+                                табір в казковій Лапландії — це унікальна можливість зустріти спр...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>24 ноября 2024 г.</p>
+                            <h3>Thanksgiving week</h3>
+                            <p>Привіт! 😊 У IT STEP ПОЧАВСЯ Thanksgiving Week!!! До 26 листопада буде особливий час, щоб
+                                сказати нашим викладачам “дякую” за їхню працю, тер...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://mystat.itstep.org/assets/icons/news/default-news.png" alt="">
+                        <div>
+                            <p>20 сентября 2024 г.</p>
+                            <h3>Великий збір до Дня Захисника та Захисниці!</h3>
+                            <p>Великий збір до Дня Захисника та Захисниці! 🌟 ПРИВІТ, ДРУЗІ! День Захисника України —
+                                важливий день, коли ми вшановуємо тих, хто боронить нашу свобод...</p>
+                        </div>
+                    </div>
+                    <div><a href="">
+                            <p>Читать полностью</p>
+                        </a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .menuLeft>a:nth-child(4)>.boxMenuLeft,
+        .menuLeftShadow>a:nth-child(5)>.boxMenuLeft {
+            background-color: rgb(226, 216, 248);
+            color: rgb(93, 16, 238);
+        }
+    </style>
+</body>
+
+</html>
