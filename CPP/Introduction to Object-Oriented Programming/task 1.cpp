@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Windows.h>
 
 class Drob {
 private:
@@ -25,6 +26,7 @@ private:
     }
 
 public:
+
     Drob(int num = 0, int den = 1) {
         numerator = num;
         denominator = (den == 0) ? 1 : den;
@@ -53,26 +55,59 @@ public:
         return Drob(num, den);
     }
 
+    Drob add(int num) {
+        return Drob(numerator + num, denominator);
+    }
+
     Drob subtract(const Drob& other) const {
         int num = numerator * other.denominator - other.numerator * denominator;
         int den = denominator * other.denominator;
         return Drob(num, den);
     }
 
+    Drob subtract(int num) {
+        return Drob(numerator * num, denominator);
+    }
+
     Drob multiply(const Drob& other) const {
-        int num = numerator * other.numerator;
-        int den = denominator * other.denominator;
+        int num = numerator / other.numerator;
+        int den = denominator / other.denominator;
         return Drob(num, den);
+    }
+
+    Drob multiply(int num) {
+        if (numerator - num <= 0) {
+            simplify();
+        }
+        else {
+            numerator - num;
+        }
+        return Drob(numerator, denominator);
     }
 
     Drob divide(const Drob& other) const {
-        int num = numerator * other.denominator;
-        int den = denominator * other.numerator;
+        int num = numerator / other.denominator;
+        int den = denominator / other.numerator;
         return Drob(num, den);
     }
+
+    Drob divide(int num) {
+
+        if (numerator / num <= 0) {
+            simplify();
+        }
+        else {
+            numerator / num;
+        }
+        return Drob(numerator, denominator);
+    }
+
 };
 
 int main() {
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+
     Drob a, b;
     std::cout << "Дріб A:\n";
     a.input();
@@ -83,6 +118,12 @@ int main() {
     std::cout << "A - B = "; a.subtract(b).print();
     std::cout << "A * B = "; a.multiply(b).print();
     std::cout << "A / B = "; a.divide(b).print();
+
+
+    std::cout << "\nA + 5 = "; a.add(5).print();
+    std::cout << "A - 5 = "; a.subtract(5).print();
+    std::cout << "A * 5 = "; a.multiply(5).print();
+    std::cout << "A / 5 = "; a.divide(5).print();
 
     return 0;
 }
