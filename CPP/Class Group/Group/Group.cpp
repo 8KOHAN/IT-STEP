@@ -7,17 +7,15 @@ private:
 	char* _name;
 	int _size;
 public:
-	Group(Student** group = nullptr, char* name = nullptr, int size = 0) {
-		_student = group;
+	Group(char* name = nullptr) {
+		_student = new Student* [1];
+		_size = 0;
 
 		if (name){
-			_name = new char(strlen(name));
-			strcpy_s(_name, strlen(name), name);
+			_name = new char[strlen(name) + 1];
+			strcpy_s(_name, strlen(name) + 1, name);
 		}
 		else _name = nullptr;
-
-		if (size > 0) _size = size;
-		else _size = 0;
 	}
 
 	Student** GetStudent() {
@@ -39,15 +37,76 @@ public:
 	}
 
 	Student** SetStudent(Student& student) {
-		_student[_size++] = new Student(student);
+
+		Student** temp = new Student* [_size + 1];
+		for (int i = 0; i < _size; ++i) {
+			temp[i] = _student[i];
+		}
+		temp[_size++] = new Student(student);
+
+		delete[] _student;
+
+		_student = temp;
 		return _student;
 	}
 
 	char* SetName(char* name) {
 		if (name) {
 			delete[] _name;
-			_name = new char(strlen(name));
-			strcpy_s(_name, strlen(name), name);
+			_name = new char[strlen(name) + 1];
+			strcpy_s(_name, strlen(name) + 1, name);
+			return _name;
 		}
+		std::cout << "name has not been changed (parameter == nullptr)" << std::endl;
+		return _name;
+	}
+
+	Student** DeleteStudent(int index) {
+		if (index < 0) {
+			std::cout << "_student is not changed index cannot be less than zero" << std::endl;
+			return _student;
+		}
+		if (index > _size) {
+			std::cout << "_student is not changed index cannot be greater than size" << std::endl;
+			return _student;
+		}
+
+
+		Student** temp = new Student * [_size - 1];
+
+		int k = 0;
+		for (int i = 0; i < _size; ++i) {
+			if (i == index) continue;
+			temp[k++] = _student[i];
+		}
+		delete _student[index];
+		delete[] _student;
+
+		_student = temp;
+		return _student;
+	}
+
+	void Studentinfo(int index) {
+		if (index < 0) {
+			std::cout << "index cannot be less than zero" << std::endl;
+			return;
+		}
+		if (index >= _size) {
+			std::cout << "index cannot be greater than size" << std::endl;
+			return;
+		}
+
+
+		std::cout << "name:       " << _student[index]->name << "age:        " << _student[index]->age << "university: " <<  _student[index]->university << std::endl;
+	}
+
+	~Group() {
+		if (_size > 0) {
+			for (int i = 0; i < _size; ++i) {
+				delete _student[i];
+			}
+		}
+		delete[] _student;
+		delete[] _name;
 	}
 };
