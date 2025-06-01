@@ -9,13 +9,37 @@ private:
 public:
 	Group(char* name = nullptr) {
 		_student = new Student* [1];
-		_size = 0;
-
 		if (name){
 			_name = new char[strlen(name) + 1];
 			strcpy_s(_name, strlen(name) + 1, name);
 		}
 		else _name = nullptr;
+		_size = 0;
+	}
+
+	Group(Group& group) {
+		if (group.GetSize() == 0) {
+			std::cout << "empty list Student" << std::endl;
+			_student = new Student* [1];
+		}
+		else {
+			_student = new Student* [group.GetSize()];
+			for (int i = 0; i < group.GetSize(); ++i)
+				_student[i] = new Student(*group.GetStudent()[i]);
+		}
+
+		if (group.GetName()) {
+			_name = new char[strlen(group.GetName()) + 1];
+			strcpy_s(_name, strlen(group.GetName()) + 1, group.GetName());
+		}
+		else {
+			std::cout << "name == nullptr" << std::endl;
+			_name = nullptr;
+		}
+
+		_size = group.GetSize();
+
+
 	}
 
 	Student** GetStudent() {
@@ -72,7 +96,7 @@ public:
 		}
 
 
-		Student** temp = new Student * [_size - 1];
+		Student** temp = new Student* [_size - 1];
 
 		int k = 0;
 		for (int i = 0; i < _size; ++i) {
@@ -82,6 +106,7 @@ public:
 		delete _student[index];
 		delete[] _student;
 
+		--_size;
 		_student = temp;
 		return _student;
 	}
