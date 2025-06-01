@@ -15,17 +15,16 @@ private:
 	int _size;
 public:
 	Group(char* name = nullptr) {}
+	Group(const Group& group) {}
 
-	Group(Group& group) {}
-
-	Student** GetStudent() {}
+	Student** GetStudent() const {}
+	char* GetName() const {}
+	int GetSize() const {}
 
 	Student** SetStudent(Student& student) {}
-
 	char* SetName(char* name) {}
 
 	Student** DeleteStudent(int index) {}
-
 	void Studentinfo(int index) {}
 
 	~Group() {}
