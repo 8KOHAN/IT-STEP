@@ -17,7 +17,7 @@ public:
 		_size = 0;
 	}
 
-	Group(Group& group) {
+	Group(const Group& group) {
 		if (group.GetSize() == 0) {
 			std::cout << "empty list Student" << std::endl;
 			_student = new Student* [1];
@@ -42,21 +42,21 @@ public:
 
 	}
 
-	Student** GetStudent() {
+	Student** GetStudent() const {
 		if (_student) return _student;
 
 		std::cout << "Student is not initialized (_student == nullptr)" << std::endl;
 		return nullptr;
 	}
 
-	char* GetName() {
+	char* GetName() const {
 		if (_name) return _name;
 
 		std::cout << "name is not initialized (_name == nullptr)" << std::endl;
 		return nullptr;
 	}
 
-	int GetSize() {
+	int GetSize() const {
 		return _size;
 	}
 
