@@ -118,8 +118,8 @@ void Group::Studentinfo(int index) {
 Group::~Group() {
 	if (_size > 0) {
 		for (int i = 0; i < _size; ++i) {
-				delete _student[i];
-			}
+			delete _student[i];
+		}
 	}
 	delete[] _student;
 	delete[] _name;
