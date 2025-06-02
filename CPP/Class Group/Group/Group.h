@@ -14,18 +14,18 @@ private:
 	char* _name;
 	int _size;
 public:
-	Group(char* name = nullptr) {}
-	Group(const Group& group) {}
+	Group(char* name = nullptr);
+	Group(const Group& group);
 
-	Student** GetStudent() const {}
-	char* GetName() const {}
-	int GetSize() const {}
+	Student** GetStudent() const;
+	char* GetName() const;
+	int GetSize() const;
 
-	Student** SetStudent(Student& student) {}
-	char* SetName(char* name) {}
+	Student** SetStudent(Student& student);
+	char* SetName(char* name);
 
-	Student** DeleteStudent(int index) {}
-	void Studentinfo(int index) {}
+	Student** DeleteStudent(int index);
+	void Studentinfo(int index);
 
-	~Group() {}
+	~Group();
 };
