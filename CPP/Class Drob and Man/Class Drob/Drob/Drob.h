@@ -19,19 +19,15 @@ public:
     void print() const;
 
     Drob add(const Drob& other) const;
-
     Drob add(int num);
 
     Drob subtract(const Drob& other) const;
-
     Drob subtract(int num);
 
     Drob multiply(const Drob& other) const;
-
     Drob multiply(int num);
 
     Drob divide(const Drob& other) const;
-
     Drob divide(int num);
 
 };
