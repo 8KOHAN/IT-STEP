@@ -1,6 +1,4 @@
 #include "Drob.h"
-#include <vector>
-#include <fstream>
 #include <windows.h>
 
 int main() {
