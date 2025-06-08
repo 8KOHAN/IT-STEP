@@ -1,15 +1,12 @@
 Project/
-│
 ├── Overcoat/
-│   ├── Overcoat.h
-│   └── Overcoat.cpp
-│
+│   ├── Overcoat.h      
+│   └── Overcoat.cpp    
 ├── Flat/
-│   ├── Flat.h
-│   └── Flat.cpp
-│
-├── main.cpp
-└── README.md
+│   ├── Flat.h        
+│   └── Flat.cpp    
+├── main.cpp          
+└── README.md        
 📌 Короткий опис
 Overcoat
 Клас Overcoat представляє верхній одяг із полями:
