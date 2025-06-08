@@ -19,5 +19,5 @@ bool Flat::operator>(const Flat& other) const {
 }
 
 void Flat::display() const {
-    std::cout << "Площа: " << area << " м², Ціна: " << price << std::endl;
+    std::cout << "Площа: " << area << " м[2], Ціна: " << price << std::endl;
 }
