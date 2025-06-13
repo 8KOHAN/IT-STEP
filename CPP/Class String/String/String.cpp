@@ -1,4 +1,5 @@
 #include "String.h"
+#include <string>
 
 explicit String::String(const char* str) : length_(strlen(str)) {
 	str_ = new char[length_ + 1];
@@ -23,45 +24,65 @@ String& String::operator = (String&& str) noexcept {
 	delete[] str.str_;
 	str.length_ = 0;
 }
-String::~String() {
-	delete str_;
-}
-size_t String::length() const {
-	return length_;
-}
-char* String::begin() const {
-
-}
-char* String::end() const {
-
-}
-bool String::empty() const {
-
-}
-char String::front() const {
-
-}
-char String::back() const {
-
-}
-void String::clear() {
-
-}
-void String::insert(char arr[]) {
-
-}
-void String::erase(char arr[]) {
-
-}
-void String::replace(char arr[]) {
-
-}
-bool String::find(char arr[]) {
-
+String::~String() { delete str_; }
+size_t String::length() const { return length_; }
+char* String::begin() const { return &str_[0]; }
+char* String::end() const { return &str_[length_]; }
+bool String::empty() const { return length_; }
+char String::front() const { return str_[0]; }
+char String::back() const { return str_[length_ - 1]; }
+size_t String::find(char arr[], int size) {
+	for (int i = 0; i < length_; ++i) {
+		if (str_[i] = arr[0]) {
+			int count;
+			for (int j = 0; j < size; ++j) {
+				if (str_[i + j] == arr[j]) ++count;
+			}
+			if (count == size) return i;
+		}
+	}
+	return -1;
 }
 bool String::compare(String str) {
-
+	if (length_ != str.length_) return false;
+	return strcmp(str_, str.str_) == 0;
 }
 bool String::compare(char str[]) {
-
+	if (!str) return false;
+	if (length_ != std::strlen(str)) return false;
+	return strcmp(str_, str) == 0;
+}
+bool String::operator==(const String& other) const {
+	if (length_ != other.length_) return false;
+	return strcmp(str_, other.str_) == 0;
+}
+bool String::operator==(const char* cstr) const {
+	if (!cstr) return false;
+	if (length_ != std::strlen(cstr)) return false;
+	return strcmp(str_, cstr) == 0;
+}
+String String::operator+(const String& str) {
+	size_t new_len = length_ + str.length_ - 1;
+	char* new_str = new char[new_len + 1];
+	strcpy(new_str, str_);
+	strcat(new_str, str.str_);
+	String result;
+	result.str_ = new_str;
+	result.length_ = new_len;
+	return result;
+}
+char& String::operator[](size_t index) { return str_[index]; }
+const char& String::operator[](size_t index) const { return str_[index]; }
+std::istream& operator>>(std::istream& is, String& str) {
+	std::string temp;
+	getline(is, temp);
+	delete[] str.str_;
+	str.length_ = temp.length();
+	str.str_ = new char[str.length_ + 1];
+	std::strcpy(str.str_, temp.c_str());
+	return is;
+}
+std::ostream& operator<<(std::ostream& os, const String& str) {
+	os << str.str_;
+	return os;
 }
