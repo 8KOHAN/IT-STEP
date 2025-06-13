@@ -1,7 +1,7 @@
 #include "String.h"
 #include <string>
 
-explicit String::String(const char* str) : length_(strlen(str)) {
+String::String(const char* str) : length_(strlen(str)) {
 	str_ = new char[length_ + 1];
 	strcpy_s(str_, length_ + 1, str);
 }
@@ -13,18 +13,25 @@ String::String(String&& str) noexcept : str_(str.str_), length_(str.length_) {
 	delete[] str.str_;
 	str.length_ = 0;
 }
-String& String::operator = (const String& str) {
+String& String::operator=(const String& str) {
+	if (this == &str) return *this;
+	delete[] str_;
 	length_ = str.length_;
 	str_ = new char[length_ + 1];
 	strcpy_s(str_, length_ + 1, str.str_);
+	strcpy_s(str_, length_+1, str.str_);
+	return *this;
 }
-String& String::operator = (String&& str) noexcept {
+String& String::operator=(String&& str) noexcept {
+	if (this == &str) return *this;
+	delete[] str_;
 	str_ = str.str_;
 	length_ = str.length_;
-	delete[] str.str_;
+	str.str_ = nullptr;
 	str.length_ = 0;
+	return *this;
 }
-String::~String() { delete str_; }
+String::~String() { if (str_) delete str_; }
 size_t String::length() const { return length_; }
 char* String::begin() const { return &str_[0]; }
 char* String::end() const { return &str_[length_]; }
@@ -34,7 +41,7 @@ char String::back() const { return str_[length_ - 1]; }
 size_t String::find(char arr[], int size) {
 	for (int i = 0; i < length_; ++i) {
 		if (str_[i] = arr[0]) {
-			int count;
+			int count = 0;
 			for (int j = 0; j < size; ++j) {
 				if (str_[i + j] == arr[j]) ++count;
 			}
@@ -43,11 +50,11 @@ size_t String::find(char arr[], int size) {
 	}
 	return -1;
 }
-bool String::compare(String str) {
+bool String::compare(String str) const{
 	if (length_ != str.length_) return false;
 	return strcmp(str_, str.str_) == 0;
 }
-bool String::compare(char str[]) {
+bool String::compare(char str[]) const{
 	if (!str) return false;
 	if (length_ != std::strlen(str)) return false;
 	return strcmp(str_, str) == 0;
@@ -64,8 +71,8 @@ bool String::operator==(const char* cstr) const {
 String String::operator+(const String& str) {
 	size_t new_len = length_ + str.length_ - 1;
 	char* new_str = new char[new_len + 1];
-	strcpy(new_str, str_);
-	strcat(new_str, str.str_);
+	strcpy_s(new_str, length_+1,str_);
+	strcat_s(new_str, length_+1,str.str_);
 	String result;
 	result.str_ = new_str;
 	result.length_ = new_len;
@@ -79,7 +86,7 @@ std::istream& operator>>(std::istream& is, String& str) {
 	delete[] str.str_;
 	str.length_ = temp.length();
 	str.str_ = new char[str.length_ + 1];
-	std::strcpy(str.str_, temp.c_str());
+	strcpy_s(str.str_, temp.length()+1, temp.c_str());
 	return is;
 }
 std::ostream& operator<<(std::ostream& os, const String& str) {
