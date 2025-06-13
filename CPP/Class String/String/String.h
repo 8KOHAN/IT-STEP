@@ -1,7 +1,5 @@
 #pragma once
-
 #include <iostream>
-
 class String
 {
 public:
@@ -26,7 +24,6 @@ public:
 	String operator+(const String& str);
 	char& operator[](size_t index);
 	const char& operator[](size_t index) const;
-
 	friend std::istream& operator>>(std::istream& is, String& str);
 	friend std::ostream& operator<<(std::ostream& os, const String& str);
 private:
