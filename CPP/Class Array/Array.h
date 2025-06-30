@@ -55,16 +55,16 @@ public:
         size = newSize;
         if (count > size) count = size;
     }
+    void SetAt(int index, const T& value) {
+        if (index < 0 || index >= size) return;
+        if (index >= count) count = index + 1;
+        data[index] = value;
+    }
     void FreeExtra() { if (count < size) SetSize(count, grow); }
     void RemoveAll() {
         delete[] data;
         data = nullptr;
         size = count = 0;
-    }
-    void SetAt(int index, const T& value) {
-        if (index < 0 || index >= size) return;
-        if (index >= count) count = index + 1;
-        data[index] = value;
     }
     const T& operator[](int index) const {
         if (index < 0 || index >= count) throw std::out_of_range("Index out of range");
