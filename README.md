@@ -1,6 +1,6 @@
 # 💻 IT-STEP
 
-## 🇺🇦 Українська версія
+## Українська версія
 
 Цей репозиторій містить мої навчальні проєкти та домашні завдання, виконані у рамках навчання в академії **IT STEP**. Роботи згруповані за мовами програмування та технологіями, що допомагає легко орієнтуватися та відстежувати прогрес.
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 🇬🇧 English version
+## English version
 
 This repository contains my educational projects and homework completed as part of my studies at the **IT STEP** Academy. The works are grouped by programming languages and technologies, which makes it easy to navigate and track progress.
 
