@@ -73,7 +73,7 @@ bool String::operator==(const String& other) const {
 	return strcmp(str_, other.str_) == 0;
 }
 bool String::operator==(const char* cstr) const {
-	if (!cstr) return false;
+	if (!cstr || !length_) return false;
 	if (length_ != std::strlen(cstr)) return false;
 	return strcmp(str_, cstr) == 0;
 }
@@ -114,3 +114,92 @@ std::ostream& operator<<(std::ostream& os, const String& str) {
 
 bool operator==(const char* cstr, const String& str) { return str == cstr; }
 bool operator!=(const char* cstr, const String& str) { return str != cstr; }
+
+// BitString
+
+BitString::BitString() : String() {}
+
+BitString::BitString(const char* str) : String() {
+    if (str && isValidBinary(str)) {
+        length_ = strlen(str);
+        delete[] str_;
+        str_ = new char[length_ + 1];
+        strcpy_s(str_, length_ + 1, str);
+    }
+    else {
+        length_ = 0;
+        delete[] str_;
+        str_ = new char[1] {'\0'};
+    }
+}
+BitString::BitString(const BitString& other) : String(other) {}
+
+BitString& BitString::operator=(const BitString& other) {
+    String::operator=(other);
+    return *this;
+}
+
+void BitString::invertSign() { toTwosComplement(); }
+
+BitString BitString::operator+(const BitString& other) const {
+    int a = toInt();
+    int b = other.toInt();
+    int sum = a + b;
+    return fromInt(sum);
+}
+BitString& BitString::operator+=(const BitString& other) {
+    *this = *this + other;
+    return *this;
+}
+
+bool BitString::isValidBinary(const char* str) {
+    for (size_t i = 0; str[i]; ++i)
+        if (str[i] != '0' && str[i] != '1') return false;
+    return true;
+}
+
+int BitString::toInt() const {
+    if (length_ == 0) return 0;
+    int result = 0;
+    bool negative = str_[0] == '1';
+
+    for (size_t i = 0; i < length_; ++i)
+        result = (result << 1) | (str_[i] - '0');
+
+    if (negative) {
+        int mask = (1 << length_) - 1;
+        result = -(~result + 1) & mask;
+    }
+    return result;
+}
+
+void BitString::toTwosComplement() {
+    if (length_ == 0) return;
+
+    for (size_t i = 0; i < length_; ++i)
+        str_[i] = (str_[i] == '0') ? '1' : '0';
+
+    for (int i = length_ - 1; i >= 0; --i) {
+        if (str_[i] == '0') {
+            str_[i] = '1';
+            break;
+        }
+        else str_[i] = '0';
+    }
+}
+
+BitString BitString::fromInt(int value) {
+    bool negative = value < 0;
+    unsigned int absVal = negative ? -value : value;
+    char buffer[65] = {};
+    int i = 63;
+    do {
+        buffer[i--] = (absVal & 1) + '0';
+        absVal >>= 1;
+    } while (absVal > 0);
+
+    const char* binary = &buffer[i + 1];
+    BitString result(binary);
+    if (negative) result.invertSign();
+    return result;
+}
