@@ -34,7 +34,27 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const String& str);
 	friend bool operator==(const char* cstr, const String& str);
 	friend bool operator!=(const char* cstr, const String& str);
-private:
+protected:
 	char* str_;
 	size_t length_;
+};
+
+class BitString : public String
+{
+public:
+	BitString();
+	BitString(const char* str);
+	BitString(const BitString& other);
+	BitString& operator=(const BitString& other);
+
+	void invertSign();
+
+	BitString operator+(const BitString& other) const;
+    BitString& operator+=(const BitString& other);
+
+private:
+    static bool isValidBinary(const char* str);
+    int toInt() const;
+    void toTwosComplement();
+    static BitString fromInt(int value);
 };
