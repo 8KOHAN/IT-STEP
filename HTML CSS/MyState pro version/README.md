@@ -30,17 +30,6 @@ Built using `flexbox`, media queries, and best practices for layout scalability.
 
 ---
 
-## 📌 How to Use
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/mystat-ui-clone.git
-   cd mystat-ui-clone
-
-    Open any index*.html file in your browser to preview specific sections.
-
-    Optionally, deploy with GitHub Pages or host locally with a simple server.
-
 ⚠️ Disclaimer
 
 This is an educational project only. MyStat is a trademark/interface owned by IT STEP Academy. This clone was built for non-commercial, portfolio, and learning purposes only.
