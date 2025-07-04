@@ -1,10 +1,10 @@
-# 📊 MyStat UI Clone — IT STEP (HTML & CSS)
+# MyStat UI Clone — IT STEP (HTML & CSS)
 
 A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), built entirely using **HTML5 & CSS3**. Designed to fully replicate the original layout, behavior, and styling across various screen sizes — mobile, tablet, and desktop.
 
 ---
 
-## ✅ Features
+## Features
 
 - Fully **responsive** layout with flexible breakpoints
 - Separated, modular CSS for each page and section
@@ -14,7 +14,7 @@ A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), bu
 
 ---
 
-## 📱 Responsive Design
+## Responsive Design
 
 Each page is styled to adapt to:
 - Mobile devices
@@ -24,12 +24,12 @@ Built using `flexbox`, media queries, and best practices for layout scalability.
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 (You can upload to GitHub Pages or Netlify for live preview)
 
 ---
 
-⚠️ Disclaimer
+Disclaimer
 
 This is an educational project only. MyStat is a trademark/interface owned by IT STEP Academy. This clone was built for non-commercial, portfolio, and learning purposes only.
