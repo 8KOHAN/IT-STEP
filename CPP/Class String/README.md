@@ -27,15 +27,6 @@ This project implements a fully functional custom `String` class in C++ that rep
 
 ---
 
-## Key Fixes Implemented
-
-- `find()` now correctly uses `==` instead of `=`
-- `empty()` properly returns a `bool` result
-- `operator+` calculates the correct new length and allocates sufficient memory
-- All memory operations are safe and free of leaks or double frees
-
----
-
 ## Use Cases
 
 - Teaching low-level string manipulation in C++
