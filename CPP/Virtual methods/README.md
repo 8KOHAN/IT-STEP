@@ -1,4 +1,4 @@
-# 🧮 Geometric Figures Area Calculator (C++)
+# Geometric Figures Area Calculator (C++)
 
 This C++ console application demonstrates **polymorphism** and **dynamic dispatch** through a set of geometric figures — rectangle, circle, and triangle — each calculating its own area based on user input.
 
