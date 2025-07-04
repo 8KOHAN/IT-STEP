@@ -18,7 +18,7 @@ class Circle : public Figure {
 public:
     Circle(double radius) : radius_(radius) {};
     virtual double area() const {
-        return 3.1415 * 3.1415 * radius_;
+        return 3.1415 * radius_ * radius_;
     }
 private:
     double radius_;
@@ -27,7 +27,7 @@ class Triangle : public Figure {
 public:
     Triangle(double base, double height) : base_(base), height_(height) {};
     virtual double area() const {
-        return (base_ * height_) / 2 * (base_ * height_);
+        return (base_ * height_) / 2;
     }
 private:
     double base_;
