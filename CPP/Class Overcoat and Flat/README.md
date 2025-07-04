@@ -1,44 +1,44 @@
-# 👔 Клас `Overcoat` & 🏠 Клас `Flat`
-
+# 👔 `Overcoat` Class & 🏠 `Flat` Class
 
 ---
 
-## 📌 Короткий опис
+## 📌 Quick Overview
 
 ### 👔 Overcoat
 
-Клас `Overcoat` представляє верхній одяг з такими полями:
-- `type` — тип пальта (наприклад, `"Плащ"`, `"Пуховик"`).
-- `price` — ціна (тип `double`).
+The `Overcoat` class represents outerwear with the following fields:
+- `type` — type of coat (e.g., `"Raincoat"`, `"Down jacket"`).
+- `price` — price (type `double`).
 
-#### Реалізовано оператори:
-- `==` — перевірка на однаковий тип одягу.
-- `=` — оператор присвоювання.
-- `>` — порівняння за ціною (тільки якщо типи однакові).
+#### Implemented operators:
+- `==` — checks if the coat types are the same.
+- `=` — assignment operator.
+- `>` — compares prices (only if types are the same).
 
 ---
 
 ### 🏠 Flat
 
-Клас `Flat` моделює квартиру з такими полями:
-- `area` — площа (тип `double`).
-- `price` — ціна (тип `double`).
+The `Flat` class models an apartment with the following fields:
+- `area` — area (type `double`).
+- `price` — price (type `double`).
 
-#### Реалізовано оператори:
-- `==` — перевірка на однакову площу.
-- `=` — оператор присвоювання.
-- `>` — порівняння за ціною.
+#### Implemented operators:
+- `==` — checks if the areas are equal.
+- `=` — assignment operator.
+- `>` — compares prices.
 
 ---
 
-## 📁 Структура проєкту
+## 📁 Project Structure
+
 ```bash
 Project/
 ├── Overcoat/
-│ ├── Overcoat.h
-│ └── Overcoat.cpp
+│   ├── Overcoat.h
+│   └── Overcoat.cpp
 ├── Flat/
-│ ├── Flat.h
-│ └── Flat.cpp
+│   ├── Flat.h
+│   └── Flat.cpp
 ├── main.cpp
 └── README.md
