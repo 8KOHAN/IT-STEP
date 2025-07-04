@@ -1,4 +1,4 @@
-# `Overcoat` Class & `Flat` Class
+# Class Overcoat and Flat
 
 ---
 
