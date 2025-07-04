@@ -4,7 +4,7 @@ This is a simple C++ project demonstrating the use of multiple user-defined clas
 
 ---
 
-## ✅ Features
+## Features
 
 - Models basic objects using C++ classes
 - Demonstrates use of:
@@ -15,7 +15,7 @@ This is a simple C++ project demonstrating the use of multiple user-defined clas
 
 ---
 
-## 🧾 Classes Included
+## Classes Included
 
 - `Student`: name, age, university
 - `Book`: title, author, year
