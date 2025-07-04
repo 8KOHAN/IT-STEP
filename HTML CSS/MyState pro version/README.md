@@ -40,7 +40,6 @@ A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), bu
 
 Each page is styled to adapt to:
 - Mobile devices
-- Tablets
 - Desktop monitors
 
 Built using `flexbox`, media queries, and best practices for layout scalability.
@@ -64,11 +63,6 @@ Built using `flexbox`, media queries, and best practices for layout scalability.
 
     Optionally, deploy with GitHub Pages or host locally with a simple server.
 
-🧠 Author
-
-Created as a learning and replication project by a student of IT STEP.
-
-Enhanced with the help of GPTOnline.ai — your intelligent assistant in Russian.
 ⚠️ Disclaimer
 
 This is an educational project only. MyStat is a trademark/interface owned by IT STEP Academy. This clone was built for non-commercial, portfolio, and learning purposes only.
