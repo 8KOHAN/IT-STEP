@@ -56,19 +56,3 @@ Compare area between two reservoirs
 Exit
 
 All input/output uses UTF-8 (Windows 1251 set in console for Cyrillic compatibility).
-
-## How to Build
-
-Use any C++ compiler (e.g., g++, MSVC). If using folder structure:
-
-```bash
-g++ -o ReservoirApp main.cpp Reservoir/Reservoir.cpp
-./ReservoirApp
-On Windows, include <windows.h> in main.cpp for proper Cyrillic input/output.
-
-Future Extensions
-Save/load to/from text and binary files
-
-Filter by type or surface area
-
-Graphical interface
