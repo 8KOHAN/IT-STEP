@@ -1,10 +1,10 @@
-# 👔 `Overcoat` Class & 🏠 `Flat` Class
+# `Overcoat` Class & `Flat` Class
 
 ---
 
-## 📌 Quick Overview
+## Quick Overview
 
-### 👔 Overcoat
+### Overcoat
 
 The `Overcoat` class represents outerwear with the following fields:
 - `type` — type of coat (e.g., `"Raincoat"`, `"Down jacket"`).
@@ -17,7 +17,7 @@ The `Overcoat` class represents outerwear with the following fields:
 
 ---
 
-### 🏠 Flat
+### Flat
 
 The `Flat` class models an apartment with the following fields:
 - `area` — area (type `double`).
@@ -30,7 +30,7 @@ The `Flat` class models an apartment with the following fields:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 Project/
