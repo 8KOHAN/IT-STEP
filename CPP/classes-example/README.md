@@ -1,4 +1,4 @@
-# 📘 C++ Classes Demo Project
+# C++ Classes Demo Project
 
 This is a simple C++ project demonstrating the use of multiple user-defined classes, each representing different real-life entities like a student, book, firm, phone, and car.
 
