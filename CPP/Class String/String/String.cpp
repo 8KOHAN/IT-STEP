@@ -69,7 +69,7 @@ bool String::operator==(const char* cstr) const {
 	return strcmp(str_, cstr) == 0;
 }
 String String::operator+(const String& str) {
-	size_t new_len = length_ + str.length_ - 1;
+	size_t new_len = length_ + str.length_;
 	char* new_str = new char[new_len + 1];
 	strcpy_s(new_str, length_+1,str_);
 	strcat_s(new_str, length_+1,str.str_);
