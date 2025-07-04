@@ -19,7 +19,6 @@ String& String::operator=(const String& str) {
 	length_ = str.length_;
 	str_ = new char[length_ + 1];
 	strcpy_s(str_, length_ + 1, str.str_);
-	strcpy_s(str_, length_+1, str.str_);
 	return *this;
 }
 String& String::operator=(String&& str) noexcept {
@@ -40,7 +39,7 @@ char String::front() const { return str_[0]; }
 char String::back() const { return str_[length_ - 1]; }
 size_t String::find(char arr[], int size) {
 	for (int i = 0; i < length_; ++i) {
-		if (str_[i] = arr[0]) {
+		if (str_[i] == arr[0]) {
 			int count = 0;
 			for (int j = 0; j < size; ++j) {
 				if (str_[i + j] == arr[j]) ++count;
