@@ -39,9 +39,9 @@ A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), bu
 ## 📱 Responsive Design
 
 Each page is styled to adapt to:
-- 📱 Mobile devices
-- 💻 Tablets
-- 🖥️ Desktop monitors
+- Mobile devices
+- Tablets
+- Desktop monitors
 
 Built using `flexbox`, media queries, and best practices for layout scalability.
 
