@@ -35,7 +35,7 @@ This C++ project implements two independent class structures:
 
 ---
 
-## ✅ Drob Class Highlights
+## Drob Class Highlights
 
 - Represents a fraction (`numerator` / `denominator`)
 - Supports:
@@ -47,7 +47,7 @@ This C++ project implements two independent class structures:
 
 ---
 
-## ✅ Person Class Highlights
+## Person Class Highlights
 
 - Represents a person with:
   - ID, name, surname, patronymic
@@ -60,7 +60,7 @@ This C++ project implements two independent class structures:
 
 ---
 
-## 🎓 Educational Goals
+## Educational Goals
 
 - Demonstrates:
   - Dynamic memory management with `char*`
