@@ -15,7 +15,7 @@ A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), bu
 ---
 
 ## 🗂️ Project Structure
-
+```bash
 .
 ├── indexHome.html
 ├── indexContacts.html
@@ -32,7 +32,7 @@ A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), bu
 │ ├── styleAwards.css
 │ ├── stylePersonalData.css
 │ ├── styleNoData.css
-
+```
 
 ---
 
