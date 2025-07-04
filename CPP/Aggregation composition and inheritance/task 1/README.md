@@ -13,4 +13,3 @@ This project demonstrates a simple and clean example of **class inheritance** an
   - `Parrot`
 - Each subclass overrides the virtual `displayInfo()` method to show its type and attributes
 - Constructor inheritance to initialize common properties (`name`, `age`, `color`)
-- Output is localized in Ukrainian
