@@ -4,7 +4,7 @@ This C++ console application demonstrates **polymorphism** and **dynamic dispatc
 
 ---
 
-## ✅ Features
+## Features
 
 - Uses an abstract base class `Figure` with a pure virtual method `area()`
 - Implements:
