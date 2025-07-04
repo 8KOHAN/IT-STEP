@@ -22,21 +22,6 @@ ReservoirProject/
 
 ## Class `Reservoir`
 
-### Fields:
-- `std::string name` – reservoir name
-- `std::string type` – type (lake, sea, etc.)
-- `double width`, `length`, `maxDepth` – dimensions
-
-### Key Methods:
-- `double getSurfaceArea()` – calculates surface area
-- `double getVolume()` – calculates approximate volume
-- `bool isSameType(const Reservoir&)` – checks if two reservoirs are the same type
-- `int compareArea(const Reservoir&)` – compares surface area:
-  - `1`: this is larger
-  - `-1`: this is smaller
-  - `0`: equal
-  - `-2`: different types
-
 ### Constructors:
 - Default constructor
 - Parameterized constructor (`explicit`)
