@@ -1,4 +1,4 @@
-# ➗ Fraction Arithmetic in C++
+# Fraction Arithmetic in C++
 
 This project implements a C++ class `Drob` (fraction) for performing basic arithmetic with rational numbers, supporting both fractions and integers.
 
