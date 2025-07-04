@@ -4,8 +4,6 @@ This project contains three C++ programs that demonstrate practical file handlin
 
 ---
 
-## ✅ Features
-
 ### 🔍 Task 1: File Comparison
 
 Compares two text files line by line and outputs any differences.
