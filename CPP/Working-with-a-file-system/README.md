@@ -1,10 +1,10 @@
-# 📂 File System Operations in C++
+# File System Operations in C++
 
 This project contains three C++ programs that demonstrate practical file handling operations, including file comparison, content analysis, and Caesar cipher encryption.
 
 ---
 
-### 🔍 Task 1: File Comparison
+### Task 1: File Comparison
 
 Compares two text files line by line and outputs any differences.
 
@@ -12,7 +12,7 @@ Compares two text files line by line and outputs any differences.
 - Detects extra lines in either file
 - Outputs result to console
 
-### 📊 Task 2: File Statistics
+### Task 2: File Statistics
 
 Reads a text file and calculates:
 
@@ -22,7 +22,7 @@ Reads a text file and calculates:
 
 Writes results to a file named `stats.txt`.
 
-### 🔐 Task 3: Caesar Cipher Encryption
+### Task 3: Caesar Cipher Encryption
 
 Encrypts the contents of a text file using a Caesar cipher (default key: 3).
 
