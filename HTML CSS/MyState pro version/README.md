@@ -14,27 +14,6 @@ A **responsive, pixel-perfect clone** of the MyStat portal (IT STEP Academy), bu
 
 ---
 
-## 🗂️ Project Structure
-```bash
-├── indexHome.html
-├── indexContacts.html
-├── indexNews.html
-├── indexAwards.html
-├── indexPersonalData.html
-├── indexNoData1.html to indexNoData6.html
-├── assets/
-│ ├── normalize.css
-│ ├── styleHome.css
-│ ├── styleMenu.css
-│ ├── styleContacts.css
-│ ├── styleNews.css
-│ ├── styleAwards.css
-│ ├── stylePersonalData.css
-│ ├── styleNoData.css
-```
-
----
-
 ## 📱 Responsive Design
 
 Each page is styled to adapt to:
