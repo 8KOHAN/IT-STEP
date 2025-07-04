@@ -19,11 +19,3 @@ ReservoirProject/
 │ └── Reservoir.cpp # Class implementation
 ├── main.cpp # Console menu interface
 ├── README.md # This file
-```
-## Class `Reservoir`
-
-### Constructors:
-- Default constructor
-- Parameterized constructor (`explicit`)
-- Copy constructor
-- Destructor
