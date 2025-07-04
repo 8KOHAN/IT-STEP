@@ -15,15 +15,6 @@ This is a simple C++ project demonstrating the use of multiple user-defined clas
 
 ---
 
-## 📂 Project Structure
-
-.
-├── main.cpp # The main source file with all class definitions and logic
-└── README.md # Project documentation
-
-
----
-
 ## 🧾 Classes Included
 
 - `Student`: name, age, university
