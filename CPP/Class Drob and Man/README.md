@@ -28,7 +28,7 @@ This C++ project implements two independent class structures:
   - Full **Rule of Five**: copy/move constructors and assignment, destructor
   - Deep copy for dynamically allocated strings# Drob and Person Class System in C++
 
-## Educational Goals
+## Goals
 
 - Demonstrates:
   - Dynamic memory management with `char*`
