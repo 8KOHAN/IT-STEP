@@ -1,6 +1,6 @@
 # Reservoir Manager (C++ OOP Project)
 
-This project is a simple object-oriented program written in C++ for managing water bodies (reservoirs). It demonstrates class design, dynamic object management, and basic console interface features.
+This project is a object-oriented program written in C++ for managing water bodies (reservoirs). It demonstrates class design, dynamic object management, and basic console interface features.
 
 ## Features
 
@@ -12,14 +12,14 @@ This project is a simple object-oriented program written in C++ for managing wat
 - Automatically manage memory using `std::string` and `std::vector`
 
 ## Project Structure
-
+```bash
 ReservoirProject/
 ├── Reservoir/
 │ ├── Reservoir.h # Class definition
 │ └── Reservoir.cpp # Class implementation
 ├── main.cpp # Console menu interface
 ├── README.md # This file
-
+```
 ## Class `Reservoir`
 
 ### Constructors:
