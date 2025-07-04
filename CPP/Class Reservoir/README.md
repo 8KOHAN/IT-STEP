@@ -1,8 +1,8 @@
-# 💧 Reservoir Manager (C++ OOP Project)
+# Reservoir Manager (C++ OOP Project)
 
 This project is a simple object-oriented program written in C++ for managing water bodies (reservoirs). It demonstrates class design, dynamic object management, and basic console interface features.
 
-## 🚀 Features
+## Features
 
 - Create and manage multiple `Reservoir` objects
 - Add new reservoirs with dimensions and type
@@ -11,7 +11,7 @@ This project is a simple object-oriented program written in C++ for managing wat
 - Compare surface areas of two reservoirs of the same type
 - Automatically manage memory using `std::string` and `std::vector`
 
-## 📦 Project Structure
+## Project Structure
 
 ReservoirProject/
 ├── Reservoir/
@@ -20,7 +20,7 @@ ReservoirProject/
 ├── main.cpp # Console menu interface
 ├── README.md # This file
 
-## 🧠 Class `Reservoir`
+## Class `Reservoir`
 
 ### Fields:
 - `std::string name` – reservoir name
@@ -43,7 +43,7 @@ ReservoirProject/
 - Copy constructor
 - Destructor
 
-## 🖥️ Menu Interface (main.cpp)
+## Menu Interface (main.cpp)
 
 Add reservoir
 
@@ -57,7 +57,7 @@ Exit
 
 All input/output uses UTF-8 (Windows 1251 set in console for Cyrillic compatibility).
 
-## 📝 How to Build
+## How to Build
 
 Use any C++ compiler (e.g., g++, MSVC). If using folder structure:
 
@@ -66,7 +66,7 @@ g++ -o ReservoirApp main.cpp Reservoir/Reservoir.cpp
 ./ReservoirApp
 On Windows, include <windows.h> in main.cpp for proper Cyrillic input/output.
 
-📂 Future Extensions
+Future Extensions
 Save/load to/from text and binary files
 
 Filter by type or surface area
