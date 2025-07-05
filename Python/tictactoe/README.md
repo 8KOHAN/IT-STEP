@@ -1,58 +1,54 @@
-# 🎮 Гра "Кальмар на мінімалках" (Хрестики-Нулики з AI)
+# Tic-Tac-Toe AI (Python)
 
-👋 Ласкаво просимо до гри в хрестики-нулики з комп’ютером!  
-Це консольна гра з підтримкою трьох рівнів складності AI: **Ізі**, **Норм**, **Хард**.  
-Гравець змагається проти комп’ютера, обираючи "X" або "O".
+A console-based **Tic-Tac-Toe** game where the player competes against an AI with adjustable difficulty: **easy**, **normal**, and **hard**. The game includes user-friendly prompts and randomized turn order.
 
 ---
 
-## 🔧 Встановлення та запуск
+## Features
 
-1. Переконайтесь, що у вас встановлений **Python 3.x**
-2. Скопіюйте код у файл `main.py`
-3. Запустіть гру в терміналі командою:
+- Classic 3×3 Tic-Tac-Toe board
+- AI opponent with three difficulty levels:
+  - **Easy**: random moves with minimal logic
+  - **Normal**: prioritizes center and corners
+  - **Hard**: uses basic minimax logic (win/block-win)
+- Player chooses between `'X'` and `'O'`
+- Detects win, draw, and invalid input
+- Option to replay the game
 
-```bash
-python main.py
-📜 Правила гри
-Оберіть "X" або "O"
+---
 
-Гра автоматично визначає, хто починає першим
+## AI Logic Overview
 
-Вводьте число від 1 до 9, щоб зробити хід
+### Easy Mode:
+- Random moves, attempts to win if possible
 
-🧩 Розмітка ігрового поля:
-diff
-Копировать
-Редактировать
- 7 | 8 | 9
+### Normal Mode:
+- Attempts to win
+- Picks center if available
+- Prefers corners over edges
+
+### Hard Mode:
+- Tries to win immediately
+- Blocks opponent’s win
+- Prioritizes center → corners → edges (mimics minimax pattern)
+
+---
+
+## Controls
+
+- Input numbers 1–9 to place your mark:
+
+7 | 8 | 9
 ---+---+---
- 4 | 5 | 6
+4 | 5 | 6
 ---+---+---
- 1 | 2 | 3
-🤖 Рівні складності AI
-Рівень	Назва	Опис
-1	Ізі	Робить випадкові ходи, лише намагається виграти
-2	Норм	Пріоритет центру й кутів, може заблокувати частину ходів
-3	Хард	Повноцінна логіка: блокує суперника, намагається виграти оптимально
+1 | 2 | 3
 
-🗂 Структура коду
-drawboard(board) – вивід поля
 
-getcomputermoveisi, getcomputermovenorm, getcomputermovehard – логіка AI
+---
 
-iswinner, isspacefree, isboardfull – механіка гри
+## Notes
 
-inputplyerletter, playagain, whogofirst – інтерфейс взаємодії
-
-✅ Приклад запуску
-markdown
-Копировать
-Редактировать
-вітання в гру кальмара на мінімалках
-выбери сложность 1=изи 2=норм 3=хард
-> 3
-обери сторону, Х або О
-> X
-рандом сказав, що перший ходить -  player
-...
+- Interface messages are in Ukrainian and Russian
+- AI logic is entirely custom (no external libraries)
+- Game continues in a loop until the player opts out
