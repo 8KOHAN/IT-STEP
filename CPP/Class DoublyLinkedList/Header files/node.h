@@ -1,10 +1,12 @@
 #pragma once
 
+#include <memory>
+
 class Node {
 public:
     int value;
-    Node* prev;
-    Node* next;
+    std::weak_ptr<Node> prev;
+    std::shared_ptr<Node> next;
 
     Node(int val);
 };
