@@ -1,6 +1,6 @@
-# Doubly Linked List Implementation in C++
+# Doubly Linked List Implementation in C++ (Smart Pointers)
 
-This project implements a classic **doubly linked list** data structure in C++ with full support for forward/backward traversal, dynamic insertion and deletion, and memory-safe operations.
+This project implements a classic **doubly linked list** data structure in C++ with full support for forward/backward traversal, dynamic insertion and deletion, and **memory-safe operations using smart pointers**.
 
 ---
 
@@ -11,8 +11,8 @@ This project implements a classic **doubly linked list** data structure in C++ w
   - `pop_front`, `pop_back` — remove nodes from beginning or end
   - `insert(position, value)` — insert at a specific index
   - `erase(position)` — delete a node by index
-  - `find(value)` — locate a node by value
-  - `clear()` — delete all elements
+  - `find(value)` — locate a node by value (**returns `std::shared_ptr<Node>`**)
+  - `clear()` — delete all elements automatically
 - Status checkers:
   - `size()`, `empty()`
 - Output utilities:
@@ -24,7 +24,14 @@ This project implements a classic **doubly linked list** data structure in C++ w
 
 ## Architecture
 
-- `Node` class stores value + two pointers: `prev` and `next`
-- `DoublyLinkedList` manages `head`, `tail`, and internal `count`
-- Clean separation between class interface (`.h`) and implementation (`.cpp`)
-- Proper memory cleanup in destructor and `clear()` method
+- **Node**
+  - `int value`
+  - `std::weak_ptr<Node> prev` — weak reference to the previous node  
+  - `std::shared_ptr<Node> next` — strong reference to the next node  
+- **DoublyLinkedList**
+  - Manages `std::shared_ptr<Node> head` and `tail`
+  - Tracks size with `count`
+- **Memory safety**
+  - Smart pointers automatically handle memory cleanup
+  - No need for manual `delete`
+  - No memory leaks thanks to `weak_ptr` preventing circular references
