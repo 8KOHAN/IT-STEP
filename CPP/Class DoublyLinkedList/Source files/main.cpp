@@ -15,7 +15,7 @@ int main() {
     list.erase(1);
     list.print_forward();
 
-    Node* found = list.find(10);
+    std::shared_ptr<Node> found = list.find(10);
     if (found) std::cout << "Found: " << found->value << std::endl;
 
     std::cout << "Size: " << list.size() << std::endl;
