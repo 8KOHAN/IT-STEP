@@ -1,14 +1,12 @@
 #pragma once
 
 #include "node.h"
-#include <iostream>
 
 class DoublyLinkedList {
 private:
-    Node* head;
-    Node* tail;
+    std::shared_ptr<Node> head;
+    std::shared_ptr<Node> tail;
     int count;
-
 public:
     DoublyLinkedList();
     ~DoublyLinkedList();
@@ -19,7 +17,7 @@ public:
     void pop_back();
     void insert(int position, int value);
     void erase(int position);
-    Node* find(int value);
+    std::shared_ptr<Node> find(int value);
     void clear();
     int size() const;
     bool empty() const;
