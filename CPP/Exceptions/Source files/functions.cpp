@@ -4,6 +4,7 @@ int toInt(const std::string& s) {
     size_t pos;
     int value = std::stoi(s, &pos); // std::stoi (String to Integer) — це стандартна функція з <string>, яка конвертує std::string в ціле число типу int.
 
+    //pos - позиція першого символу після числа.
     if (pos != s.size()) {
         throw std::invalid_argument("Invalid string: there are extra characters");
     }
