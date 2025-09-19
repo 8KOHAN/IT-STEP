@@ -6,8 +6,10 @@ class CardCredit : public CardDebit
 public:
 	CardCredit(std::string name);
 
-	void spend(double num);
-	void TakeСredit(double num);
-	void ReturnCredit(double num);
-	bool CheckCredit();
+	const double CheckCredit();
+	void spend(double sum);
+	void TakeСredit(double sum);
+	void ReturnCredit(double sum);
+private:
+	double duty_;
 };
