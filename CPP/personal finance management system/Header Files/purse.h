@@ -1,26 +1,27 @@
-#include <iostream>
-#include <string>
+#include <vector>
+#include "CardDebit.h"
+#include "CardCredit.h"
 
-class Purse 
+class Purse
 {
 public:
 	Purse(std::string name);
 
-	const std::string Name();
-	size_t SizeCardsDebit();
-	size_t SizeCardsCredit();
+	const std::string name() const;
+	const size_t AmountCardsD() const;
+	const size_t AmountCardsC() const;
 
 	void SetName(std::string NewName);
-	void SetCardDebit(std::string NewName);
-	void SetCardCredit(std::string NewName);
+	void SetCardD(std::string NewName);
+	void SetCardC(std::string NewName);
 
-	void AddCardDebit(std::string Name);
-	void AddCardCredit(std::string Name);
+	void AddCardD(std::string Name);
+	void AddCardC(std::string Name);
 
 private:
 	std::string name_;
-	//добавить масивы для cards_debit_ и cards_credit_
-	size_t number_cards_debit_;
-	size_t number_cards_credit_;
+	std::vector<CardDebit> CardsD_;
+	std::vector<CardCredit> CardsC_;
+	size_t numberCardsD_;
+	size_t numberCardsC_;
 };
-
