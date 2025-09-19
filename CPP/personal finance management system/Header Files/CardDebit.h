@@ -1,18 +1,17 @@
 #pragma once
-
 #include <iostream>
 #include <string>
 
 class CardDebit
 {
-	CardDebit();
+public:
+	CardDebit(std::string name);
 
-	double quantity();
-	void replenishment();
-	void virtual spend();
+	const double quantity() const;
+	void replenishment(double sum);
+	void spend(double sum);
 
-private:
-	std::string name;
-	double AmountMoney;
+protected:
+	std::string name_;
+	double AmountMoney_;
 };
-
