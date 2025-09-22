@@ -5,23 +5,21 @@
 class Purse
 {
 public:
-	Purse(std::string name);
+	Purse(const std::string name);
 
 	const std::string name() const;
-	const size_t AmountCardsD() const;
-	const size_t AmountCardsC() const;
+	const size_t amountCardsD() const;
+	const size_t amountCardsC() const;
 
-	void SetName(std::string NewName);
-	void SetCardD(std::string NewName);
-	void SetCardC(std::string NewName);
+	void setName(const std::string newName);
 
-	void AddCardD(std::string Name);
-	void AddCardC(std::string Name);
+	void addCardD(const std::string name);
+	void addCardC(const std::string name);
 
 private:
 	std::string name_;
-	std::vector<CardDebit> CardsD_;
-	std::vector<CardCredit> CardsC_;
-	size_t numberCardsD_;
-	size_t numberCardsC_;
+	std::vector<CardDebit> cardsD_;
+	std::vector<CardCredit> cardsC_;
+	size_t amountCardsD_;
+	size_t amountCardsC_;
 };
