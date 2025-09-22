@@ -4,12 +4,12 @@
 class CardCredit : public CardDebit
 {
 public:
-	CardCredit(std::string name);
+	CardCredit(const std::string name);
 
-	const double CheckCredit();
-	void spend(double sum);
-	void TakeСredit(double sum);
-	void ReturnCredit(double sum);
+	const double checkCredit() const;
+	void spend(const double sum);
+	void takeСredit(const double sum);
+	void returnCredit(const double sum);
 private:
 	double duty_;
 };
