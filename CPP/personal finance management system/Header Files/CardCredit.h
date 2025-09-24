@@ -4,7 +4,7 @@
 class CardCredit : public CardDebit
 {
 public:
-	CardCredit(const std::string name);
+	CardCredit(const std::string& name);
 
 	const double checkCredit() const;
 	void spend(const double sum);
