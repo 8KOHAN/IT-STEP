@@ -1,3 +1,6 @@
+#pragma once
+#include <iostream>
+#include <string>
 #include <vector>
 #include "CardDebit.h"
 #include "CardCredit.h"
@@ -5,16 +8,16 @@
 class Purse
 {
 public:
-	Purse(const std::string name);
+	Purse(const std::string& name);
 
 	const std::string name() const;
 	const size_t amountCardsD() const;
 	const size_t amountCardsC() const;
 
-	void setName(const std::string newName);
+	void setName(const std::string& newName);
 
-	void addCardD(const std::string name);
-	void addCardC(const std::string name);
+	void addCardD(const std::string& name);
+	void addCardC(const std::string& name);
 
 private:
 	std::string name_;
