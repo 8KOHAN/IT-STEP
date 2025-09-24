@@ -1,6 +1,6 @@
 #include "CardCredit.h"
 
-CardCredit::CardCredit(std::string name) : CardDebit(name), duty_(0.) {}
+CardCredit::CardCredit(const std::string& name) : CardDebit(name), duty_(0.) {}
 
 const double CardCredit::checkCredit() const { return duty_; }
 
