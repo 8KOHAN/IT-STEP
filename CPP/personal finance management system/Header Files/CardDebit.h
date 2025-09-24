@@ -5,10 +5,10 @@
 class CardDebit
 {
 public:
-	CardDebit(const std::string name);
+	CardDebit(const std::string& name);
 
 	const std::string name();
-	void setName(const std::string newName);
+	void setName(const std::string& newName);
 
 	void replenishment(const double sum);
 	void spend(const double sum);
