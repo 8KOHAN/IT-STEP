@@ -1,12 +1,12 @@
 #include "CardDebit.h"
 
-CardDebit::CardDebit(std::string name) : name_(name), amountMoney_(0.) { }
+CardDebit::CardDebit(const std::string& name) : name_(name), amountMoney_(0.) { }
 
 const std::string CardDebit::name() {
 	return name_;
 }
 
-void CardDebit::setName(const std::string newName) {
+void CardDebit::setName(const std::string& newName) {
 	name_ = newName;
 }
 
