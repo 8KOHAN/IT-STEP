@@ -5,14 +5,14 @@
 class CardDebit
 {
 public:
-	CardDebit(const std::string& name);
+	CardDebit(const std::string& name) noexcept;
 
-	const std::string name();
-	void setName(const std::string& newName);
+	const std::string name() const noexcept;
+	void setName(const std::string& newName) noexcept;
 
-	void replenishment(const double sum);
-	void spend(const double sum);
-	const double quantity() const;
+	void replenishment(const double sum) noexcept;
+	virtual void spend(const double sum) noexcept;
+	const double quantity() const noexcept;
 
 protected:
 	std::string name_;
