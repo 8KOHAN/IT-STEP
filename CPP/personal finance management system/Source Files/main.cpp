@@ -10,32 +10,71 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	std::vector<Purse> purses;
+	bool isOpen = false;
 
 	for (int day = 1; day < 32; ++day) {
+
 		std::cout << "день - " << day << "\n\n";
 
-		std::cout << "1 - создайте гаманець\n2 - выберете гаманець\n3 измените название старого гаманця\n0 - выход" << std::endl;
-		int choice = inputNum(3);
+		int choice;
+		int numPurse;
+		while (choice != 2 || choice == 0) {
+			std::cout << "1 - создайте гаманець\n2 - выберете гаманець\n3 измените название старого гаманця\n0 - выход" << std::endl;
+			choice = inputNum(0, 3);
 
-		std::string namePurse;
-		switch (choice) {
-		case 1:
-			createPurse(purses);
-			break;
-		case 2:
-			
-			break;
+			switch (choice) {
+			case 1:
+				createPurse(purses);
+				break;
+			case 2:
+				numPurse = choicePurse(purses);
+				break;
+			case 3:
+				setNamePurse(purses);
+				break;
+			case 0:
+				isOpen = checkExit(day);
+				break;
+			}
+		}
+			if (isOpen) break;
+		clearScreen();
+		std::cout << "день - " << day << "\n\n";
+
+		int numCard;
+		char Debit_or_Credit;
+		while ((!(choice == 3) && !(choice == 4)) || choice == 0) {
+			std::cout << "1 - создайте дебетову картку\n2 - создайте кредитну картку\n3 выберете дебетову картку\n4 выберете кредитну картку\n0 - выход" << std::endl;
+			choice = inputNum(0, 4);
+			switch (choice) {
+			case 1:
+				createCardD(purses, numPurse);
+				break;
+			case 2:
+				createCardC(purses, numPurse);
+				break;
+			case 3:
+				choiceCardD(purses, numPurse);
+				Debit_or_Credit = 'D';
+				break;
+			case 4:
+				choiceCardC(purses, numPurse);
+				Debit_or_Credit = 'C';
+				break;
+			case 0:
+				isOpen = checkExit(day);
+				break;
+			}
+			if (isOpen) break;
 		}
 
+		clearScreen();
+		std::cout << "день - " << day << "\n\n";
 
-		std::cout << "\n\n\n";
-		std::cout << "1 - выберете картку\n2 - создайте картку\n0 - выход" << std::endl;
-		//code
-
-
-		std::cout << "\n\n\n";
 		std::cout << "денег на карте - " << std::endl;
 		std::cout << "1 - поповненя картки\n2 - открыть магазин\n0 - выход\n";
+
+		if (isOpen) break;
 		//code
 
 
@@ -51,14 +90,8 @@ int main()
 		std::cout << "8 - клавиатуру ЦЕНА - 50$        (вналичие 3 экземпляра)" << std::endl;
 		std::cout << "9 - цветок     ЦЕНА - 25$        (вналичие 10 экземпляров)" << std::endl;
 		std::cout << "0 - выход" << std::endl;
-		std::cout << "введите цыфру товара который вы хотите купить - " << std::endl;
+		std::cout << "введите цифру товара который вы хотите купить - " << std::endl;
 	
 		clearScreen();
 	}
-
-	// за покупку некоторых товаров должны выводится отчивки 
-	// 
-	// нужно сделать клас картка, гаманець, магазин, история вытрат и их статистика которая должна сохранятся в фаил
-	// 
-	//code
 }
