@@ -8,17 +8,19 @@
 class Purse
 {
 public:
-	Purse(const std::string& name);
+	Purse(const std::string& name) noexcept;
 
-	const std::string name() const;
-	const size_t amountCardsD() const;
-	const size_t amountCardsC() const;
+	const std::string name() const noexcept;
+	const size_t amountCardsD() const noexcept;
+	const size_t amountCardsC() const noexcept;
 
-	void setName(const std::string& newName);
+	void setName(const std::string& newName) noexcept;
 
-	void addCardD(const std::string& name);
-	void addCardC(const std::string& name);
+	void addCardD(const std::string& name) noexcept;
+	void addCardC(const std::string& name) noexcept;
 
+	void printCardsD() const noexcept;
+	void printCardsC() const noexcept;
 private:
 	std::string name_;
 	std::vector<CardDebit> cardsD_;
