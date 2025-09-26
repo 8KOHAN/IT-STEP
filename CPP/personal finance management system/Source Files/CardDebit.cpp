@@ -1,25 +1,25 @@
 #include "CardDebit.h"
 
-CardDebit::CardDebit(const std::string& name) : name_(name), amountMoney_(0.) { }
+CardDebit::CardDebit(const std::string& name) noexcept : name_(name), amountMoney_(0.) { }
 
-const std::string CardDebit::name() {
+const std::string CardDebit::name() const noexcept {
 	return name_;
 }
 
-void CardDebit::setName(const std::string& newName) {
+void CardDebit::setName(const std::string& newName) noexcept {
 	name_ = newName;
 }
 
-void CardDebit::replenishment(const double sum) {
+void CardDebit::replenishment(const double sum) noexcept {
 	if (sum <= 0) return;
 	amountMoney_ += sum;
 }
 
-void CardDebit::spend(const double sum) {
+void CardDebit::spend(const double sum) noexcept {
 	if ((amountMoney_ - sum) < 0) return;
 	amountMoney_ -= sum;
 }
 
-const double CardDebit::quantity() const {
+const double CardDebit::quantity() const noexcept {
 	return amountMoney_;
 }
