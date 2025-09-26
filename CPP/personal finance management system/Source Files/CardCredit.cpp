@@ -1,10 +1,10 @@
 #include "CardCredit.h"
 
-CardCredit::CardCredit(const std::string& name) : CardDebit(name), duty_(0.) {}
+CardCredit::CardCredit(const std::string& name) noexcept : CardDebit(name), duty_(0.) {}
 
-const double CardCredit::checkCredit() const { return duty_; }
+const double CardCredit::checkCredit() const noexcept { return duty_; }
 
-void CardCredit::spend(const double sum) {
+void CardCredit::spend(const double sum) noexcept {
 	if ((amountMoney_ - sum) < 0) {
 		std::cout << "вам не хватает: " << (amountMoney_ - sum) / -1 <<std::endl;
 		std::cout << "хотите взять кредит?\nyes/not";
@@ -27,12 +27,12 @@ void CardCredit::spend(const double sum) {
 	amountMoney_ -= sum;
 }
 
-void CardCredit::takeСredit(const double sum) {
+void CardCredit::takeСredit(const double sum) noexcept {
 	amountMoney_ += sum;
 	duty_ += sum;
 }
 
-void CardCredit::returnCredit(const double sum) {
+void CardCredit::returnCredit(const double sum) noexcept {
 	if ((amountMoney_ - sum) < 0) {
 		std::cout << "не удалось погасить кредит" << std::endl;
 		return;
