@@ -1,6 +1,6 @@
 #include "main_functions.h"
 
-int inputNum(int minNum, int maxNum) {
+const int inputNum(int minNum, int maxNum) {
 	bool isOpen = true;
 	std::cout << "ваш выбор: ";
 	int choice;
@@ -11,8 +11,20 @@ int inputNum(int minNum, int maxNum) {
 			break;
 		}
 		std::cout << "повторите ввод: ";
+		std::cin.clear();
+		std::cin.ignore(10000, '\n');
 	} while (isOpen);
 	return choice;
+}
+
+const double inputDouble() {
+	double sum;
+	while (!(std::cin >> sum)) {
+		std::cout << "Ошибка ввода! Попробуйте снова: ";
+		std::cin.clear();
+		std::cin.ignore(10000, '\n');
+	}
+	return sum;
 }
 
 void printPurses(const std::vector<Purse>& purses) {
@@ -27,7 +39,7 @@ void createPurse(std::vector<Purse>& purses) {
 	purses.push_back(Purse(namePurse));
 }
 
-int choicePurse(const std::vector<Purse>& purses) {
+const int choicePurse(const std::vector<Purse>& purses) {
 	if (!purses.empty()) {
 		std::cout << "у вас пока нету не одного гаманця" << std::endl;
 		return -1;
@@ -70,22 +82,40 @@ void createCardC(std::vector<Purse>& purses, int numPurse) {
 	purses[numPurse].addCardC(name);
 }
 
-void choiceCardD(const std::vector<Purse>& purses, int numPurse) {
+const int choiceCardD(const std::vector<Purse>& purses, int numPurse) {
 	if (purses[numPurse].amountCardsD() == 0) {
 		std::cout << "у вас пока нету не одной дебетовой картки" << std::endl;
-		return;
+		return -1;
 	}
 	purses[numPurse].printCardsD();
 	std::cout << "веберете номер дебетовой картки" << std::endl;
-	int choice = inputNum(1, purses[numPurse].amountCardsD());
+	int numCard = inputNum(1, purses[numPurse].amountCardsD());
+	return numCard;
 }
 
-void choiceCardC(const std::vector<Purse>& purses, int numPurse) {
+const int choiceCardC(const std::vector<Purse>& purses, int numPurse) {
 	if (purses[numPurse].amountCardsC() == 0) {
 		std::cout << "у вас пока нету не одной кредитной картки" << std::endl;
-		return;
+		return -1;
 	}
 	purses[numPurse].printCardsC();
 	std::cout << "веберете номер кредитной картки" << std::endl;
-	int choice = inputNum(1, purses[numPurse].amountCardsC());
+	int numCard = inputNum(1, purses[numPurse].amountCardsC());
+	return numCard;
+}
+
+const double amountMoneyCard(const std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard) {
+	return (Debit_or_Credit == 'D' ? purses[numPurse].amountMoneyCardD(numCard) : purses[numPurse].amountMoneyCardC(numCard));
+}
+
+void replenishment(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard) {
+	std::cout << "введите суму на которую вы хотите пополнить счет: ";
+	double sum = inputDouble();
+	(Debit_or_Credit == 'D' ? purses[numPurse].replenishmentCardD(sum, numCard) : purses[numPurse].replenishmentCardC(sum, numCard));
+}
+
+void takeСredit(std::vector<Purse>& purses, int numPurse, int numCard) {
+	std::cout << "введите суму на который вы хотите взять кредит: ";
+	double sum = inputDouble();
+	purses[numPurse].takeСredit(sum, numCard);
 }
