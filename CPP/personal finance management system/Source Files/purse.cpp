@@ -22,12 +22,28 @@ const double Purse::amountMoneyCardC(int index) const {
 	return cardsC_[index].quantity();
 }
 
+const char Purse::currencyCardD(int index) const noexcept {
+	return cardsD_[index].currency();
+}
+
+const char Purse::currencyCardC(int index) const noexcept {
+	return cardsC_[index].currency();
+}
+
 void Purse::replenishmentCardD(double sum, int index) {
 	cardsD_[index].replenishment(sum);
 }
 
 void Purse::replenishmentCardC(double sum, int index) {
 	cardsC_[index].replenishment(sum);
+}
+
+void Purse::spendCardD(const double sum, int index) noexcept {
+	cardsD_[index].spend(sum);
+}
+
+void Purse::spendCardC(const double sum, int index) noexcept {
+	cardsC_[index].spend(sum);
 }
 
 void Purse::takeСredit(double sum, int index){
