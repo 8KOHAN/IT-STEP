@@ -1,6 +1,6 @@
-#include "main_functions.h"
+#include "functions.h"
 
-const int inputNum(int minNum, int maxNum) {
+const int inputNum(const int minNum, const int maxNum) {
 	bool isOpen = true;
 	std::cout << "ваш выбор: ";
 	int choice;
@@ -60,7 +60,7 @@ void setNamePurse(std::vector<Purse>& purses) {
 	purses[choice].setName(newName);
 }
 
-bool checkExit(int day) {
+bool checkExit(const int day) {
 	if (day < 32) {
 		std::cout << "вы пока не можете выйти, вам осталось еще провести тут " << 32 - day << " дней" << std::endl;
 		return false;
@@ -68,21 +68,21 @@ bool checkExit(int day) {
 	return true;
 }
 
-void createCardD(std::vector<Purse>& purses, int numPurse) {
+void createCardD(std::vector<Purse>& purses, const int numPurse) {
 	std::cout << "введите названия для новой дебетовой картки - ";
 	std::string name;
 	std::cin >> name;
 	purses[numPurse].addCardD(name);
 }
 
-void createCardC(std::vector<Purse>& purses, int numPurse) {
+void createCardC(std::vector<Purse>& purses, const int numPurse) {
 	std::cout << "введите названия для новой кредитной картки - ";
 	std::string name;
 	std::cin >> name;
 	purses[numPurse].addCardC(name);
 }
 
-const int choiceCardD(const std::vector<Purse>& purses, int numPurse) {
+const int choiceCardD(const std::vector<Purse>& purses, const int numPurse) {
 	if (purses[numPurse].amountCardsD() == 0) {
 		std::cout << "у вас пока нету не одной дебетовой картки" << std::endl;
 		return -1;
@@ -93,7 +93,7 @@ const int choiceCardD(const std::vector<Purse>& purses, int numPurse) {
 	return numCard;
 }
 
-const int choiceCardC(const std::vector<Purse>& purses, int numPurse) {
+const int choiceCardC(const std::vector<Purse>& purses, const int numPurse) {
 	if (purses[numPurse].amountCardsC() == 0) {
 		std::cout << "у вас пока нету не одной кредитной картки" << std::endl;
 		return -1;
@@ -104,18 +104,83 @@ const int choiceCardC(const std::vector<Purse>& purses, int numPurse) {
 	return numCard;
 }
 
-const double amountMoneyCard(const std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard) {
+const double amountMoneyCard(const std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard) {
 	return (Debit_or_Credit == 'D' ? purses[numPurse].amountMoneyCardD(numCard) : purses[numPurse].amountMoneyCardC(numCard));
 }
 
-void replenishment(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard) {
+void replenishment(std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard) {
 	std::cout << "введите суму на которую вы хотите пополнить счет: ";
 	double sum = inputDouble();
 	(Debit_or_Credit == 'D' ? purses[numPurse].replenishmentCardD(sum, numCard) : purses[numPurse].replenishmentCardC(sum, numCard));
 }
 
-void takeСredit(std::vector<Purse>& purses, int numPurse, int numCard) {
+void takeСredit(std::vector<Purse>& purses, const int numPurse, const int numCard) {
 	std::cout << "введите суму на который вы хотите взять кредит: ";
 	double sum = inputDouble();
 	purses[numPurse].takeСredit(sum, numCard);
+}
+
+void spendSum(std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard, const double sum) {
+	(Debit_or_Credit == 'D' ? purses[numPurse].spendCardD(sum, numCard) : purses[numPurse].spendCardC(sum, numCard));
+}
+
+double sumProduct(const int numProduct, const char currency) {
+	double sum;
+	switch (numProduct)
+	{
+	case 1:
+		sum = 1500;
+		break;
+	case 2:
+		sum = 20;
+		break;
+	case 3:
+		sum = 1;
+		break;
+	case 4:
+		sum = 666;
+		break;
+	case 5:
+		sum = 2;
+		break;
+	case 6:
+		sum = 20;
+		break;
+	case 7:
+		sum = 5000000;
+		break;
+	case 8:
+		sum = 50;
+		break;
+	case 9:
+		sum = 25;
+		break;
+	}
+
+	switch (currency)
+	{
+	case '$':
+		return sum;
+		break;
+	case '₴':
+		return sum * 40.99;
+		break;
+	case '€':
+		return sum * 0.85;
+		break;
+	}
+
+	return  -1;
+}
+
+const char checkCurrency(const std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard) {
+	return (Debit_or_Credit == 'D' ? purses[numPurse].currencyCardD(numCard) : purses[numPurse].currencyCardC(numCard));
+}
+
+const bool checkProductAvailability(int Product) {
+	if (!Product) {
+		std::cout << "нету в наличии";
+		return false;
+	}
+	return true;
 }
