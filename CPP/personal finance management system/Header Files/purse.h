@@ -1,3 +1,6 @@
+#pragma once
+#include <iostream>
+#include <string>
 #include <vector>
 #include "CardDebit.h"
 #include "CardCredit.h"
@@ -11,11 +14,17 @@ public:
 	const size_t amountCardsD() const noexcept;
 	const size_t amountCardsC() const noexcept;
 
-	const double amountMoneyCardD(int index) const;
-	const double amountMoneyCardC(int index) const;
+	const double amountMoneyCardD(int index) const noexcept;
+	const double amountMoneyCardC(int index) const noexcept;
+
+	const char currencyCardD(int index) const noexcept;
+	const char currencyCardC(int index) const noexcept;
 
 	void replenishmentCardD(double sum, int index);
 	void replenishmentCardC(double sum, int index);
+
+	void spendCardD(double sum, int index) noexcept;
+	void spendCardC(double sum, int index) noexcept;
 
 	void takeСredit(double sum, int index);
 
