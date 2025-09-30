@@ -5,9 +5,10 @@
 class CardDebit
 {
 public:
-	CardDebit(const std::string& name) noexcept;
+	CardDebit(const std::string& name, char currency = '$') noexcept;
 
 	const std::string name() const noexcept;
+	const char currency() const noexcept;
 	void setName(const std::string& newName) noexcept;
 
 	void replenishment(const double sum) noexcept;
@@ -17,4 +18,5 @@ public:
 protected:
 	std::string name_;
 	double amountMoney_;
+	char currency_;
 };
