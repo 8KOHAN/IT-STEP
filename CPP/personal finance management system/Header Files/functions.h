@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
+#include <vector>  
 #include "purse.h"
+#include "ClearScreen.h"
+#include "Gallows.h"
 
 const int inputNum(const int minNum, const int maxNum);
 
@@ -26,7 +29,7 @@ const int choiceCardC(const std::vector<Purse>& purses, const int numPurse);
 
 const double amountMoneyCard(const std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard);
 
-void replenishment(const std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard);
+void replenishment(std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard);
 
 void takeСredit(std::vector<Purse>& purses, const int numPurse, const int numCard);
 
@@ -37,3 +40,7 @@ double sumProduct(const int numProduct, const char currency);
 const char checkCurrency(const std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard);
 
 const bool checkProductAvailability(int Product);
+
+void returnCredit(std::vector<Purse>& purses, const int numPurse, const int numCard);
+
+void playGallows();
