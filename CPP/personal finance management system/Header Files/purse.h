@@ -20,18 +20,20 @@ public:
 	const char currencyCardD(int index) const noexcept;
 	const char currencyCardC(int index) const noexcept;
 
-	void replenishmentCardD(double sum, int index);
-	void replenishmentCardC(double sum, int index);
+	void replenishmentCardD(double sum, int index) noexcept;
+	void replenishmentCardC(double sum, int index) noexcept;
 
 	void spendCardD(double sum, int index) noexcept;
 	void spendCardC(double sum, int index) noexcept;
 
-	void takeСredit(double sum, int index);
+	double checkCredit(int index) noexcept;
+	void takeСredit(double sum, int index) noexcept;
+	void returnCredit(double sum, int index) noexcept;
 
 	void setName(const std::string& newName) noexcept;
 
-	void addCardD(const std::string& name) noexcept;
-	void addCardC(const std::string& name) noexcept;
+	void addCardD(const std::string& name, char currency = '$') noexcept;
+	void addCardC(const std::string& name, char currency = '$') noexcept;
 
 	void printCardsD() const noexcept;
 	void printCardsC() const noexcept;
