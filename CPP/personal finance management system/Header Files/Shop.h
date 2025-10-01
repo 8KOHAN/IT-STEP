@@ -5,32 +5,31 @@
 #include "purse.h"
 #include "functions.h"
 #include "Products.h"
+#include "ExpenseTracker.h"
 
 class Shop
 {
 public:
-	Shop(std::string fileName, int& day);
+	Shop(std::string fileName) noexcept;
 
-	void printProducts(char currency) const;
+	void printProducts(char currency) const noexcept;
 
-	void buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard);
+	void buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard) noexcept;
 
-	void statisticsDay();
-	void statisticsWeek();
-	void statisticsMonth();
+	void spendingHistory() noexcept;
+	void topSpending() noexcept;
 
-	void topSpendingThisWeek();
-	void topSpendingThisMonth();
+	bool checkGallows() noexcept;
 
+	void nextDay() noexcept;
+
+	void saveToFile() noexcept;
 private:
 	std::string spendingHistory_ = "";
 	std::string fileName_;
 	AmountProducts amountProducts_;
 	InStockProducts inStockProducts_;
+	ExpenseTracker expenseTracker_;
 	double amountExpenses_ = 0;
-	int& day_;
-
-	void saveToFile();
-
+	int day_;
 };
-
