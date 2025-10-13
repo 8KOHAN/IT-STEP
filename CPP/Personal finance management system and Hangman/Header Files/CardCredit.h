@@ -1,5 +1,4 @@
 #pragma once
-#include "CardDebit.h"
 
 class CardCredit : public CardDebit
 {
