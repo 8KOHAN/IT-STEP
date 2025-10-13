@@ -26,12 +26,12 @@ Drob::Drob(int num, int den) {
 }
 
 void Drob::input() {
-    std::cout << "Введіть чисельник: ";
+    std::cout << "Enter the numerator.: ";
     std::cin >> numerator;
-    std::cout << "Введіть знаменник: ";
+    std::cout << "Enter the denominator: ";
     std::cin >> denominator;
     if (denominator == 0) {
-        std::cout << "Знаменник не може дорівнювати нулю. Встановлено 1." << std::endl;
+        std::cout << "The denominator cannot be zero. Set 1." << std::endl;
         denominator = 1;
     }
     simplify();
