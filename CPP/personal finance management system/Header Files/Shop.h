@@ -19,11 +19,11 @@ public:
 	void spendingHistory() noexcept;
 	void topSpending() noexcept;
 
-	bool checkGallows() noexcept;
+	bool checkHangman() const noexcept;
 
 	void nextDay() noexcept;
 
-	void saveToFile() noexcept;
+	void saveToFile() const noexcept;
 private:
 	std::string spendingHistory_ = "";
 	std::string fileName_;
