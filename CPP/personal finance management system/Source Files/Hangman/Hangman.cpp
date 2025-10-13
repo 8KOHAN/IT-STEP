@@ -1,20 +1,20 @@
 #include <iostream>
-#include "Gallows.h"
+#include "Hangman.h"
 
-Gallows::Gallows(const std::string& w) noexcept : word_(w) {
+Hangman::Hangman(const std::string& w) noexcept : word_(w) {
     currentState_ = std::string(word_.size(), '_');
     startTime_ = std::time(0);
 }
 
-void Gallows::play() noexcept {
+void Hangman::play() noexcept {
     while (currentState_ != word_) {
-        std::cout << "Слово: " << currentState_ << "\n";
-        std::cout << "Введіть літеру: ";
+        std::cout << "Word: " << currentState_ << std::endl;
+        std::cout << "Enter a letter: ";
         char guess;
         std::cin >> guess;
 
         if (player_.hasGuessed(guess)) {
-            std::cout << "Ви вже вводили цю літеру!\n";
+            std::cout << "You have already entered this letter!\n";
             continue;
         }
 
@@ -29,22 +29,23 @@ void Gallows::play() noexcept {
         }
 
         if (!found) {
-            std::cout << "Такої літери немає!\n";
+            std::cout << "There is no such letter!" <<std::endl;
         }
     }
     showStatistics();
 }
 
-void Gallows::showStatistics() const noexcept {
+void Hangman::showStatistics() const noexcept {
     time_t endTime = std::time(0);
     double duration = difftime(endTime, startTime_);
 
-    std::cout << "\nВи відгадали слово: " << word_ << "\n";
-    std::cout << "Час гри: " << duration << " сек\n";
-    std::cout << "Кількість спроб: " << player_.getAttempts() << "\n";
-    std::cout << "Введені літери: ";
+    std::cout << "\nYou guessed the word.: " << word_ << std::endl;
+    std::cout << "Game time: " << duration << " Sec" << std::endl;
+    std::cout << "Number of attempts: " << player_.getAttempts() << std::endl;
+    std::cout << "Letters entered: ";
     for (size_t i = 0; i < player_.getGuessedLetters().size(); i++) {
         std::cout << player_.getGuessedLetters()[i] << " ";
     }
-    std::cout << "\n";
+    std::cout << std::endl;
 }
+
