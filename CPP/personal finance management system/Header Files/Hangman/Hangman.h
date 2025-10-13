@@ -4,7 +4,8 @@
 #include "Player.h"
 #include "WordManager.h"
 
-class Hangman {
+class Hangman 
+{
 public:
     Hangman(const std::string& w) noexcept;
     void play() noexcept;
