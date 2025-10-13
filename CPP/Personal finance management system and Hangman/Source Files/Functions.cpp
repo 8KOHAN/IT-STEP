@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "Functions.h"
 
 const int inputNum(const int minNum, const int maxNum) {
 	bool isOpen = true;
