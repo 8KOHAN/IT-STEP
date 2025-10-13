@@ -1,9 +1,6 @@
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
 #include "WordManager.h"
 
-WordManager::WordManager() noexcept : filename_("Gallows.txt") {}
+WordManager::WordManager() noexcept : filename_("Hangman.txt") {}
 
 void WordManager::loadWords() noexcept {
     std::ifstream file(filename_.c_str());
