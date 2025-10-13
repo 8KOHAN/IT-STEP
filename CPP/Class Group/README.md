@@ -1,6 +1,5 @@
 # Student Group Management System
 
-## Project Description
 This is a simple **console-based C++ application** designed to manage student information within a single academic group.  
 The project demonstrates the use of **OOP principles** and modern C++ containers such as **`std::vector`** and **`std::string`** for safe and efficient memory management.  
 
