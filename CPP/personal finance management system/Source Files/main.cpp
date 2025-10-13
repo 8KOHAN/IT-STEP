@@ -19,12 +19,12 @@ int main()
 	int choice;
 
 	for (; day < 32; ++day) {
-		std::cout << "день - " << day << "\n\n";
+		std::cout << "Day - " << day << "\n\n";
 
 		choice = -1;
 		int numPurse;
 		while (choice != 2) {
-			std::cout << "1 - создайте гаманець\n2 - выберете гаманець\n3 - измените название старого гаманця\n0 - выход" << std::endl;
+			std::cout << "1 - create a gambler\n2 - select a gambler\n3 - change the name of the old gambler\n0 - exit" << std::endl;
 			choice = inputNum(0, 3);
 
 			switch (choice) {
@@ -46,13 +46,13 @@ int main()
 		}
 		if (isOpen) break;
 		clearScreen();
-		std::cout << "день - " << day << "\n\n";
+		std::cout << "Day - " << day << "\n\n";
 
 		int numCard;
 		char Debit_or_Credit;
 		choice = -1;
 		while (!(choice == 3) && !(choice == 4)) {
-			std::cout << "1 - создайте дебетову картку\n2 - создайте кредитну картку\n3 выберете дебетову картку\n4 выберете кредитну картку\n0 - выход" << std::endl;
+			std::cout << "1 - create a debit card\n2 - create a credit card\n3 select a debit card\n4 select a credit card\n0 - exit" << std::endl;
 			choice = inputNum(0, 4);
 			switch (choice) {
 			case 1:
@@ -81,10 +81,10 @@ int main()
 
 		choice = -1;
 		clearScreen();
-		std::cout << "день - " << day << "\n\n";
-		while (choice != 2) {
-			std::wcout << L"денег на карте - " << amountMoneyCard(purses, numPurse, Debit_or_Credit, numCard)  << checkCurrency(purses, numPurse, Debit_or_Credit, numCard) << std::endl;
-			std::cout << (Debit_or_Credit == 'D' ? "1 - поповненя картки\n2 - открыть магазин\n0 - выход\n" : "1 - поповненя картки\n2 - открыть магазин\n3 - взять кредит\n4 - погасить кредит\n0 - выход\n");
+		std::cout << "Day - " << day << "\n\n";
+		while (choice != 0) {
+			std::wcout << L"money on the card - " << amountMoneyCard(purses, numPurse, Debit_or_Credit, numCard)  << checkCurrency(purses, numPurse, Debit_or_Credit, numCard) << std::endl;
+			std::cout << (Debit_or_Credit == 'D' ? "1 - top up your card\n2 - open the store\n0 - exit\n" : "1 - top up your card\n2 - open a store\n3 - take out a loan\n4 - pay off the loan\n0 - exit\n");
 			choice = inputNum(0, 4);
 			switch (choice) {
 			case 1:
@@ -103,23 +103,20 @@ int main()
 				returnCredit(purses, numPurse, numCard);
 				break;
 			case 0:
-				isOpen = checkExit(day);
 				break;
 			}
-			if (isOpen) break;
 		}
-		if (isOpen) break;
 
 		clearScreen();
-		std::cout << "день - " << day << "\n\n";
+		std::cout << "Day - " << day << "\n\n";
 
 		choice = -1;
-		std::cout << "хотите посмотреть статистику\n1 - да\n2 - нет" << std::endl;
+		std::cout << "Do you want to see statistics?\n1 - yes\n2 - no" << std::endl;
 		choice = inputNum(1, 2);
 		if (choice == 1) {
 			bool isOpen = true;
 			while (isOpen) {
-				std::cout << "введите номер статистики которую хотите посмотреть\n1 - история трат\n2 - топ 3 покупки\n0 - выход" << std::endl;
+				std::cout << "Enter the number of the statistic you want to view\n1 - spending history\n2 - top 3 purchases\n0 - exit" << std::endl;
 				choice = inputNum(0, 2);
 				switch (choice) {
 				case 1:
@@ -136,14 +133,14 @@ int main()
 		}
 
 		clearScreen();
-		if (shop.checkGallows()) {
+		if (shop.checkHangman()) {
 			bool isOpen = true;
 			while (isOpen) {
-				std::cout << "хотите сыграть в игру\"Шибениця\"\n1 - да\n2 - нет" << std::endl;
+				std::cout << "Do you want to play the game Hangman?\n1 - yes\n2 - no" << std::endl;
 				choice = inputNum(1, 2);
 				switch (choice) {
 				case 1:
-					playGallows();
+					playHangman();
 					break;
 				case 2:
 					isOpen = false;
