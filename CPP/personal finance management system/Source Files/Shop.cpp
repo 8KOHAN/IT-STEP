@@ -4,20 +4,20 @@ Shop::Shop(std::string fileName) noexcept : fileName_(fileName), day_(1), expens
 
 void Shop::printProducts(const char currency) const noexcept {
     std::cout << "--МАГАЗИН--\n\n";
-    std::cout << "1 - ps5 + Gallows  ЦЕНА  - " << sumProduct(1, currency) << currency << " (вналичие " << inStockProducts_.ps5       << " экземпляра)" << std::endl;
-    std::cout << "2 - чайник         ЦЕНА  - " << sumProduct(2, currency) << currency << " (вналичие " << inStockProducts_.kettle    << " экземпляра)" << std::endl;
-    std::cout << "3 - Батарейка      ЦЕНА  - " << sumProduct(3, currency) << currency << " (вналичие " << inStockProducts_.battery   << " экземпляра)" << std::endl;
-    std::cout << "4 - сигарета       ЦЕНА  - " << sumProduct(4, currency) << currency << " (вналичие " << inStockProducts_.cigarette << " экземпляра)" << std::endl;
-    std::cout << "5 - сникерс        ЦЕНА  - " << sumProduct(5, currency) << currency << " (вналичие " << inStockProducts_.snickers  << " экземпляра)" << std::endl;
-    std::cout << "6 - прополес       ЦЕНА  - " << sumProduct(6, currency) << currency << " (вналичие " << inStockProducts_.propolis  << " экземпляра)" << std::endl;
-    std::cout << "7 - дом            ЦЕНА  - " << sumProduct(7, currency) << currency << " (вналичие " << inStockProducts_.house     << " экземпляра)" << std::endl;
-    std::cout << "8 - клавиатуру     ЦЕНА  - " << sumProduct(8, currency) << currency << " (вналичие " << inStockProducts_.keyboard  << " экземпляра)" << std::endl;
-    std::cout << "9 - цветок         ЦЕНА  - " << sumProduct(9, currency) << currency << " (вналичие " << inStockProducts_.flower    << " экземпляра)" << std::endl;
+    std::cout << "1 - PS5 + Hangman  PRICE  - " << sumProduct(1, currency) << currency << " (вналичие " << inStockProducts_.ps5       << " экземпляра)" << std::endl;
+    std::cout << "2 - Kettle         PRICE  - " << sumProduct(2, currency) << currency << " (вналичие " << inStockProducts_.kettle    << " экземпляра)" << std::endl;
+    std::cout << "3 - Battery        PRICE  - " << sumProduct(3, currency) << currency << " (вналичие " << inStockProducts_.battery   << " экземпляра)" << std::endl;
+    std::cout << "4 - Cigarette      PRICE  - " << sumProduct(4, currency) << currency << " (вналичие " << inStockProducts_.cigarette << " экземпляра)" << std::endl;
+    std::cout << "5 - Snickers       PRICE  - " << sumProduct(5, currency) << currency << " (вналичие " << inStockProducts_.snickers  << " экземпляра)" << std::endl;
+    std::cout << "6 - Propolis       PRICE  - " << sumProduct(6, currency) << currency << " (вналичие " << inStockProducts_.propolis  << " экземпляра)" << std::endl;
+    std::cout << "7 - House          PRICE  - " << sumProduct(7, currency) << currency << " (вналичие " << inStockProducts_.house     << " экземпляра)" << std::endl;
+    std::cout << "8 - Keyboard       PRICE  - " << sumProduct(8, currency) << currency << " (вналичие " << inStockProducts_.keyboard  << " экземпляра)" << std::endl;
+    std::cout << "9 - Flower         PRICE  - " << sumProduct(9, currency) << currency << " (вналичие " << inStockProducts_.flower    << " экземпляра)" << std::endl;
 }
 
 void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, int numCard) noexcept {
     printProducts((Debit_or_Credit == 'D' ? purses[numPurse].currencyCardD(numCard) : purses[numPurse].currencyCardC(numCard)));
-    std::cout << "введите номер товара который вы хотите купить - " << std::endl;
+    std::cout << "Enter the number of the product you want to buy - " << std::endl;
     int choice;
     choice = inputNum(1, 9);
     double oldSum = (Debit_or_Credit == 'D' ? purses[numPurse].amountMoneyCardD(numCard) : purses[numPurse].amountMoneyCardC(numCard));
@@ -30,8 +30,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.ps5;
             --inStockProducts_.ps5;
             amountExpenses_ += sumProduct(1, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " была куплена ps5 за " + std::to_string(sumProduct(1, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(1, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплена ps5");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " PS5 was purchased for " + std::to_string(sumProduct(1, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(1, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a PS5");
         }
         break;
     case 2:
@@ -41,8 +41,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.kettle;
             --inStockProducts_.kettle;
             amountExpenses_ += sumProduct(2, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " был куплен чайник за " + std::to_string(sumProduct(2, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(2, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплен чайник");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " the kettle was bought for " + std::to_string(sumProduct(2, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(2, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a kettle");
         }
         break;
     case 3:
@@ -52,8 +52,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.battery;
             --inStockProducts_.battery;
             amountExpenses_ += sumProduct(3, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " была куплена батарейка за " + std::to_string(sumProduct(3, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(3, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплена батарейка");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " a battery was purchased for " + std::to_string(sumProduct(3, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(3, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a battery");
         }
         break;
     case 4:
@@ -63,8 +63,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.cigarette;
             --inStockProducts_.cigarette;
             amountExpenses_ += sumProduct(4, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " была куплена сигарета за " + std::to_string(sumProduct(4, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(4, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплена сигарета");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " a cigarette was bought for " + std::to_string(sumProduct(4, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(4, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a cigarette");
         }
         break;
     case 5:
@@ -74,8 +74,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.snickers;
             --inStockProducts_.snickers;
             amountExpenses_ += sumProduct(5, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " был куплен сникерс за " + std::to_string(sumProduct(5, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(5, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплен сникерс");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " a snickers bar was bought for " + std::to_string(sumProduct(5, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(5, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "Snickers bought");
         }
         break;
     case 6:
@@ -85,8 +85,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.propolis;
             --inStockProducts_.propolis;
             amountExpenses_ += sumProduct(6, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " был куплен праполес за " + std::to_string(sumProduct(6, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(6, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплен праполес");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " the propolis was bought for " + std::to_string(sumProduct(6, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(6, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "the propolis was bought");
         }
         break;
     case 7:
@@ -96,8 +96,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.house;
             --inStockProducts_.house;
             amountExpenses_ += sumProduct(7, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " был куплен дом за " + std::to_string(sumProduct(7, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(7, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплен дом");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " the house was bought for " + std::to_string(sumProduct(7, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(7, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a house");
         }
         break;
     case 8:
@@ -107,8 +107,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.keyboard;
             --inStockProducts_.keyboard;
             amountExpenses_ += sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " была куплена клавиатура за " + std::to_string(sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплена клавиатура");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " The keyboard was purchased for " + std::to_string(sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a keyboard");
         }
         break;
     case 9:
@@ -118,8 +118,8 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
             ++amountProducts_.flower;
             --inStockProducts_.flower;
             amountExpenses_ += sumProduct(9, checkCurrency(purses, numPurse, Debit_or_Credit, numCard));
-            spendingHistory_ += "день - " + std::to_string(day_) + " был куплен цветок за " + std::to_string(sumProduct(9, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
-            expenseTracker_.addExpense(sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "куплен цветок");
+            spendingHistory_ += "Day - " + std::to_string(day_) + " the flower was bought for " + std::to_string(sumProduct(9, checkCurrency(purses, numPurse, Debit_or_Credit, numCard))) + checkCurrency(purses, numPurse, Debit_or_Credit, numCard) + '\n';
+            expenseTracker_.addExpense(sumProduct(8, checkCurrency(purses, numPurse, Debit_or_Credit, numCard)), checkCurrency(purses, numPurse, Debit_or_Credit, numCard), "bought a flower");
         }
         break;
     }
@@ -128,7 +128,7 @@ void Shop::buy(std::vector<Purse>& purses, int numPurse, char Debit_or_Credit, i
 void Shop::spendingHistory() noexcept {
     bool isOpen = true;
     while (isOpen) {
-        std::cout << "введите номер истории трат которую вы хотите посмотреть\n1 - дневная история трат\n2 - недельная история трат\n3 - месячная история трат\n0 - выход" << std::endl;
+        std::cout << "Enter the number of the spending history you want to view\n1 - Daily spending history\n2 - Weekly spending history\n3 - Monthly spending history\n0 - Exit" << std::endl;
         int choice = inputNum(0, 3);
         switch (choice)
         {
@@ -151,7 +151,7 @@ void Shop::spendingHistory() noexcept {
 void Shop::topSpending() noexcept {
     bool isOpen = true;
     while (isOpen) {
-        std::cout << "введите номер истории топ покупки которую вы хотите посмотреть\n1 - недельные топ покупки\n2 - месячные топ покупки\n0 - выход" << std::endl;
+        std::cout << "Enter the number of the top purchase history you want to view\n1 - Weekly top purchases\n2 - Monthly top purchases\n0 - Exit." << std::endl;
         int choice = inputNum(0, 2);
         switch (choice)
         {
@@ -168,7 +168,7 @@ void Shop::topSpending() noexcept {
     }
 }
 
-bool Shop::checkGallows() noexcept {
+bool Shop::checkHangman() const noexcept {
     return amountProducts_.ps5 > 0;
 }
 
@@ -177,10 +177,10 @@ void Shop::nextDay() noexcept {
     expenseTracker_.nextDay();
 }
 
-void Shop::saveToFile() noexcept {
+void Shop::saveToFile() const noexcept {
     std::ofstream file(fileName_, std::ios::out);
     if (!file) {
-        std::cerr << "Ошибка открытия файла для записи!" << std::endl;
+        std::cerr << "Error opening file for writing!" << std::endl;
         return;
     }
     file << spendingHistory_;
