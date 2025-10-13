@@ -1,8 +1,8 @@
 #include <iostream>
 #include <Windows.h>
 #include "ClearScreen.h"
-#include "purse.h"
-#include "functions.h"
+#include "Purse.h"
+#include "Functions.h"
 #include "Shop.h"
 
 int main()
