@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 
-class Player {
+class Player 
+{
 public:
     Player() noexcept;
     void addGuess(char letter) noexcept;
