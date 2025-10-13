@@ -19,6 +19,6 @@ bool Overcoat::operator>(const Overcoat& other) const {
 }
 
 void Overcoat::display() const {
-    std::cout << "Тип: " << type << ", Ціна: " << price << std::endl;
+    std::cout << "Type: " << type << ", Price: " << price << std::endl;
 }
 
