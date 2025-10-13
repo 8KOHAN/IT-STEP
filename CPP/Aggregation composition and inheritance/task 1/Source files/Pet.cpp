@@ -5,16 +5,16 @@ Pet::Pet(const std::string& name, int age, const std::string& color)
     : name(name), age(age), color(color) {}
 
 void Pet::displayInfo() const {
-    std::cout << "Ім'я: " << name
-        << ", Вік: " << age
-        << ", Колір: " << color << std::endl;
+    std::cout << "Name: " << name
+        << ", Age: " << age
+        << ", Color: " << color << std::endl;
 }
 
 Dog::Dog(const std::string& name, int age, const std::string& color)
     : Pet(name, age, color) {}
 
 void Dog::displayInfo() const {
-    std::cout << "Собака - ";
+    std::cout << "Dog - ";
     Pet::displayInfo();
 }
 
@@ -22,7 +22,7 @@ Cat::Cat(const std::string& name, int age, const std::string& color)
     : Pet(name, age, color) {}
 
 void Cat::displayInfo() const {
-    std::cout << "Кішка - ";
+    std::cout << "Cat - ";
     Pet::displayInfo();
 }
 
@@ -30,6 +30,6 @@ Parrot::Parrot(const std::string& name, int age, const std::string& color)
     : Pet(name, age, color) {}
 
 void Parrot::displayInfo() const {
-    std::cout << "Папуга - ";
+    std::cout << "Parrot - ";
     Pet::displayInfo();
 }
