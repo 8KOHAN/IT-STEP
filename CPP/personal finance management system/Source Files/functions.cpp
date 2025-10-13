@@ -2,7 +2,7 @@
 
 const int inputNum(const int minNum, const int maxNum) {
 	bool isOpen = true;
-	std::cout << "ваш выбор: ";
+	std::cout << "your choice: ";
 	int choice;
 	do {
 		std::cin >> choice;
@@ -10,7 +10,7 @@ const int inputNum(const int minNum, const int maxNum) {
 			isOpen = false;
 			break;
 		}
-		std::cout << "повторите ввод: ";
+		std::cout << "re-enter: ";
 		std::cin.clear();
 		std::cin.ignore(10000, '\n');
 	} while (isOpen);
@@ -20,7 +20,7 @@ const int inputNum(const int minNum, const int maxNum) {
 const double inputDouble() {
 	double sum;
 	while (!(std::cin >> sum)) {
-		std::cout << "Ошибка ввода! Попробуйте снова: ";
+		std::cout << "Input error! Try again: ";
 		std::cin.clear();
 		std::cin.ignore(10000, '\n');
 	}
@@ -34,7 +34,7 @@ void printPurses(const std::vector<Purse>& purses) {
 
 void createPurse(std::vector<Purse>& purses) {
 	std::string namePurse;
-	std::cout << "введите название вашего нового гаманця: ";
+	std::cout << "enter the name of your new wallet: ";
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
 	std::getline(std::cin, namePurse);
@@ -43,24 +43,24 @@ void createPurse(std::vector<Purse>& purses) {
 
 const int choicePurse(const std::vector<Purse>& purses) {
 	if (purses.empty()) {
-		std::cout << "у вас пока нету не одного гаманця" << std::endl;
+		std::cout << "You don't have more than one wallet yet." << std::endl;
 		return 0;
 	}
 	printPurses(purses);
-	std::cout << "веберете номер гаманця" << std::endl;
+	std::cout << "select wallet number" << std::endl;
 	int choice = inputNum(1, purses.size());
 	return choice;
 }
 
 void setNamePurse(std::vector<Purse>& purses) {
 	if (purses.empty()) {
-		std::cout << "у вас пока нету не одного гаманця" << std::endl;
+		std::cout << "You don't have more than one wallet yet." << std::endl;
 		return;
 	}
 	printPurses(purses);
-	std::cout << "веберете номер гаманця" << std::endl;
+	std::cout << "select wallet number" << std::endl;
 	int choice = inputNum(1, purses.size());
-	std::cout << "введите новое имя - ";
+	std::cout << "enter new name - ";
 	std::string newName;
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
@@ -70,21 +70,21 @@ void setNamePurse(std::vector<Purse>& purses) {
 
 bool checkExit(const int day) {
 	if (day < 32) {
-		std::cout << "вы пока не можете выйти, вам осталось еще провести тут " << 32 - day << " дней" << std::endl;
+		std::cout << "You can't go out yet, you still have time to spend here " << 32 - day << " days" << std::endl;
 		return false;
 	}
 	return true;
 }
 
 void createCardD(std::vector<Purse>& purses, const int numPurse) {
-	std::cout << "введите названия для новой дебетовой картки - ";
+	std::cout << "Enter the name for the new debit card - ";
 	std::string name;
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
 	std::getline(std::cin, name);
-	std::wcout << L"введите номер валюты которую вы хотите использовать\n1 - $\n2 - S (Гривна)\n3 - \u20AC" << std::endl;
+	std::wcout << L"Enter the number of the currency you want to use\n1 - $\n2 - S (Hryvnia)\n3 - \u20AC" << std::endl;
 	char currency;
-	std::cout << "ваш выбор: ";
+	std::cout << "your choice: ";
 	int choice = inputNum(1,3);
 	switch (choice) {
 	case 1:
@@ -101,14 +101,14 @@ void createCardD(std::vector<Purse>& purses, const int numPurse) {
 }
 
 void createCardC(std::vector<Purse>& purses, const int numPurse) {
-	std::cout << "введите названия для новой кредитной картки - ";
+	std::cout << "Enter the name for the new credit card - ";
 	std::string name;
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
 	std::getline(std::cin, name);
-	std::wcout << L"введите номер валюты которую вы хотите использовать\n1 - $\n2 - S (Гривна)\n3 - \u20AC" << std::endl;
+	std::wcout << L"Enter the number of the currency you want to use\n1 - $\n2 - S (Hryvnia)\n3 - \u20AC" << std::endl;
 	char currency;
-	std::cout << "ваш выбор: ";
+	std::cout << "your choice: ";
 	int choice = inputNum(1, 3);
 	switch (choice) {
 	case 1:
@@ -126,22 +126,22 @@ void createCardC(std::vector<Purse>& purses, const int numPurse) {
 
 const int choiceCardD(const std::vector<Purse>& purses, const int numPurse) {
 	if (purses[numPurse].amountCardsD() == 0) {
-		std::cout << "у вас пока нету не одной дебетовой картки" << std::endl;
+		std::cout << "You don't have any debit cards yet" << std::endl;
 		return 0;
 	}
 	purses[numPurse].printCardsD();
-	std::cout << "веберете номер дебетовой картки" << std::endl;
+	std::cout << "select a debit card number" << std::endl;
 	int numCard = inputNum(1, purses[numPurse].amountCardsD());
 	return numCard;
 }
 
 const int choiceCardC(const std::vector<Purse>& purses, const int numPurse) {
 	if (purses[numPurse].amountCardsC() == 0) {
-		std::cout << "у вас пока нету не одной кредитной картки" << std::endl;
+		std::cout << "You don't have any credit cards yet" << std::endl;
 		return 0;
 	}
 	purses[numPurse].printCardsC();
-	std::cout << "веберете номер кредитной картки" << std::endl;
+	std::cout << "weberete credit card number" << std::endl;
 	int numCard = inputNum(1, purses[numPurse].amountCardsC());
 	return numCard;
 }
@@ -151,13 +151,13 @@ const double amountMoneyCard(const std::vector<Purse>& purses, const int numPurs
 }
 
 void replenishment(std::vector<Purse>& purses, const int numPurse, const char Debit_or_Credit, const int numCard) {
-	std::cout << "введите суму на которую вы хотите пополнить счет: ";
+	std::cout << "Enter the amount you want to top up your account with: ";
 	double sum = inputDouble();
 	(Debit_or_Credit == 'D' ? purses[numPurse].replenishmentCardD(sum, numCard) : purses[numPurse].replenishmentCardC(sum, numCard));
 }
 
 void takeСredit(std::vector<Purse>& purses, const int numPurse, const int numCard) {
-	std::cout << "введите суму на которую вы хотите взять кредит: ";
+	std::cout << "Enter the amount you want to borrow: ";
 	double sum = inputDouble();
 	purses[numPurse].takeСredit(sum, numCard);
 }
@@ -221,7 +221,7 @@ const char checkCurrency(const std::vector<Purse>& purses, const int numPurse, c
 
 const bool checkProductAvailability(int Product) {
 	if (!Product) {
-		std::cout << "нету в наличии";
+		std::cout << "out of stock";
 		return false;
 	}
 	return true;
@@ -229,25 +229,24 @@ const bool checkProductAvailability(int Product) {
 
 void returnCredit(std::vector<Purse>& purses, const int numPurse, const int numCard) {
 	if (purses[numPurse].checkCredit(numPurse) == 0) {
-		std::cout << "у вас нету кредита" << std::endl;
+		std::cout << "you don't have a loan" << std::endl;
 		return;
 	}
-	std::cout << "введите суму которой вы хотите погасить кредит: ";
+	std::cout << "Enter the amount you want to repay the loan: ";
 	double sum = inputDouble();
 	purses[numPurse].returnCredit(sum, numCard);
 }
 
-void playGallows() {
-	std::cout << "загаданое слово на Английском" << std::endl;
+void playHangman() {
 	WordManager wordManager;
 	wordManager.loadWords();
 	std::string word = wordManager.getRandomWord();
 
 	if (word.empty()) {
-		std::cout << "Помилка: список слів порожній!\n";
+		std::cout << "Error: word list is empty!\n";
 		return;
 	}
 
-	Gallows game(word);
+	Hangman game(word);
 	game.play();
 }
