@@ -74,10 +74,10 @@ void Purse::addCardC(const std::string& name, char currency) noexcept {
 
 void Purse::printCardsD() const noexcept {
 	for (int i = 0; i < cardsD_.size(); ++i)
-		std::cout  << "карта номер " << i + 1 << " - " << cardsD_[i].name() << std::endl;
+		std::cout  << "card number " << i + 1 << " - " << cardsD_[i].name() << std::endl;
 }
 
 void Purse::printCardsC() const noexcept {
 	for (int i = 0; i < cardsC_.size(); ++i)
-		std::cout << "карта номер " << i + 1 << " - " << cardsC_[i].name() << std::endl;
+		std::cout << "card number " << i + 1 << " - " << cardsC_[i].name() << std::endl;
 }
