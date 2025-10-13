@@ -4,9 +4,9 @@
 #include "Player.h"
 #include "WordManager.h"
 
-class Gallows {
+class Hangman {
 public:
-    Gallows(const std::string& w) noexcept;
+    Hangman(const std::string& w) noexcept;
     void play() noexcept;
     void showStatistics() const noexcept;
 private:
@@ -15,3 +15,4 @@ private:
     Player player_;
     time_t startTime_;
 };
+
