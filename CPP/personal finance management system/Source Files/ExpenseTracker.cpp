@@ -19,14 +19,14 @@ void ExpenseTracker::addExpense(double sum, char currency, std::string message) 
 
 void ExpenseTracker::expensesForDay() noexcept {
     if (expenses.empty()) {
-        std::cout << "еще не прошел день с того момента как вы начали нас использовать" << std::endl;
+        std::cout << "It hasn't even been a day since you started using us" << std::endl;
         return;
     }
     if (expenses.back().empty()) {
-        std::cout << "за последний день небыло покупок\n" << std::endl;
+        std::cout << "there were no purchases in the last day\n" << std::endl;
         return;
     }
-    std::cout << "траты за последний день" << std::endl;
+    std::cout << "expenses for the last day" << std::endl;
     for (int i = 0; i < expenses.back().size(); ++i) {
         expenses.back()[i].print();
     }
@@ -34,12 +34,12 @@ void ExpenseTracker::expensesForDay() noexcept {
 
 void ExpenseTracker::expensesForWeek() noexcept {
     if (expenses.size() < 7) {
-        std::cout << "еще не прошла неделя с того момента как вы начали нас использовать" << std::endl;
+        std::cout << "It hasn't even been a week since you started using us" << std::endl;
         return;
     }
-    std::cout << "траты за последнию неделю" << std::endl;
+    std::cout << "expenses for the last week" << std::endl;
     for (int i = expenses.size() - 7; i < expenses.size(); ++i) {
-        std::cout << "день номер " << i + 1 << std::endl;
+        std::cout << "day number " << i + 1 << std::endl;
         for (int y = 0; y < expenses[i].size(); ++y)
             expenses[i][y].print();
     }
@@ -47,12 +47,12 @@ void ExpenseTracker::expensesForWeek() noexcept {
 
 void ExpenseTracker::expensesForMonth() noexcept {
     if (expenses.size() < 31) {
-        std::cout << "еще не прошел месяц с того момента как вы начали нас использовать" << std::endl;
+        std::cout << "It hasn't even been a month since you started using us" << std::endl;
         return;
     }
-    std::cout << "траты за последний месяц" << std::endl;
+    std::cout << "expenses for the last month" << std::endl;
     for (int i = 0; i < expenses.size(); ++i) {
-        std::cout << "день номер " << i + 1 << std::endl;
+        std::cout << "day number " << i + 1 << std::endl;
         for (int y = 0; y < expenses[i].size(); ++y)
             expenses[i][y].print();
     }
@@ -60,10 +60,10 @@ void ExpenseTracker::expensesForMonth() noexcept {
 
 void ExpenseTracker::topSpendingThisWeek() noexcept {
     if (expenses.size() < 7) {
-        std::cout << "еще не прошла неделя с того момента как вы начали нас использовать" << std::endl;
+        std::cout << "It hasn't even been a week since you started using us" << std::endl;
         return;
     }
-    std::cout << "топ 3 траты за последнию неделю" << std::endl;
+    std::cout << "Top 3 expenses of the last week" << std::endl;
     std::vector<Expense> topExpenses;
     for (int i = expenses.size() - 7; i < expenses.size(); ++i) {
         for (const auto& e : expenses[i]) {
@@ -83,7 +83,7 @@ void ExpenseTracker::topSpendingThisWeek() noexcept {
         }
     }
     std::ofstream file(fileName_, std::ios::app);
-    file << "топ 3 траты за последнию неделю\n";
+    file << "Top 3 expenses of the last week\n";
     for (int i = 0; i < topExpenses.size(); ++i) {
         topExpenses[i].print();
         topExpenses[i].writeToFile(file);
@@ -93,10 +93,10 @@ void ExpenseTracker::topSpendingThisWeek() noexcept {
 
 void ExpenseTracker::topSpendingThisMonth() noexcept {
     if (expenses.size() < 31) {
-        std::cout << "еще не прошел месяц с того момента как вы начали нас использовать" << std::endl;
+        std::cout << "It hasn't even been a month since you started using us" << std::endl;
         return;
     }
-    std::cout << "топ 3 траты за последний месяц" << std::endl;
+    std::cout << "Top 3 expenses for the last month" << std::endl;
     std::vector<Expense> topExpenses;
     for (int i = 0; i < expenses.size(); ++i) {
         for (const auto& e : expenses[i]) {
@@ -116,7 +116,7 @@ void ExpenseTracker::topSpendingThisMonth() noexcept {
         }
     }
     std::ofstream file(fileName_, std::ios::app);
-    file << "топ 3 траты за последний месяц\n";
+    file << "Top 3 expenses for the last month\n";
     for (int i = 0; i < topExpenses.size(); ++i) {
         topExpenses[i].print();
         topExpenses[i].writeToFile(file);
