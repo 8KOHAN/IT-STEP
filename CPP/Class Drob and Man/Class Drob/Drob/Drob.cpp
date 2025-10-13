@@ -31,7 +31,7 @@ void Drob::input() {
     std::cout << "Enter the denominator: ";
     std::cin >> denominator;
     if (denominator == 0) {
-        std::cout << "The denominator cannot be zero. Set 1." << std::endl;
+        std::cout << "The denominator cannot be zero. Set to 1." << std::endl;
         denominator = 1;
     }
     simplify();
