@@ -27,7 +27,7 @@ This project was developed as a coursework project at IT STEP Academy and demons
 
 ---
 
-## Project Structure
+## Structure
 
 ```bash
 |── Personal finance management system and Hangman/
