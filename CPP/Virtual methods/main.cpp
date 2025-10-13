@@ -40,7 +40,7 @@ int main() {
     int choice;
     bool isOpen = true;
     while (isOpen) {
-        std::cout << "виберете фигуру:\n1 = квадрат\n2 = круг\n3 = триугольник\n0 = выход" << std::endl;
+        std::cout << "select a shape:\n1 = square\n2 = circle\n3 = triangle\n0 = exit" << std::endl;
         std::cin >> choice;
         switch (choice)
         {
