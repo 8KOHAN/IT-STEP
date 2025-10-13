@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 
-class WordManager {
+class WordManager 
+{
 public:
     WordManager() noexcept;
     void loadWords() noexcept;
