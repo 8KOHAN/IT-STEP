@@ -11,7 +11,7 @@ This project is a object-oriented program written in C++ for managing water bodi
 - Compare surface areas of two reservoirs of the same type
 - Automatically manage memory using `std::string` and `std::vector`
 
-## Structure
+## Project Structure
 ```bash
 ReservoirProject/
 ├── Reservoir/
