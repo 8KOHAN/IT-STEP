@@ -5,9 +5,9 @@
 int main() {
     SetConsoleOutputCP(1251);
 
-    Dog dog("Рекс", 5, "коричневий");
-    Cat cat("Мурка", 3, "сіра");
-    Parrot parrot("Кеша", 2, "зелений");
+    Dog dog("Rex", 5, "brown");
+    Cat cat("Murka", 3, "gray");
+    Parrot parrot("Casha", 2, "green");
 
     dog.displayInfo();
     cat.displayInfo();
