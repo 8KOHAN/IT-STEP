@@ -9,7 +9,7 @@ int main() {
     FILE* output = fopen("stats.txt", "w");
 
     if (input == NULL || output == NULL) {
-        fprintf(stderr, "Не вдалося відкрити файл.\n");
+        fprintf(stderr, "Failed to open file.\n");
         return 1;
     }
 
@@ -38,20 +38,19 @@ int main() {
         }
     }
 
-    // Якщо файл не порожній і останній символ не був \n — додаємо рядок
     if (char_count > 0 && ch != '\n') {
         line_count++;
     }
 
-    fprintf(output, "Кількість символів: %d\n", char_count);
-    fprintf(output, "Кількість рядків: %d\n", line_count);
-    fprintf(output, "Кількість голосних букв: %d\n", vowel_count);
-    fprintf(output, "Кількість приголосних букв: %d\n", consonant_count);
-    fprintf(output, "Кількість цифр: %d\n", digit_count);
+    fprintf(output, "Number of characters: %d\n", char_count);
+    fprintf(output, "Number of lines: %d\n", line_count);
+    fprintf(output, "Number of vowels: %d\n", vowel_count);
+    fprintf(output, "Number of consonants: %d\n", consonant_count);
+    fprintf(output, "Number of digits: %d\n", digit_count);
 
     fclose(input);
     fclose(output);
 
-    printf("Статистика записана в файл stats.txt\n");
+    printf("Statistics are recorded in a file stats.txt\n");
     return 0;
 }
