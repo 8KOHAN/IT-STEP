@@ -4,6 +4,7 @@ This repository contains my educational projects and homework completed as part 
 
 ## Repository structure
 
+- **C#/** — tasks in C#
 - **CPP/** — tasks in C++
 - **HTML CSS/MyState pro version/** — adaptive layout and page styling using HTML and CSS.
 - **Python/tictactoe/** — console game "Tic-Tac-Toe" in Python.
