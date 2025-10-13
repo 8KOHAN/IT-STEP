@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Hangman.h"
 
 Hangman::Hangman(const std::string& w) noexcept : word_(w) {
