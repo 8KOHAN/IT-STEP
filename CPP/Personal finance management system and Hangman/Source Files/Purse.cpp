@@ -1,4 +1,4 @@
-#include "purse.h"
+#include "Purse.h"
 
 Purse::Purse(const std::string& name) noexcept : name_(name), amountCardsC_(0), amountCardsD_(0) { }
 
