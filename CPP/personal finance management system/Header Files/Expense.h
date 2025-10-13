@@ -3,7 +3,8 @@
 #include <fstream>
 #include <string>
 
-class Expense {
+class Expense 
+{
 public:
     Expense(std::string message, double sum, char currency) noexcept;
     void print() const noexcept;
