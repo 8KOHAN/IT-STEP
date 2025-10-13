@@ -30,7 +30,7 @@ The `Flat` class models an apartment with the following fields:
 
 ---
 
-## Project Structure
+## Structure
 
 ```bash
 Project/
