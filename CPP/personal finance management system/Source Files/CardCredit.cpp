@@ -6,16 +6,16 @@ const double CardCredit::checkCredit() const noexcept { return duty_; }
 
 void CardCredit::spend(const double sum) noexcept {
 	if ((amountMoney_ - sum) < 0) {
-		std::cout << "вам не хватает: " << (amountMoney_ - sum) / -1 <<std::endl;
-		std::cout << "хотите взять кредит?\nyes/not\n";
+		std::cout << "you're missing: " << (amountMoney_ - sum) / -1 <<std::endl;
+		std::cout << "want to take out a loan?\nyes/not\n";
 		std::string answer;
-		std::cout << "ваш выбор: ";
+		std::cout << "your choice: ";
 		do {
 			std::cin >> answer;
 		} while (!(answer == "yes" && answer == "not"));
 
 		if (answer == "yes") {
-			std::cout << "введите суму кредита - ";
+			std::cout << "enter the loan amount - ";
 			double sum;
 			do {
 				if (std::cin >> sum) break;
@@ -35,11 +35,11 @@ void CardCredit::takeСredit(const double sum) noexcept {
 
 void CardCredit::returnCredit(const double sum) noexcept {
 	if ((amountMoney_ - sum) < 0) {
-		std::cout << "не удалось погасить кредит" << std::endl;
+		std::cout << "failed to repay the loan" << std::endl;
 		return;
 	}
 	if ((duty_ - sum) < 0) {
-		std::cout << "введина слишком большая сума, ван нужно вернуть " << duty_ << std::endl;
+		std::cout << "The amount entered is too large, you need to return it " << duty_ << std::endl;
 		return;
 	}
 	amountMoney_ -= sum;
