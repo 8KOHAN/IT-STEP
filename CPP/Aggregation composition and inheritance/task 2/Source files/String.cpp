@@ -115,7 +115,6 @@ std::ostream& operator<<(std::ostream& os, const String& str) {
 bool operator==(const char* cstr, const String& str) { return str == cstr; }
 bool operator!=(const char* cstr, const String& str) { return str != cstr; }
 
-// BitString
 
 BitString::BitString() : String() {}
 
