@@ -1,4 +1,5 @@
 #pragma once
+
 struct AmountProducts
 {
 	int ps5       = 0;
