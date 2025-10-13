@@ -3,7 +3,7 @@
 #include <vector>  
 #include "purse.h"
 #include "ClearScreen.h"
-#include "Gallows.h"
+#include "Hangman.h"
 
 const int inputNum(const int minNum, const int maxNum);
 
@@ -43,4 +43,4 @@ const bool checkProductAvailability(int Product);
 
 void returnCredit(std::vector<Purse>& purses, const int numPurse, const int numCard);
 
-void playGallows();
+void playHangman();
