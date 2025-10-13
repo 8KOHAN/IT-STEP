@@ -14,7 +14,7 @@ int main() {
     FILE* output = fopen("output.txt", "w");
 
     if (!input || !output) {
-        fprintf(stderr, "Не вдалося відкрити файл.\n");
+        fprintf(stderr, "The file could not be opened.\n");
         return 1;
     }
 
@@ -26,6 +26,6 @@ int main() {
     fclose(input);
     fclose(output);
 
-    printf("Шифрування завершено. Результат у файлі output.txt\n");
+    printf("Encryption complete. Result in file output.txt\n");
     return 0;
 }
