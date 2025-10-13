@@ -15,7 +15,7 @@ This project is a object-oriented program written in C++ for managing water bodi
 ```bash
 ReservoirProject/
 ├── Reservoir/
-│ ├── Reservoir.h # Class definition
-│ └── Reservoir.cpp # Class implementation
-├── main.cpp # Console menu interface
-├── README.md # This file
+│ ├── Reservoir.h 
+│ └── Reservoir.cpp 
+├── main.cpp 
+├── README.md 
