@@ -6,9 +6,9 @@ int main() {
     SetConsoleCP(1251);
 
     Drob a, b;
-    std::cout << "Дріб A:\n";
+    std::cout << "Fraction A:\n";
     a.input();
-    std::cout << "Дріб B:\n";
+    std::cout << "Fraction B:\n";
     b.input();
 
     std::cout << "\nA + B = "; a.add(b).print();
