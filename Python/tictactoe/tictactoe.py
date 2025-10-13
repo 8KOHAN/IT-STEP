@@ -15,7 +15,7 @@ def drawboard(board):
 def inputplyerletter():
     letter = ''
     while not (letter == 'X' or letter == 'O'):
-        print("обери сторону, Х або О")
+        print("Choose a side, X or O")
         letter = input().upper().strip()
     if letter == 'X':
         return ['X', 'O']
@@ -29,7 +29,7 @@ def whogofirst():
         return 'player'
     
 def playagain():
-    print("ще грати ?yes or no")
+    print("still play? yes or no")
     return input().strip().lower().startswith('y')
 
 def makemove(board, letter, move):
@@ -57,7 +57,7 @@ def isspacefree(board,move):
 def getplayermove(board):
     move = ' '
     while move not in '1 2 3 4 5 6 7 8 9'.split() or not isspacefree(board,int(move)):
-        print("обери вільне поле для заповнення від 1 до 9")
+        print("select a free field to fill in from 1 to 9")
         move = input().strip()
     return int(move)
 
@@ -71,57 +71,45 @@ def chooserandommovefromlist(board,movelist):
     else:
         return None
 
-#ai computer
-
 def getcomputermovehard(board, computerletter):
     if computerletter == 'X':
         playerletter = 'O'
     else:
         playerletter = 'X'
-    # виграти компу
     for i in range (1,10):
         copy = getboardcopy(board)
         if isspacefree(copy,i):
             makemove(copy,computerletter,i)
             if iswinner(copy,computerletter):
                 return i    
-    #не дати виграти гравцю
     for i in range (1,10):
         copy = getboardcopy(board)
         if isspacefree(copy,i):
             makemove(copy,playerletter,i)
             if iswinner(copy,playerletter):
                 return i   
-    #заняти центр
     if isspacefree(board,5):
         return 5
-    #заняти кути
     move = chooserandommovefromlist(board, [1,3,7,9])
     if move != None:
         return move
-    #заняти сторони
     return chooserandommovefromlist(board,[2,4,6,8])
 
 def getcomputermovenorm(board, computerletter):
-    # виграти компу
     for i in range (1,10):
         copy = getboardcopy(board)
         if isspacefree(copy,i):
             makemove(copy,computerletter,i)
             if iswinner(copy,computerletter):
                 return i    
-    #заняти центр
     if isspacefree(board,5):
         return 5
-    #заняти кути
     move = chooserandommovefromlist(board, [1,3,7,9])
     if move != None:
         return move
-    #заняти сторони
     return chooserandommovefromlist(board,[2,4,6,8])
 
 def getcomputermoveisi(board, computerletter):
-    # виграти компу
     for i in range (1,10):
         copy = getboardcopy(board)
         if isspacefree(copy,i):
@@ -138,8 +126,8 @@ def isboardfull(board):
 
 def computercomplexity(complexity):
     while True:
-        complexity = input("выбери сложность 1=изи 2=норм 3=хард").lower().strip()
-        if complexity in ['1','изи','isi','2','норм','norm','3','хард','hard']:
+        complexity = input("choose difficulty 1=easy 2=normal 3=hard").lower().strip()
+        if complexity in ['1','изи','easy','2','норм','norm','3','хард','hard']:
             return complexity
         print("не коректыный ввод")
 
@@ -149,7 +137,7 @@ while True:
     theboard = [' ']*10
     complexity = ''
     complexity = computercomplexity(complexity)
-    if complexity in ['1','изи','isi']:
+    if complexity in ['1','изи','easy']:
         getcomputermove = getcomputermoveisi
     elif complexity in ['2','норм','norm']:
         getcomputermove = getcomputermovenorm
@@ -158,7 +146,7 @@ while True:
 
     playerletter, computerletter = inputplyerletter()
     turn = whogofirst()
-    print("рандом сказав, що перший ходить - ", turn)
+    print("random said go first - ", turn)
     while True:
         if turn == 'player':
             drawboard(theboard)
@@ -167,12 +155,12 @@ while True:
 
             if iswinner(theboard, playerletter):
                 drawboard(theboard)
-                print("ти обіграв АІ")
+                print("you beat the AI")
                 break
             else:
                 if isboardfull(theboard):
                     drawboard(theboard)
-                    print("нічія, поля закінчились")
+                    print("draw, fields are over")
                     break
                 else:
                     turn = 'computer'
@@ -182,12 +170,12 @@ while True:
             makemove (theboard, computerletter,move)
             if iswinner(theboard,computerletter):
                 drawboard(theboard)
-                print("комп виграв, що ти плакі плакі")
+                print("The computer won, why are you crying?")
                 break
             else:
                 if isboardfull(theboard):
                     drawboard(theboard)
-                    print("нічія")
+                    print("draw")
                     break
                 else:
                     turn = 'player'
