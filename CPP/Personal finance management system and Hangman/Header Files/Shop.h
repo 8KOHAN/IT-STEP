@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "purse.h"
-#include "functions.h"
+#include "Purse.h"
+#include "Functions.h"
 #include "Products.h"
 #include "ExpenseTracker.h"
 
