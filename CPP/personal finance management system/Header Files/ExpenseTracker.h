@@ -6,7 +6,8 @@
 #include <algorithm>
 #include "Expense.h"
 
-class ExpenseTracker {
+class ExpenseTracker 
+{
 public:
     ExpenseTracker(std::string fileName) noexcept;
 
