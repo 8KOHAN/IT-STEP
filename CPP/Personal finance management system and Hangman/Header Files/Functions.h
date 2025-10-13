@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>  
-#include "purse.h"
+#include "Purse.h"
 #include "ClearScreen.h"
 #include "Hangman.h"
 
