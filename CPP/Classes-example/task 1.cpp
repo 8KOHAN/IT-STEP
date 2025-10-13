@@ -37,15 +37,15 @@ public:
 };
 
 int main() {
-    Student s = { "Іван Петренко", 20, "КНУ" };
-    Book b = { "Кобзар", "Тарас Шевченко", 1840 };
+    Student s = { "Ivan Petrenko", 20, "KNU" };
+    Book b = { "Kobzar", "Taras Shevchenko", 1840 };
     Firm f = { "SoftServe", "IT", 10000 };
     Phone p = { "Samsung", "Galaxy S21", 799.99f };
     Car c = { "Toyota", "Camry", 2022 };
 
     cout << "Student: " << s.name << ", " << s.age << ", " << s.university << endl;
     cout << "Book: " << b.title << ", " << b.author << ", " << b.year << endl;
-    cout << "Firm: " << f.name << ", " << f.industry << ", " << f.employeeCount << " працівників" << endl;
+    cout << "Firm: " << f.name << ", " << f.industry << ", " << f.employeeCount << " employees" << endl;
     cout << "Phone: " << p.brand << " " << p.model << ", $" << p.price << endl;
     cout << "Car: " << c.brand << " " << c.model << ", " << c.year << endl;
 
