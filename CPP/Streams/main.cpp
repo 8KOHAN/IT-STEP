@@ -37,7 +37,7 @@ public:
     void saveToFile(const std::string& filename) const {
         std::ofstream file(filename);
         if (!file) {
-            std::cerr << "Ошибка открытия файла для записи!" << std::endl;
+            std::cerr << "Error opening file for writing!" << std::endl;
             return;
         }
         file << "cols: " << size_x << " rows: " << size_y << "\n\n";
