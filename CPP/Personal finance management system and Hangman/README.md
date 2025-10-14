@@ -30,7 +30,7 @@ This project was developed as a coursework project at IT STEP Academy and demons
 ## Project Structure
 
 ```bash
-|── Personal finance management system and Hangman/
+├── Personal finance management system and Hangman/
 ├── Header Files/
 │ ├── Hangman/
 │ │ ├── Hangman.h
