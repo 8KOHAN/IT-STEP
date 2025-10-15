@@ -21,9 +21,9 @@ namespace IT_STEP
             int replacementCount;
             string censoredText = CensorText(text, forbiddenWord, out replacementCount);
 
-            Console.WriteLine("Результат работы:\n");
+            Console.WriteLine("Result of work:\n");
             Console.WriteLine(censoredText);
-            Console.WriteLine($"\nСтатистика:\n{replacementCount} замены слова \"{forbiddenWord}\".");
+            Console.WriteLine($"\nStatistics:\n{replacementCount} word replacement \"{forbiddenWord}\".");
         }
         static string CensorText(string text, string forbiddenWord, out int replacementCount)
         {
