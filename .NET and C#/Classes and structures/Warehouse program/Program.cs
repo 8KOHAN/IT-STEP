@@ -17,8 +17,6 @@ namespace IT_STEP
 
             warehouse.RemoveItem("Desk");
             warehouse.DisplayItems();
-
-            Console.WriteLine("\nProgram finished.");
         }
     }
 }
