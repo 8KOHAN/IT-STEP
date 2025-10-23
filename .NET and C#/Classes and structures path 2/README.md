@@ -30,4 +30,6 @@ A small collection of educational console programs designed to practice key C# c
 
 ---
 
-## Format Each task is implemented as a **separate console application in C#**
+## Format 
+
+Each task is implemented as a **separate console application in C#**
