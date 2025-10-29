@@ -131,7 +131,7 @@ def computercomplexity(complexity):
             return complexity
         print("не коректыный ввод")
 
-print("вітання в гру кальмара на мінімалках")
+print("Welcome to the squid game on minimals")
 
 while True:
     theboard = [' ']*10
