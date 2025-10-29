@@ -1,5 +1,3 @@
-using MusicalInstruments;
-
 namespace IT_STEP
 {
     class Program
