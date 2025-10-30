@@ -6,7 +6,7 @@ namespace IT_STEP
 
         public override void Sound()
         {
-            Console.WriteLine("The ukulele sounds cheerful and bright 🎶");
+            Console.WriteLine("The ukulele sounds cheerful and bright");
             Console.Beep(600, 300);
             Console.Beep(700, 300);
         }
