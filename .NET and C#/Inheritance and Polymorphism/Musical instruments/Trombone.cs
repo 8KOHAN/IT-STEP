@@ -6,7 +6,7 @@ namespace IT_STEP
 
         public override void Sound()
         {
-            Console.WriteLine("The trombone produces a deep and powerful sound 🎺");
+            Console.WriteLine("The trombone produces a deep and powerful sound");
             Console.Beep(200, 400);
             Console.Beep(300, 400);
         }
