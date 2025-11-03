@@ -91,7 +91,6 @@ int main()
 				replenishment(purses, numPurse, Debit_or_Credit, numCard);
 				break;
 			case 2:
-				if (choice == 0) break;
 				clearScreen();
 				shop.buy(purses, numPurse, Debit_or_Credit, numCard);
 				shop.saveToFile();
