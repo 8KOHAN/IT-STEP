@@ -1,4 +1,4 @@
-# MoneyApp
+# Class Money
 
 A simple C# console application demonstrating operator overloading and exception handling with a custom `Money` class.
 
