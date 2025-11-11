@@ -29,5 +29,4 @@ namespace IT_STEP
             Console.WriteLine($"Radio tuned to station {_currentChannel}.");
         }
     }
-
 }
