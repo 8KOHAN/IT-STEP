@@ -1,4 +1,4 @@
-# Books & Library
+# Garbage collection
 
 A small educational console project designed to practice key **C# OOP concepts** — including **classes**, **destructors (finalizers)**, and **the `IDisposable` interface**.
 
