@@ -1,4 +1,4 @@
-# Remote Control & Validator Projects
+# Interfaces
 
 A small collection of educational console programs designed to practice key C# concepts — **interfaces, classes, and basic data validation**.
 
