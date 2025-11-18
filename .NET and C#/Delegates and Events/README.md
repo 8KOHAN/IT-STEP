@@ -1,6 +1,6 @@
 # Delegates & Events
 
-A small collection of educational C# console projects designed to practice **delegates, events, and basic data processing**.
+A small collection of educational C# console projects designed to practice **delegates and events**.
 
 ---
 
