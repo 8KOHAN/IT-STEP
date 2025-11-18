@@ -1,4 +1,4 @@
-# Classes and structures
+# Classes and structures - Chapter 2
 
 A small collection of educational console programs designed to practice key C# concepts — structures, classes, properties, indexers, operators, and data conversions.
 
