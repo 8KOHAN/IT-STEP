@@ -1,4 +1,4 @@
-# Poem Collection App
+# Poem Collection
 
 A simple educational C# console application demonstrating **working with files**, **collections**, **string parsing**, and **basic CRUD operations**.  
 The project allows you to store, edit, search, and manage a collection of poems saved in a text file.
