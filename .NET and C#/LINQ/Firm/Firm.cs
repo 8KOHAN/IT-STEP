@@ -8,6 +8,7 @@ namespace IT_STEP
         public string DirectorFullName { get; set; }
         public int Employees { get; set; }
         public string Address { get; set; }
+        public List<Employee> EmployeesList { get; set; } = new List<Employee>();
 
         public override string ToString()
         {
