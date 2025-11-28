@@ -1,5 +1,3 @@
-using IT_STEP_;
-
 namespace IT_STEP
 {
     public class Program
