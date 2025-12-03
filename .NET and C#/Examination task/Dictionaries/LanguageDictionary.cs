@@ -12,7 +12,7 @@ namespace IT_STEP
 
         public LanguageDictionary(string type) : this()
         {
-            Type = type;
+            Type = string.IsNullOrWhiteSpace(type) ? "Unknown" : type.Trim();
         }
     }
 }
