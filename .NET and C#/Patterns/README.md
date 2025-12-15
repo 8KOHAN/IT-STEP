@@ -20,13 +20,6 @@ Shows how to create copies of objects without depending on their concrete classe
 
 ---
 
-## Purpose
-
-This project is intended for learning and practicing design patterns in C#.
-Each pattern is implemented in a simple and isolated form.
-
----
-
 ## Format
 
 Each task is implemented as a **separate C# console application**.
