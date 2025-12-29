@@ -1,6 +1,8 @@
 IF DB_ID('Academy') IS NULL
 	CREATE DATABASE Academy;
 
+USE Academy;
+
 IF OBJECT_ID('dbo.Departments', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.Departments (
