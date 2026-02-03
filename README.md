@@ -4,10 +4,11 @@ This repository contains my educational projects and homework completed as part 
 
 ## Repository structure
 
-- **.NET and C#/** — tasks in C#
-- **CPP/** — tasks in C++
+- **.NET and C#/** — tasks in C#.
+- **CPP/** — tasks in C++.
+- **Entity Framework Core and Dapper/** - Data management.
 - **HTML CSS/MyState pro version/** — adaptive layout and page styling using HTML and CSS.
-- **MS SQL Server/** - SQL queries
+- **MS SQL Server/** - SQL queries.
 - **Python/tictactoe/** — console game "Tic-Tac-Toe" in Python.
 
 ## Goal
