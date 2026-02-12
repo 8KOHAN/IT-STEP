@@ -27,7 +27,7 @@ namespace IT_STEP
             modelBuilder.Entity<User>(b =>
             {
                 b.ToTable(t => t.HasCheckConstraint("CK_NotEmptyUserName", "[UserName] <> ''"));
-                b.ToTable(t => t.HasCheckConstraint("CK_Email", "[Email] Like '%@%' AND '%.com'"));
+                b.ToTable(t => t.HasCheckConstraint("CK_Email", "[Email] LIKE '%@%.com'"));
                 
             });
 
