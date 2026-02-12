@@ -17,5 +17,25 @@ namespace IT_STEP
                   Trusted_Connection=True;
                   TrustServerCertificate=True;");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+
+            modelBuilder.Entity<User>(b =>
+            {
+                b.ToTable(t => t.HasCheckConstraint("CK_NotEmptyUserName", "[UserName] <> ''"));
+                b.ToTable(t => t.HasCheckConstraint("CK_Email", "[Email] Like '%@%' AND '%.com'"));
+                
+            });
+
+            modelBuilder.Entity<Movie>(b =>
+            {
+                b.ToTable(t => t.HasCheckConstraint("CK_TitleNotEmpty", "LEN([Title]) > 0"));
+                b.ToTable(t => t.HasCheckConstraint("CK_YearMoreZero", "[Year] > 0"));
+            });
+        }
     }
 }
