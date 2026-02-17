@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace IT_STEP
 {
     public static class AuthService
@@ -17,16 +19,13 @@ namespace IT_STEP
             Console.Write("Password: ");
             var password = Console.ReadLine();
 
-            db.Users.Add(new User
-            {
-                Username = username!,
-                Email = email!,
-                Password = password!
-            });
+            db.Database.ExecuteSqlRaw(
+                "EXEC AddUser @Username = {0}, @Email = {1}, @Password = {2}",
+                username, email, password);
 
-            db.SaveChanges();
-            Console.WriteLine("User registered.");
+            Console.WriteLine("User registered via stored procedure.");
         }
+
 
         public static bool Login()
         {
