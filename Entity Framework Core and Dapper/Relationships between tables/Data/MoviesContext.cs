@@ -6,6 +6,7 @@ namespace IT_STEP
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<UserMovieView> UserMoviesView { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,6 +37,10 @@ namespace IT_STEP
                 b.ToTable(t => t.HasCheckConstraint("CK_TitleNotEmpty", "LEN([Title]) > 0"));
                 b.ToTable(t => t.HasCheckConstraint("CK_YearMoreZero", "[Year] > 0"));
             });
+
+            modelBuilder.Entity<UserMovieView>()
+                .HasNoKey()
+                .ToView("View_UserMovies");
         }
     }
 }
