@@ -16,5 +16,26 @@ namespace IT_STEP
             db.SaveChanges();
             Console.WriteLine("Profile updated.");
         }
+
+        public static void ShowUsersWithMovies()
+        {
+            using var db = new MoviesContext();
+            var users = db.Users
+                          .Select(u => new
+                          {
+                              u.Username,
+                              Movies = u.Movies.Select(m => m.Title)
+                          })
+                          .ToList();
+
+            foreach (var user in users)
+            {
+                Console.WriteLine($"User: {user.Username}");
+                foreach (var movie in user.Movies)
+                {
+                    Console.WriteLine($"  Movie: {movie}");
+                }
+            }
+        }
     }
 }
