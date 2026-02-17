@@ -33,6 +33,7 @@ namespace IT_STEP
                 1. Add movie
                 2. Delete movie
                 3. Edit profile
+                4. Show all users and their movies
                 0. Logout
                 """);
 
@@ -41,6 +42,7 @@ namespace IT_STEP
                     case "1": MovieService.AddMovie(); break;
                     case "2": MovieService.DeleteMovie(); break;
                     case "3": UserService.EditProfile(); break;
+                    case "4": UserService.ShowUsersWithMovies(); break;
                     case "0":
                         AuthService.Logout();
                         return;
@@ -49,4 +51,3 @@ namespace IT_STEP
         }
     }
 }
-
