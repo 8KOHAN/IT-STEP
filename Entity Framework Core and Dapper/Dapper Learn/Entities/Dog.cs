@@ -8,5 +8,4 @@ namespace IT_STEP
         public string Breed { get; set; }
         public bool IsAdopted { get; set; } = false;
     }
-
 }
