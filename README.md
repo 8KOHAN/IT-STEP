@@ -10,6 +10,7 @@ This repository contains my educational projects and homework completed as part 
 - **HTML CSS/MyState pro version/** — adaptive layout and page styling using HTML and CSS.
 - **MS SQL Server/** - SQL queries.
 - **Python/tictactoe/** — console game "Tic-Tac-Toe" in Python.
+- **System programming/** - System programming in C#.
 
 ## Goal
 
