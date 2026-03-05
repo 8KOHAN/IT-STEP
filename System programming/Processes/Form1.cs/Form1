@@ -1,0 +1,128 @@
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+
+namespace WinFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+
+            buttonStart.Click += buttonStart_Click;
+            buttonKill.Click += buttonKill_Click;
+            buttonNotepad.Click += buttonNotepad_Click;
+            buttonCalc.Click += buttonCalc_Click;
+            buttonPaint.Click += buttonPaint_Click;
+            buttonCustom.Click += buttonCustom_Click;
+
+            timer1.Tick += timer1_Tick;
+
+            dataGridView1.CellClick += dataGridView1_CellClick;
+        }
+
+        void LoadProcesses()
+        {
+            dataGridView1.Rows.Clear();
+
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process p in processes)
+            {
+                dataGridView1.Rows.Add(p.ProcessName, p.Id);
+            }
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            timer1.Interval = (int)numericInterval.Value * 1000;
+            timer1.Start();
+
+            LoadProcesses();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            LoadProcesses();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            int pid = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+
+            try
+            {
+                Process process = Process.GetProcessById(pid);
+
+                textPID.Text = process.Id.ToString();
+                textThreads.Text = process.Threads.Count.ToString();
+                textCPU.Text = process.TotalProcessorTime.ToString();
+
+                try
+                {
+                    textStartTime.Text = process.StartTime.ToString();
+                }
+                catch
+                {
+                    textStartTime.Text = "Access denied";
+                }
+
+                int copies = Process.GetProcessesByName(process.ProcessName).Length;
+                textCopies.Text = copies.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Cannot read process info");
+            }
+        }
+
+        private void buttonKill_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int pid = int.Parse(textPID.Text);
+
+                Process process = Process.GetProcessById(pid);
+                process.Kill();
+
+                MessageBox.Show("Process terminated");
+
+                LoadProcesses();
+            }
+            catch
+            {
+                MessageBox.Show("Cannot terminate process");
+            }
+        }
+
+
+        private void buttonNotepad_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe");
+        }
+
+        private void buttonCalc_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc.exe");
+        }
+
+        private void buttonPaint_Click(object sender, EventArgs e)
+        {
+            Process.Start("mspaint.exe");
+        }
+
+        private void buttonCustom_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Exe files (*.exe)|*.exe";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Process.Start(dialog.FileName);
+            }
+        }
+    }
+}
