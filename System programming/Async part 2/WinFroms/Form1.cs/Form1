@@ -1,0 +1,91 @@
+using System;
+using System.IO;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WinFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        int totalFiles = 0;
+        int processedFiles = 0;
+
+        Stopwatch stopwatch = new Stopwatch();
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            buttonStart.Click += buttonStart_Click;
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            string folder = textBoxPath.Text;
+
+            if (!Directory.Exists(folder))
+            {
+                MessageBox.Show("Folder does not exist");
+                return;
+            }
+
+            listBoxLog.Items.Clear();
+
+            stopwatch.Restart();
+
+            var files = Directory.GetFiles(folder, "*.txt", SearchOption.AllDirectories);
+            totalFiles = files.Length;
+
+            listBoxLog.Items.Add($"Files found: {totalFiles}");
+
+            foreach (var file in files)
+            {
+                ThreadPool.QueueUserWorkItem(async state =>
+                {
+                    string path = (string)state;
+
+                    Invoke(new Action(() =>
+                    {
+                        listBoxLog.Items.Add($"Encryption started: {path}");
+                    }));
+
+                    string content = File.ReadAllText(path);
+
+                    string encrypted = Encrypt(content);
+
+                    await File.WriteAllTextAsync(path + ".enc", encrypted);
+
+                    Interlocked.Increment(ref processedFiles);
+
+                    if (processedFiles == totalFiles)
+                    {
+                        stopwatch.Stop();
+
+                        Invoke(new Action(() =>
+                        {
+                            labelStats.Text =
+                                $"Completed. Files: {processedFiles}, Time: {stopwatch.Elapsed}";
+                        }));
+                    }
+
+                }, file);
+            }
+        }
+
+        string Encrypt(string text)
+        {
+            char key = (char)3;
+
+            char[] result = new char[text.Length];
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                result[i] = (char)(text[i] ^ key);
+            }
+
+            return new string(result);
+        }
+    }
+}
