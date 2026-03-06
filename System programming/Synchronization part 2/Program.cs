@@ -1,88 +1,87 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-
-class Program
+namespace App
 {
-    static List<int> numbers = new List<int>();
-    static ManualResetEvent dataReadyEvent = new ManualResetEvent(false);
-
-    static void Main(string[] args)
+    class Program
     {
-        Thread generatorThread = new Thread(GenerateNumbers);
-        Thread maxThread = new Thread(FindMax);
-        Thread minThread = new Thread(FindMin);
-        Thread avgThread = new Thread(FindAverage);
+        static List<int> numbers = new List<int>();
+        static ManualResetEvent dataReadyEvent = new ManualResetEvent(false);
 
-        maxThread.Start();
-        minThread.Start();
-        avgThread.Start();
-
-        generatorThread.Start();
-
-        generatorThread.Join();
-        maxThread.Join();
-        minThread.Join();
-        avgThread.Join();
-    }
-
-    static void GenerateNumbers()
-    {
-        Random rand = new Random();
-
-        for (int i = 0; i < 1000; i++)
+        static void Main(string[] args)
         {
-            numbers.Add(rand.Next(0, 5001));
+            Thread generatorThread = new Thread(GenerateNumbers);
+            Thread maxThread = new Thread(FindMax);
+            Thread minThread = new Thread(FindMin);
+            Thread avgThread = new Thread(FindAverage);
+
+            maxThread.Start();
+            minThread.Start();
+            avgThread.Start();
+
+            generatorThread.Start();
+
+            generatorThread.Join();
+            maxThread.Join();
+            minThread.Join();
+            avgThread.Join();
         }
 
-        Console.WriteLine("Number generation finished.");
-
-        dataReadyEvent.Set();
-    }
-
-    static void FindMax()
-    {
-        dataReadyEvent.WaitOne();
-
-        int max = int.MinValue;
-
-        foreach (var n in numbers)
+        static void GenerateNumbers()
         {
-            if (n > max)
-                max = n;
+            Random rand = new Random();
+
+            for (int i = 0; i < 1000; i++)
+            {
+                numbers.Add(rand.Next(0, 5001));
+            }
+
+            Console.WriteLine("Number generation finished.");
+
+            dataReadyEvent.Set();
         }
 
-        Console.WriteLine("Maximum value: " + max);
-    }
-
-    static void FindMin()
-    {
-        dataReadyEvent.WaitOne();
-
-        int min = int.MaxValue;
-
-        foreach (var n in numbers)
+        static void FindMax()
         {
-            if (n < min)
-                min = n;
+            dataReadyEvent.WaitOne();
+
+            int max = int.MinValue;
+
+            foreach (var n in numbers)
+            {
+                if (n > max)
+                    max = n;
+            }
+
+            Console.WriteLine("Maximum value: " + max);
         }
 
-        Console.WriteLine("Minimum value: " + min);
-    }
-
-    static void FindAverage()
-    {
-        dataReadyEvent.WaitOne();
-
-        double sum = 0;
-
-        foreach (var n in numbers)
+        static void FindMin()
         {
-            sum += n;
+            dataReadyEvent.WaitOne();
+
+            int min = int.MaxValue;
+
+            foreach (var n in numbers)
+            {
+                if (n < min)
+                    min = n;
+            }
+
+            Console.WriteLine("Minimum value: " + min);
         }
 
-        double avg = sum / numbers.Count;
+        static void FindAverage()
+        {
+            dataReadyEvent.WaitOne();
 
-        Console.WriteLine("Average value: " + avg);
+            double sum = 0;
+
+            foreach (var n in numbers)
+            {
+                sum += n;
+            }
+
+            double avg = sum / numbers.Count;
+
+            Console.WriteLine("Average value: " + avg);
+        }
     }
 }
