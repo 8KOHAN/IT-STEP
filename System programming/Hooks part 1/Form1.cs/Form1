@@ -1,0 +1,164 @@
+using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace WinFormsApp3
+{
+    public partial class Form1 : Form
+    {
+        private const int WH_KEYBOARD_LL = 13;
+        private const int WH_MOUSE_LL = 14;
+
+        private const int WM_KEYDOWN = 0x0100;
+        private const int WM_KEYUP = 0x0101;
+        private const int WM_MOUSEMOVE = 0x0200;
+
+        private static IntPtr keyboardHookID = IntPtr.Zero;
+        private static IntPtr mouseHookID = IntPtr.Zero;
+
+        private static LowLevelKeyboardProc keyboardProc;
+        private static LowLevelMouseProc mouseProc;
+
+        private static bool ctrlPressed = false;
+        private static bool shiftPressed = false;
+
+        private static Form1 mainForm;
+        private static Rectangle limitRect;
+
+        public Form1()
+        {
+            InitializeComponent();
+            mainForm = this;
+
+            var screen = Screen.PrimaryScreen.Bounds;
+            int size = 500;
+
+            limitRect = new Rectangle(
+                screen.Width / 2 - size / 2,
+                screen.Height / 2 - size / 2,
+                size,
+                size
+            );
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            keyboardProc = KeyboardHookCallback;
+            mouseProc = MouseHookCallback;
+
+            keyboardHookID = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProc, IntPtr.Zero, 0);
+            mouseHookID = SetWindowsHookEx(WH_MOUSE_LL, mouseProc, IntPtr.Zero, 0);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            UnhookWindowsHookEx(keyboardHookID);
+            UnhookWindowsHookEx(mouseHookID);
+            base.OnFormClosing(e);
+        }
+
+        private static IntPtr KeyboardHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode >= 0)
+            {
+                int vkCode = Marshal.ReadInt32(lParam);
+
+                if (wParam == (IntPtr)WM_KEYDOWN)
+                {
+                    if (vkCode == 0xA2 || vkCode == 0xA3) ctrlPressed = true;
+                    if (vkCode == 0xA0 || vkCode == 0xA1) shiftPressed = true;
+
+                    if (ctrlPressed && shiftPressed && vkCode == (int)Keys.Q)
+                    {
+                        mainForm.Invoke(new Action(() =>
+                        {
+                            if (mainForm.Visible)
+                                mainForm.Hide();
+                            else
+                            {
+                                mainForm.Show();
+                                mainForm.WindowState = FormWindowState.Normal;
+                            }
+                        }));
+                    }
+                }
+                else if (wParam == (IntPtr)WM_KEYUP)
+                {
+                    if (vkCode == 0xA2 || vkCode == 0xA3) ctrlPressed = false;
+                    if (vkCode == 0xA0 || vkCode == 0xA1) shiftPressed = false;
+                }
+            }
+
+            return CallNextHookEx(keyboardHookID, nCode, wParam, lParam);
+        }
+
+        private static IntPtr MouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode >= 0 && wParam == (IntPtr)WM_MOUSEMOVE)
+            {
+                // Проверяем ALT напрямую
+                if ((GetAsyncKeyState(0x12) & 0x8000) != 0)
+                {
+                    MSLLHOOKSTRUCT hookStruct = Marshal.PtrToStructure<MSLLHOOKSTRUCT>(lParam);
+
+                    int x = hookStruct.pt.x;
+                    int y = hookStruct.pt.y;
+
+                    int newX = x;
+                    int newY = y;
+
+                    if (x < limitRect.Left) newX = limitRect.Left;
+                    if (x > limitRect.Right) newX = limitRect.Right;
+                    if (y < limitRect.Top) newY = limitRect.Top;
+                    if (y > limitRect.Bottom) newY = limitRect.Bottom;
+
+                    if (newX != x || newY != y)
+                    {
+                        SetCursorPos(newX, newY);
+                        return (IntPtr)1;
+                    }
+                }
+            }
+
+            return CallNextHookEx(mouseHookID, nCode, wParam, lParam);
+        }
+
+        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+        private delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int x;
+            public int y;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MSLLHOOKSTRUCT
+        {
+            public POINT pt;
+            public int mouseData;
+            public int flags;
+            public int time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetWindowsHookEx(int idHook, Delegate lpfn, IntPtr hMod, uint dwThreadId);
+
+        [DllImport("user32.dll")]
+        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        private static extern bool SetCursorPos(int X, int Y);
+
+        [DllImport("user32.dll")]
+        private static extern short GetAsyncKeyState(int vKey);
+    }
+}
