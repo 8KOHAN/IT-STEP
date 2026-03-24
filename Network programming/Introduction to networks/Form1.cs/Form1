@@ -1,0 +1,96 @@
+using System.Net;
+using System.Net.Sockets;
+using System.Resources;
+using System.Text;
+
+namespace SocketExample
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnRequest_Click(object sender, EventArgs e)
+        {
+            IPAddress ip = IPAddress.Loopback;
+            IPEndPoint ep = new IPEndPoint(ip, 8080); // End point ñåðâåðó
+
+            // Adress family - òèï àäðåñàö³¿ (InterNetwork - IPv4)
+            // SocketType Stream - âèêîðèñòîâóºòüñÿ TCP ïðîòîêîëîì
+            // Protocol Type - ïðîòîêîë òðàíñïîðòíîãî ð³âíÿ
+            try
+            {
+                using Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                socket.Connect(ep);
+
+                if (socket.Connected)
+                {
+                    string request = "GET / HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n";
+                    socket.Send(Encoding.UTF8.GetBytes(request));
+
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+
+                    txtResult.Clear();
+                    do
+                    {
+                        bytesRead = socket.Receive(buffer);
+                        string answer = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                        txtResult.AppendText(answer);
+                    } while (bytesRead > 0);
+                }
+            }
+            catch (SocketException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnRemoteRequest_Click(object sender, EventArgs e)
+        {
+            Uri uri = new Uri(txtHTTP.Text);
+
+            string request = $"GET {uri.AbsoluteUri} HTTP/1.1\r\nHost: {uri.Host}\r\nConnection: close\r\n\r\n";
+
+            try
+            {
+                using Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+
+                socket.Connect(uri.Host, 80);
+
+                if (socket.Connected)
+                {
+                    socket.Send(Encoding.UTF8.GetBytes(request));
+
+                    byte[] buffer = new byte[1024];
+                    int received;
+
+                    txtResult.Clear();
+                    do
+                    {
+                        received = socket.Receive(buffer);
+                        string answer = Encoding.UTF8.GetString(buffer, 0, received);
+                        txtResult.AppendText(Encoding.UTF8.GetString(buffer, 0, received));
+                    } while (received > 0);
+                }
+            }
+            catch (SocketException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
