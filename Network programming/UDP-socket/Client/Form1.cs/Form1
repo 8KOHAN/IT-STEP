@@ -1,0 +1,72 @@
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+namespace WinFormsApp2
+{
+    public partial class Form1 : Form
+    {
+        private Socket _socket;
+        private bool _isListening = false;
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        }
+
+        private async void BtnSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string serverIp = string.IsNullOrEmpty(txtServerIP.Text) ? "127.0.0.1" : txtServerIP.Text;
+                int port = int.Parse(txtServerPort.Text);
+                EndPoint serverEP = new IPEndPoint(IPAddress.Parse(serverIp), port);
+
+                string msg = txtMessage.Text;
+                byte[] data = Encoding.UTF8.GetBytes(msg);
+
+                await _socket.SendToAsync(data, serverEP);
+
+                if (!_isListening)
+                {
+                    _isListening = true;
+                    StartListening();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void StartListening()
+        {
+            byte[] buffer = new byte[1024];
+            EndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
+
+            try
+            {
+                while (true)
+                {
+                    var result = await _socket.ReceiveFromAsync(buffer, remoteEP);
+                    string reply = Encoding.UTF8.GetString(buffer, 0, result.ReceivedBytes);
+
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        txtAnswer.AppendText(reply + Environment.NewLine);
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                Invoke(new MethodInvoker(() =>
+                {
+                    txtAnswer.AppendText("Disconnected: " + ex.Message + Environment.NewLine);
+                }));
+                _isListening = false;
+            }
+        }
+    }
+}
