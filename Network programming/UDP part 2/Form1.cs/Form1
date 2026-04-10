@@ -1,0 +1,127 @@
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+namespace WinFormsChat
+{
+    public partial class Form1 : Form
+    {
+        private UdpClient _client;
+        private IPEndPoint _remoteEP;
+
+        private Dictionary<string, List<string>> chats = new();
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            _client = new UdpClient(5002);
+            _remoteEP = new IPEndPoint(IPAddress.Loopback, 5001);
+
+            Task.Run(ReceiveData);
+
+            AddNewChat("Global");
+        }
+
+        private void AddNewChat(string name)
+        {
+            if (chats.ContainsKey(name)) return;
+
+            chats[name] = new List<string>();
+
+            TabPage tab = new TabPage(name);
+
+            TextBox chatBox = new TextBox
+            {
+                Multiline = true,
+                Dock = DockStyle.Fill,
+                ReadOnly = true,
+                ScrollBars = ScrollBars.Vertical
+            };
+
+            tab.Controls.Add(chatBox);
+            tabChats.TabPages.Add(tab);
+        }
+
+        private async void btnSend_Click(object sender, EventArgs e)
+        {
+            if (tabChats.SelectedTab == null) return;
+
+            string username = txtUsername.Text;
+            string message = txtMessage.Text;
+            string colorText = txtColor.Text;
+
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Enter username!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(message)) return;
+
+            // Парсим цвет
+            if (!Enum.TryParse(colorText, true, out ConsoleColor color))
+            {
+                MessageBox.Show("Wrong color! Ex: Red, Green, Blue");
+                return;
+            }
+
+            string chatName = tabChats.SelectedTab.Text;
+
+            string fullMessage = $"{chatName}|{username}|{color}|{message}";
+            byte[] data = Encoding.UTF8.GetBytes(fullMessage);
+
+            await _client.SendAsync(data, data.Length, _remoteEP);
+
+            txtMessage.Clear();
+        }
+
+        private async Task ReceiveData()
+        {
+            while (true)
+            {
+                var result = await _client.ReceiveAsync();
+                string msg = Encoding.UTF8.GetString(result.Buffer);
+
+                string[] parts = msg.Split('|');
+
+                if (parts.Length == 4)
+                {
+                    string chatName = parts[0];
+                    string username = parts[1];
+                    ConsoleColor color = Enum.Parse<ConsoleColor>(parts[2]);
+                    string text = parts[3];
+
+                    string formatted = $"[{username}]: {text}";
+
+                    if (!chats.ContainsKey(chatName))
+                    {
+                        Invoke(() => AddNewChat(chatName));
+                    }
+
+                    chats[chatName].Add(formatted);
+
+                    Invoke(() =>
+                    {
+                        var tab = tabChats.TabPages
+                            .Cast<TabPage>()
+                            .First(t => t.Text == chatName);
+
+                        var box = tab.Controls[0] as TextBox;
+
+                        if (box != null)
+                        {
+                            box.AppendText(formatted + Environment.NewLine);
+                        }
+                    });
+                }
+            }
+        }
+
+        private void btnAddChat_Click(object sender, EventArgs e)
+        {
+            string name = "Chat" + (tabChats.TabPages.Count + 1);
+            AddNewChat(name);
+        }
+    }
+}
