@@ -1,0 +1,60 @@
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+namespace Server
+{
+    public partial class Form1 : Form
+    {
+        const int PORT = 9050;
+        UdpClient udpClient = new UdpClient(PORT);
+
+        List<IPEndPoint> clients = new();
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            Task.Run(ReceiveClients);
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            string type = txtType.Text.ToLower().Trim();
+            string message = txtMessage.Text;
+
+            bool emergency = type == "emergency";
+
+            string packet = $"{type}|{message}|{(emergency ? 1 : 0)}";
+            byte[] data = Encoding.UTF8.GetBytes(packet);
+
+            foreach (var client in clients)
+            {
+                udpClient.Send(data, data.Length, client);
+            }
+
+            MessageBox.Show("Message sent!");
+        }
+
+        private void ReceiveClients()
+        {
+            while (true)
+            {
+                IPEndPoint ep = new IPEndPoint(IPAddress.Any, 0);
+                byte[] data = udpClient.Receive(ref ep);
+
+                string msg = Encoding.UTF8.GetString(data);
+
+                if (!clients.Contains(ep))
+                {
+                    clients.Add(ep);
+
+                    Invoke(() =>
+                    {
+                        MessageBox.Show($"Client connected: {ep}");
+                    });
+                }
+            }
+        }
+    }
+}
