@@ -1,0 +1,46 @@
+using System.Net.Http;
+using System.Text;
+
+namespace WinFormsApp8
+{
+    public partial class Form1 : Form
+    {
+        private HttpClient _Client = new HttpClient();
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private async void btnSend_Click(object sender, EventArgs e)
+        {
+            string url = txtURL.Text;
+
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                MessageBox.Show("Write URL!");
+                return;
+            }
+
+            try
+            {
+                if (!url.StartsWith("http"))
+                {
+                    url = "https://" + url;
+                }
+
+                HttpResponseMessage response = await _Client.GetAsync(url);
+
+                response.EnsureSuccessStatusCode();
+
+                string html = await response.Content.ReadAsStringAsync();
+
+                txtOutput.Text = html;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message);
+            }
+        }
+    }
+}
