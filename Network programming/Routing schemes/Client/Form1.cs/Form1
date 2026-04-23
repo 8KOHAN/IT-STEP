@@ -1,0 +1,73 @@
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+namespace Client
+{
+    public partial class Form1 : Form
+    {
+        UdpClient udpClient;
+        IPEndPoint serverEP = new IPEndPoint(IPAddress.Loopback, 9050);
+
+        string[] subscribedTypes = [];
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            udpClient = new UdpClient(0); 
+
+            Task.Run(ReceiveMessages);
+        }
+
+        private async void btnConnect_Click(object sender, EventArgs e)
+        {
+            subscribedTypes = textBox1.Text
+                .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim().ToLower())
+                .ToArray();
+
+            byte[] hello = Encoding.UTF8.GetBytes("HELLO");
+            await udpClient.SendAsync(hello, hello.Length, serverEP);
+
+            MessageBox.Show("Connected!");
+        }
+
+        private async Task ReceiveMessages()
+        {
+            while (true)
+            {
+                var result = await udpClient.ReceiveAsync();
+                string msg = Encoding.UTF8.GetString(result.Buffer);
+
+                string[] parts = msg.Split('|');
+
+                if (parts.Length == 3)
+                {
+                    string type = parts[0];
+                    string text = parts[1];
+                    bool emergency = parts[2] == "1";
+
+                    if (emergency)
+                    {
+                        ShowMessage("[EMERGENCY] " + text);
+                        continue;
+                    }
+
+                    if (subscribedTypes.Contains(type))
+                    {
+                        ShowMessage($"[{type}] {text}");
+                    }
+                }
+            }
+        }
+
+        private void ShowMessage(string msg)
+        {
+            Invoke(() =>
+            {
+                txtMessage.Text = msg;
+            });
+        }
+    }
+}
