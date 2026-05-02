@@ -8,6 +8,7 @@ This repository contains my educational projects and homework completed as part 
 - **CPP/** — Tasks in C++.
 - **Entity Framework Core and Dapper/** - Data management.
 - **HTML CSS/MyState pro version/** — Adaptive layout and page styling using HTML and CSS.
+- **JavaScript/** - Tasks in JS.
 - **MS SQL Server/** - SQL queries.
 - **Network programming/** - Working with the network.
 - **Python/tictactoe/** — Console game "Tic-Tac-Toe" in Python.
