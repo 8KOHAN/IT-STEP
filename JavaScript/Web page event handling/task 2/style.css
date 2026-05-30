@@ -1,0 +1,11 @@
+body {
+    font-family: Arial;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.content {
+    padding: 40px;
+}
