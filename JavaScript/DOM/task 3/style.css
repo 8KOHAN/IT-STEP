@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 600px;
+    margin: 30px auto;
+}
+
+.item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.title {
+    background: #f0f0f0;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.content {
+    display: none;
+    padding: 15px;
+    background: white;
+}
+
+.active .content {
+    display: block;
+}
