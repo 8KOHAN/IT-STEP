@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial;
+}
+
+.traffic-light {
+    width: 120px;
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.light {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #777;
+    margin: 10px auto;
+}
+
+.red.active {
+    background: red;
+}
+
+.yellow.active {
+    background: yellow;
+}
+
+.green.active {
+    background: limegreen;
+}
+
+button {
+    padding: 10px 20px;
+}
