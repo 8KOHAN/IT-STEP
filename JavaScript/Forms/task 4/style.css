@@ -1,0 +1,14 @@
+body {
+    font-family: Arial;
+    margin: 20px
+}
+
+label {
+    display: block;
+    margin-top: 10px
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold
+}
