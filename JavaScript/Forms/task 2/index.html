@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Testing</h2>
+    <form id="quiz">
+        <div class="question">
+            <p>1. Is HTML used to create the structure of a web page?</p>
+            <label><input type="radio" name="q1" value="true"> Yes</label>
+            <label><input type="radio" name="q1" value="false"> No</label>
+        </div>
+        <div class="question">
+            <p>2. Is CSS used to work with a database?</p>
+            <label><input type="radio" name="q2" value="true"> Yes</label>
+            <label><input type="radio" name="q2" value="false"> No</label>
+        </div>
+        <div class="question">
+            <p>3. JavaScript is running in the browser?</p>
+            <label><input type="radio" name="q3" value="true"> Yes</label>
+            <label><input type="radio" name="q3" value="false"> No</label>
+        </div>
+        <button type="button" onclick="checkAnswers()">
+            Complete the test
+        </button>
+    </form>
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
