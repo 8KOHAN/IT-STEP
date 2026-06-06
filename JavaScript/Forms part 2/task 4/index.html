@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .palette {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .color {
+        width: 60px;
+        height: 60px;
+        border: 1px solid black;
+        border-radius: 15%;
+    }
+</style>
+
+<body>
+    <h2>Color Palette</h2>
+
+    <input type="color" id="newColor">
+    <button onclick="addColor()">Add Color</button>
+
+    <div class="palette" id="palette">
+        <div class="color" style="background:red"></div>
+        <div class="color" style="background:blue"></div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
