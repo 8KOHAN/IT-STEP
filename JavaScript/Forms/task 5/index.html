@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Attendance Record</h2>
+
+    <label>Group:</label>
+    <select id="group">
+        <option>KN-21</option>
+        <option>KN-22</option>
+    </select>
+
+    <br><br>
+
+    <label>Pair:</label>
+    <select id="lesson">
+        <option>1 pair</option>
+        <option>2 pair</option>
+        <option>3 pair</option>
+    </select>
+
+    <br><br>
+
+    <label>Topic:</label>
+    <input type="text" id="topic">
+
+    <h3>Students</h3>
+
+    <label><input type="checkbox" value="Ivan"> Ivan</label><br>
+    <label><input type="checkbox" value="Maria"> Maria</label><br>
+    <label><input type="checkbox" value="Oleg"> Oleg</label><br>
+    <label><input type="checkbox" value="Anna"> Anna</label><br>
+
+    <br>
+
+    <button onclick="saveAttendance()">Save</button>
+    <button onclick="showAttendance()">View</button>
+
+    <div id="history"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
