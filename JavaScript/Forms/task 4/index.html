@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Book Order</h2>
+
+    <form id="bookForm">
+        <label>Book:
+            <select id="book" required>
+                <option value="">Select a book</option>
+                <option>Kobzar</option>
+                <option>Tigrolovi</option>
+                <option>Forest Song</option>
+            </select>
+        </label>
+
+        <label>Quantity:
+            <input type="number" id="count" min="1" required>
+        </label>
+
+        <label>Name:
+            <input type="text" id="name" required>
+        </label>
+
+        <label>Delivery date:
+            <input type="date" id="date" required>
+        </label>
+
+        <label>Address:
+            <input type="text" id="address" required>
+        </label>
+
+        <label>Comment:
+            <textarea id="comment"></textarea>
+        </label>
+
+        <button type="submit">Order</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
