@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Booking tickets</h2>
+
+    <label>Direction:</label>
+    <select id="route">
+        <option>Odesa - Kyiv</option>
+        <option>Lviv - Kyiv</option>
+        <option>Kharkiv - Odesa</option>
+    </select>
+
+    <br><br>
+
+    <label>Date:</label>
+    <input type="date" id="date">
+
+    <h3>Select seats</h3>
+
+    <div class="seats">
+        <label><input type="checkbox" value="1"> Seat 1</label>
+        <label><input type="checkbox" value="2"> Seat 2</label>
+        <label><input type="checkbox" value="3"> Seat 3</label>
+        <label><input type="checkbox" value="4"> Seat 4</label>
+        <label><input type="checkbox" value="5"> Seat 5</label>
+        <label><input type="checkbox" value="6"> Seat 6</label>
+        <label><input type="checkbox" value="7"> Seat 7</label>
+        <label><input type="checkbox" value="8"> Seat 8</label>
+    </div>
+
+    <br>
+
+    <button onclick="bookTickets()">Book</button>
+    <button onclick="showBookings()">View Bookings</button>
+
+    <div id="history"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
