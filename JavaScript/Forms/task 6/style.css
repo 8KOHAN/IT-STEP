@@ -1,0 +1,15 @@
+body {
+    font-family: Arial;
+    margin: 20px
+}
+
+.seats {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#history {
+    margin-top: 20px;
+}
