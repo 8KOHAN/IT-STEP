@@ -5,12 +5,6 @@ body {
     align-items: center;
 }
 
-span {
-    font-weight: bold;
-    color: white;
-    -webkit-text-stroke: 0.25px black;
-}
-
 .color-box {
     width: 120px;
     height: 120px;
@@ -19,8 +13,16 @@ span {
     display: inline-block;
     margin: 10px;
     text-align: center;
-    padding-top: 40px;
     box-sizing: border-box;
+}
+
+.color-box div{
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    border: 2px solid, black;
+    border-radius: 5px;
+    margin-top: 15px;
 }
 
 .error {
