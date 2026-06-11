@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <h2>Color Palette</h2>
+
+    <div id="palette"></div>
+
+    <div>
+        <h3>Add new color</h3>
+
+        <label>Name:</label>
+        <input type="text" id="name">
+        <div class="error" id="nameError"></div>
+
+        <br>
+        <label>Type:</label>
+        <select id="type">
+            <option value="RGB">RGB</option>
+            <option value="RGBA">RGBA</option>
+            <option value="HEX">HEX</option>
+        </select>
+
+        <br><br>
+
+        <label>Code:</label>
+        <input type="text" id="code">
+        <div class="error" id="codeError"></div>
+
+        <br>
+    </div>
+
+    <button onclick="saveColor()">Save</button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
