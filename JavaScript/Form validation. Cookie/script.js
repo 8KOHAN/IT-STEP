@@ -154,7 +154,7 @@ function renderColors() {
         }
 
         div.innerHTML =
-            `<span>${color.name}</span><br><span>${color.type}</span><br><span>${color.code}</span>`;
+            `<div><span>${color.name}</span><br><span>${color.type}</span><br><span>${color.code}</span></div>`;
 
         palette.appendChild(div);
     });
