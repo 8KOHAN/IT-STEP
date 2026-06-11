@@ -1,0 +1,29 @@
+body {
+    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+span {
+    font-weight: bold;
+    color: white;
+    -webkit-text-stroke: 0.25px black;
+}
+
+.color-box {
+    width: 120px;
+    height: 120px;
+    border: 2px solid black;
+    border-radius: 20%;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+}
