@@ -1,0 +1,42 @@
+body {
+    background-color: blanchedalmond;
+}
+
+#form-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+}
+
+#form-info .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+#form-info .wrapper div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#form-info .wrapper div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-bottom: 10px;
+    padding-left: 1.5%;
+}
+
+#form-info .wrapper div:first-child {
+    padding-right: 1.5%;
+    padding-left: 0%;
+}
+
+#form-info button {
+    width: 100%;
+}
