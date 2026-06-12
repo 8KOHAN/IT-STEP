@@ -16,10 +16,6 @@ body {
     background: #f2f2f2;
 }
 
-.selected {
-    background: #dff0ff;
-}
-
 #user-details {
     margin-top: 20px;
     padding: 15px;
