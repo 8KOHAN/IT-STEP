@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/userinfo.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" id="form-info">
+        <div style="width:100%; display:flex; justify-content:flex-end;">
+            <button type="button" id="exit-btn">Exit</button>
+        </div>
+        <h3>Registration</h3>
+        <div class="wrapper">
+            <div>
+                <label id="firstname-label" for="FirstName-input">First Name:</label>
+                <input type="text" id="FirstName-input">
+
+                <label id="year-label" for="Year-of-birth-input">Year of birth:</label>
+                <input type="number" id="Year-of-birth-input">
+
+                <label id="phone-label" for="Phone-number-input">Phone number:</label>
+                <input type="text" id="Phone-number-input">
+            </div>
+            <div>
+                <label id="lastname-label" for="LastName-input">Last Name:</label>
+                <input type="text" id="LastName-input">
+
+                <label for="Gender-input">Gender:</label>
+                <select name="choice-gender" id="choice-gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+
+                <label id="telegram-label" for="Telegram-input">Telegram:</label>
+                <input type="text" id="Telegram-input">
+            </div>
+        </div>
+        <button>Save</button>
+    </form>
+
+
+    <script src="scripts/userinfo.js"></script>
+</body>
+
+</html>
