@@ -1,0 +1,33 @@
+body{
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: antiquewhite;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.movie{
+    border:1px solid #ccc;
+    padding:15px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.pagination-btn{
+    margin:5px;
+    padding:5px 10px;
+    cursor:pointer;
+}
+
+#details{
+    margin-top:30px;
+    border:1px solid #000;
+    padding:20px;
+}
