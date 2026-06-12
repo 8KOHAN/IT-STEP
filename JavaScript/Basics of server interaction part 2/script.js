@@ -4,7 +4,7 @@ const postsContainer = document.getElementById("posts");
 
 let selectedUserId = null;
 
-loadUsers()
+loadUsers();
 
 async function loadUsers() {
 
@@ -33,6 +33,9 @@ async function loadUsers() {
 async function showUserDetails(id) {
 
     selectedUserId = id;
+
+    postsContainer.innerHTML = "";
+    userDetails.innerHTML = "";
 
     const response =
         await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
