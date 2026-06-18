@@ -42,7 +42,7 @@ export default function Layout() {
             <Outlet />
         </main>
 
-        <footer className="border-top bg">
+        <footer className="border-top bg-body-tertiary">
             &copy; IT STEP, 2026
         </footer>
     </>
