@@ -44,8 +44,8 @@ export default function Home() {
 
     return (
         <div>
-            <Counter/>
-            <Counter/>
+            <Counter />
+            <Counter />
 
 
 
@@ -56,8 +56,10 @@ export default function Home() {
 
             <table>
                 <thead>
-                    <th>time</th>
-                    <th>Result</th>
+                    <tr>
+                        <th>time</th>
+                        <th>Result</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
