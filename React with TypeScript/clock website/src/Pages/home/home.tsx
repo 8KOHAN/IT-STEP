@@ -43,7 +43,7 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <div className="home-wrapper">
             <Counter />
             <Counter />
 

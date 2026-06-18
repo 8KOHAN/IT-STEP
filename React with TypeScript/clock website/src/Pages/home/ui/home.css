@@ -1,7 +1,12 @@
 body {
     background-color: gray;
+}
+
+.home-wrapper{
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .clock{
@@ -16,6 +21,7 @@ body {
 
 table {
     border-collapse: collapse;
+    width: 230px;
 }
 
 th,
