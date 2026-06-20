@@ -13,7 +13,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Layout />} >
                     <Route index element={<Home />} />
-                    <Route path="group" element={<Group />} />
+                    <Route path="group/:slug" element={<Group />} />
 
                     <Route path="Privacy" element={<Privacy />} />
                     <Route path="*" element={<NotFound />} />
