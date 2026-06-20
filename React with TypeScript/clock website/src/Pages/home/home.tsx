@@ -3,6 +3,7 @@ import Counter from "../../Widgets/counter/Counter";
 import "./ui/home.css"
 import type IGroup from "../../Entities/group/model/IGroup";
 import GroupApi from "../../Entities/group/api/GroupApi";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const months = [
@@ -55,13 +56,15 @@ export default function Home() {
             <h1>Shope</h1>
 
             <div className="cards row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-md-3 row-cols-xxl-5 g-4">
-                {groups.map(g => <div className="col">
+                {groups.map(g => <div className="col" key={g.id}>
                     <div className="card h-100">
-                        <img src={g.imageUrl} className="card-img-top" alt={g.name}/>
+                        <Link to={`/group/${g.slug}`}>
+                            <img src={g.imageUrl} className="card-img-top" alt={g.name} />
                             <div className="card-body">
                                 <h5 className="card-title">{g.name}</h5>
                                 <p className="card-text">{g.description}</p>
                             </div>
+                        </Link>
                     </div>
                 </div>)}
 
@@ -115,6 +118,6 @@ export default function Home() {
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 }
