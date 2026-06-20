@@ -14,13 +14,24 @@ export default function Layout() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link"><i className="bi bi-house"></i></Link>
+                            <Link to="/" className="nav-link">
+                                Home <i className="bi bi-house"></i>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/group" className="nav-link"><i className="bi bi-cart"></i></Link>
+                            <Link to="/group" className="nav-link">
+                                Group <i className="bi bi-cart"></i>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/no-page" className="nav-link"><i className="bi bi-sign-stop"></i></Link>
+                            <Link to="/Privacy" className="nav-link">
+                                Privacy <i className="bi bi-lock"></i>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/no-page" className="nav-link">
+                                404 <i className="bi bi-sign-stop"></i>
+                            </Link>
                         </li>
                     </ul>
                     <form className="d-flex" role="search">
@@ -31,19 +42,16 @@ export default function Layout() {
             </div>
         </nav>
 
-
-        <nav>
-            <Link to="/">Home</Link> |{" "}
-            <Link to="/group">Group</Link>
-        </nav>
-
         <main>
 
             <Outlet />
         </main>
 
         <footer className="border-top bg-body-tertiary">
-            &copy; IT STEP, 2026
+            <p>&copy; IT STEP, 2026</p>
+            <Link to="/Privacy" className="link-primary Privacy-a nav-link">
+                Privacy <i className="bi bi-lock"></i>
+            </Link>
         </footer>
     </>
 }
