@@ -76,7 +76,7 @@ const groups: Array<IGroup> = [
     },
 ]
 
-const groupProducts: Record<string,IGroupProduct> = {
+const groupProducts: Record<string, IGroupProduct> = {
     "PS5-Game": {
         group: groups[3],
         products: [
@@ -86,7 +86,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 description: "Культова платформна гра про пригоди Маріо.",
                 slug: "mario",
                 imageUrl: "/img/Gemini_Generated_Image_Mario.png",
-                price: 49.99,
+                price: 1499,
                 actionPrice: 1299,
                 stock: 15,
             },
@@ -94,7 +94,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 id: "4-2",
                 name: "Hollow Knight",
                 imageUrl: "/img/Gemini_Generated_Image_Hollow_knight.png",
-                price: 14.99,
+                price: 899,
                 stock: 12,
             },
             {
@@ -102,7 +102,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 name: "GTA 6",
                 description: "Очікувана гра з відкритим світом від Rockstar Games.",
                 imageUrl: "/img/Gemini_Generated_Image_GTA_6.png",
-                price: 79.99,
+                price: 2999,
             },
             {
                 id: "4-4",
@@ -118,7 +118,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 description: "Пригодницька гра про Соніка у відкритому світі.",
                 slug: "sonic-frontiers",
                 imageUrl: "/img/Gemini_Generated_Image_Sonic_Frontiers.png",
-                price: 69.99,
+                price: 1399,
                 actionPrice: 1199,
             },
             {
@@ -126,7 +126,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 name: "Hollow Knight Silksong",
                 description: "Продовження популярної метроідванії.",
                 imageUrl: "/img/Gemini_Generated_Image_Hollow_Knight_Silksong.png",
-                price: 69.99,
+                price: 1199,
                 stock: 20,
             },
             {
@@ -134,7 +134,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 name: "It Takes Two",
                 slug: "it-takes-two",
                 imageUrl: "/img/Gemini_Generated_Image_It_Takes_Two.png",
-                price: 39.99,
+                price: 1099,
                 actionPrice: 899,
                 stock: 14,
             },
@@ -143,14 +143,14 @@ const groupProducts: Record<string,IGroupProduct> = {
                 name: "Ratchet&Clank Rift Apart",
                 description: "Яскравий екшен-платформер для PlayStation.",
                 imageUrl: "/img/Gemini_Generated_Image_Ratchet_clank_Rift_Apart.png",
-                price: 69.99,
+                price: 1599,
             },
             {
                 id: "4-9",
                 name: "Goat Simulator 3",
                 slug: "goat-simulator-3",
                 imageUrl: "/img/Gemini_Generated_Image_Goat_Simulator_3.png",
-                price: 49.99,
+                price: 999,
                 stock: 11,
             },
             {
@@ -160,7 +160,7 @@ const groupProducts: Record<string,IGroupProduct> = {
                 slug: "stray",
                 imageUrl: "/img/Gemini_Generated_Image_Stray.png",
                 price: 799,
-                actionPrice: 29.99,
+                actionPrice: 699,
                 stock: 9,
             },
         ]
