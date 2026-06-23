@@ -10,6 +10,88 @@ export default interface IProductBrief {
 
 };
 
-const productBriefArrey = [
-
-]
+const productBriefArrey: IProductBrief[] = [
+  {
+    id: "4-1",
+    name: "Mario",
+    description: "Культова платформна гра про пригоди Маріо.",
+    slug: "mario",
+    imageUrl: "/img/Gemini_Generated_Image_Mario.png",
+    price: 1499,
+    actionPrice: 1299,
+    stock: 15,
+  },
+  {
+    id: "4-2",
+    name: "Hollow Knight",
+    imageUrl: "img/Gemini_Generated_Image_Hollow_knight.png",
+    price: 899,
+    stock: 12,
+  },
+  {
+    id: "4-3",
+    name: "GTA 6",
+    description: "Очікувана гра з відкритим світом від Rockstar Games.",
+    imageUrl: "/img/Gemini_Generated_Image_GTA_6.png",
+    price: 2999,
+  },
+  {
+    id: "4-4",
+    name: "Fortnite",
+    slug: "fortnite",
+    imageUrl: "/img/Gemini_Generated_Image_Fortnite.png",
+    price: 0,
+    stock: 999,
+  },
+  {
+    id: "4-5",
+    name: "Sonic Frontiers",
+    description: "Пригодницька гра про Соніка у відкритому світі.",
+    slug: "sonic-frontiers",
+    imageUrl: "/img/Gemini_Generated_Image_Sonic_Frontiers.png",
+    price: 1399,
+    actionPrice: 1199,
+  },
+  {
+    id: "4-6",
+    name: "Hollow Knight Silksong",
+    description: "Продовження популярної метроідванії.",
+    imageUrl: "/img/Gemini_Generated_Image_Hollow_Knight_Silksong.png",
+    price: 1199,
+    stock: 20,
+  },
+  {
+    id: "4-7",
+    name: "It Takes Two",
+    slug: "it-takes-two",
+    imageUrl: "/img/Gemini_Generated_Image_It_Takes_Two.png",
+    price: 1099,
+    actionPrice: 899,
+    stock: 14,
+  },
+  {
+    id: "4-8",
+    name: "Ratchet&Clank Rift Apart",
+    description: "Яскравий екшен-платформер для PlayStation.",
+    imageUrl: "/img/Gemini_Generated_Image_Ratchet_clank_Rift_Apart.png",
+    price: 1599,
+  },
+  {
+    id: "4-9",
+    name: "Goat Simulator 3",
+    slug: "goat-simulator-3",
+    imageUrl: "/img/Gemini_Generated_Image_Goat_Simulator_3.png",
+    price: 999,
+    stock: 11,
+  },
+  {
+    id: "4-10",
+    name: "Stray",
+    description: "Пригодницька гра про кота у кіберпанковому світі.",
+    slug: "stray",
+    imageUrl: "/img/Gemini_Generated_Image_Stray.png",
+    price: 799,
+    actionPrice: 699,
+    stock: 9,
+  },
+];
