@@ -9,3 +9,7 @@ export default interface IProductBrief {
     stock?: number
 
 };
+
+const productBriefArrey = [
+
+]
