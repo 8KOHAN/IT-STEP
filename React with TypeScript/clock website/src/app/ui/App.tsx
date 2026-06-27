@@ -5,21 +5,25 @@ import Group from "../../Pages/group/group";
 import Layout from "../../Pages/_layout/Layout";
 import NotFound from "../../Pages/not_found/NotFound";
 import Privacy from "../../Pages/privacy/Privacy";
+import AppContext from "../../Features/_context/AppContext";
+import { useState } from "react";
 
 export default function App() {
+    const [cart, setCart] = useState<Array<string>>([])
     return (
-        <BrowserRouter>
+        <AppContext.Provider value={{cart}}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Layout />} >
+                        <Route index element={<Home />} />
+                        <Route path="group/:slug" element={<Group />} />
 
-            <Routes>
-                <Route path="/" element={<Layout />} >
-                    <Route index element={<Home />} />
-                    <Route path="group/:slug" element={<Group />} />
-
-                    <Route path="Privacy" element={<Privacy />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+                        <Route path="Privacy" element={<Privacy />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </AppContext.Provider>
     );
 
 }
