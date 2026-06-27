@@ -1,0 +1,42 @@
+.Groups-widget-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.Groups-widget-wrapper button{
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+
+}
+
+.Groups-widget {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: cornflowerblue;
+    border: 2px solid black;
+    border-radius: 10px;
+    
+}
+
+.Groups-crop {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.Group-widget {
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    padding: 3px;
+    color: azure;
+    text-align: center;
+}
+
+.Group-widget img {
+    width: 160px;
+    border-radius: 5px;
+}

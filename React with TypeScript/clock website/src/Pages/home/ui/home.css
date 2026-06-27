@@ -10,12 +10,6 @@ body {
     width: 100%;
 }
 
-.cards{
-    margin: auto;
-    max-width: 95%;
-    margin-bottom: 20px;
-}
-
 .clock{
     background-color:darkgray;
     width: 230px;

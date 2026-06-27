@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Counter from "../../Widgets/counter/Counter";
 import "./ui/home.css"
 import type IGroup from "../../Entities/group/model/IGroup";
 import GroupApi from "../../Entities/group/api/GroupApi";
@@ -69,9 +68,6 @@ export default function Home() {
                 </div>)}
 
             </div>
-
-
-            {/* <Counter /> */}
 
 
 
