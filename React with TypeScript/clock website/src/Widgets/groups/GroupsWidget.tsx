@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './ui/GroupsWidget.css'
 import type IGroup from '../../Entities/group/model/IGroup';
 import GroupApi from '../../Entities/group/api/GroupApi';
+import { Link } from 'react-router-dom';
 
 export default function GroupsWidget() {
     const [groups, setGroups] = useState<Array<IGroup>>([]);
@@ -11,13 +12,25 @@ export default function GroupsWidget() {
         GroupApi.allGroups().then(setGroups);
     }, []);
 
-    const leftButtonClick = () => {
-        console.log(cropRef.current?.clientWidth,
-            cropRef.current?.scrollLeft,
-            cropRef.current?.scrollWidth
-        );
+    const rightButtonClick = () => {
+        let sr = cropRef.current!.scrollWidth -
+            cropRef.current!.scrollLeft -
+            cropRef.current!.clientWidth;
 
+
+        console.log(cropRef.current!.clientWidth,
+            cropRef.current!.scrollLeft,
+            cropRef.current!.scrollWidth,
+            sr
+        );
+        cropRef.current!.scrollLeft += Math.min(sr, cropRef.current!.clientWidth / 1.25);
     };
+
+
+    const leftButtonClick = () => {
+        cropRef.current!.scrollLeft -= Math.min(cropRef.current!.scrollLeft, cropRef.current!.clientWidth / 1.25);
+    };
+
     return (
         <div className='Groups-widget-wrapper'>
             <button className='btn btn-outline-light' onClick={leftButtonClick}>
@@ -25,15 +38,17 @@ export default function GroupsWidget() {
             </button>
             <div className='Groups-crop' ref={cropRef}>
                 <div className='Groups-widget '>
-                    {groups.map(g => 
-                    <div className='Group-widget ' key={g.id}
-                        title={`Перехід до групи - ${g.name}\n${g.description}`}>
-                            
-                        <img src={g.imageUrl} alt={g.name} />{g.name}
-                    </div>)}
+                    {groups.map(g =>
+                        <div className='Group-widget nav-link' key={g.id}
+                            title={`Перехід до групи - ${g.name}\n${g.description}`}>
+                            <Link to={`/group/${g.slug}`} key={g.id}>
+                                <img src={g.imageUrl} alt={g.name} /> 
+                            </Link>
+                                {g.name}
+                        </div>)}
                 </div>
             </div>
-            <button className='btn btn-outline-light'>
+            <button className='btn btn-outline-light' onClick={rightButtonClick}>
                 <i className='bi bi-caret-right'></i>
             </button>
         </div>

@@ -19,7 +19,7 @@ export default function ProductCart({ productBrief }: { productBrief: IProductBr
                             ? <div><b>₴ {productBrief.price.toFixed(2)}</b></div>
                             : <div>
                                 <div>
-                                    <s style={{textDecorationColor : "red"}}>₴ {productBrief.price.toFixed(2)}</s>
+                                    <div className="strike-price">₴ {productBrief.price.toFixed(2)}</div>
                                 </div>
                                 <div><b><b>₴ {productBrief.actionPrice.toFixed(2)}</b></b></div>
                             </div>
