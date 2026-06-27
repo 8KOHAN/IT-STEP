@@ -16,7 +16,7 @@ export default function GroupsWidget() {
             cropRef.current?.scrollLeft,
             cropRef.current?.scrollWidth
         );
-        
+
     };
     return (
         <div className='Groups-widget-wrapper'>
@@ -25,7 +25,10 @@ export default function GroupsWidget() {
             </button>
             <div className='Groups-crop' ref={cropRef}>
                 <div className='Groups-widget '>
-                    {groups.map(g => <div className='Group-widget ' key={g.id}>
+                    {groups.map(g => 
+                    <div className='Group-widget ' key={g.id}
+                        title={`Перехід до групи - ${g.name}\n${g.description}`}>
+                            
                         <img src={g.imageUrl} alt={g.name} />{g.name}
                     </div>)}
                 </div>
