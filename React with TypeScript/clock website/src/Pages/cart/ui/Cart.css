@@ -1,0 +1,12 @@
+.shopping-cart-wrapper{
+    width: 80%;
+    margin: auto;
+    background-color: aliceblue;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.shopping-cart-img{
+    border-radius: 5px;
+}

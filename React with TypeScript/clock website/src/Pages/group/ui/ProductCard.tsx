@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "../../../Features/_context/AppContext";
 
 export default function ProductCart({ productBrief }: { productBrief: IProductBrief }) {
-    const {cart, setCart} = useContext(AppContext)
+    const { cart, setCart } = useContext(AppContext)
 
     const addToCartClick = () => {
         setCart([...cart, {
@@ -12,6 +12,10 @@ export default function ProductCart({ productBrief }: { productBrief: IProductBr
             quantity: 1,
         }]);
     };
+
+    const isInCart = Boolean(cart
+        .find(ci =>
+        ci.product.id == productBrief.id))
 
 
     return <div className="col" key={productBrief.id}>
