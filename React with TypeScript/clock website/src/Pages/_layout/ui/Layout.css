@@ -25,3 +25,14 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+
+.cart-nav {
+    position: relative;
+}
+
+.cart-nav span {
+    position: absolute;
+    left: 43.5px;
+    top: -2px;
+    font-size: smaller;
+}

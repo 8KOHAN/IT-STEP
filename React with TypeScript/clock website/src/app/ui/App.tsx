@@ -7,16 +7,20 @@ import NotFound from "../../Pages/not_found/NotFound";
 import Privacy from "../../Pages/privacy/Privacy";
 import AppContext from "../../Features/_context/AppContext";
 import { useState } from "react";
+import Cart from "../../Pages/cart/Cart";
+import type ICartItem from "../../Entities/cart/model/ICartItem";
 
 export default function App() {
-    const [cart, setCart] = useState<Array<string>>([])
+    const [cart, setCart] = useState<Array<ICartItem>>([])
     return (
-        <AppContext.Provider value={{cart}}>
+        <AppContext.Provider value={{cart, setCart}}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout />} >
                         <Route index element={<Home />} />
+                        <Route path="cart" element={<Cart />} />
                         <Route path="group/:slug" element={<Group />} />
+
 
                         <Route path="Privacy" element={<Privacy />} />
                         <Route path="*" element={<NotFound />} />
