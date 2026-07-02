@@ -81,8 +81,8 @@ function CartItemView({ ci }: { ci: ICartItem }) {
                 <div className="shopping-cart-final-price">
                     {
                         typeof ci.product.actionPrice == "undefined"
-                            ? (ci.product.price * ci.quantity).toFixed(2)
-                            : (ci.product.actionPrice * ci.quantity).toFixed(2)
+                            ? (ci.product.price * ci.quantity).pad2()
+                            : (ci.product.actionPrice * ci.quantity).pad2()
                     }
                 </div>
             </div>

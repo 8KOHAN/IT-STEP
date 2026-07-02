@@ -1,3 +1,4 @@
+import "../../Shared/extensions/NumberExtensions"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "../../Pages/home/home"
 import "./App.css"
@@ -8,7 +9,6 @@ import Privacy from "../../Pages/privacy/Privacy";
 import AppContext from "../../Features/_context/AppContext";
 import { useState } from "react";
 import Cart from "../../Pages/cart/Cart";
-import type ICartItem from "../../Entities/cart/model/ICartItem";
 import type ICart from "../../Entities/cart/model/ICart";
 import CartApi from "../../Entities/cart/api/CartApi";
 
