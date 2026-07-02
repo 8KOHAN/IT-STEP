@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type IProductBrief from "../../../Entities/group/model/IProductBrief";
 import { useContext } from "react";
 import AppContext from "../../../Features/_context/AppContext";
+import StrikePrice from "../../../Widgets/strike_price/StrikePrice";
 
 export default function ProductCart({ productBrief }: { productBrief: IProductBrief }) {
     const { cart, setCart } = useContext(AppContext)
+    const navigate = useNavigate();
 
     const addToCartClick = () => {
         setCart([...cart, {
@@ -15,7 +17,7 @@ export default function ProductCart({ productBrief }: { productBrief: IProductBr
 
     const isInCart = Boolean(cart
         .find(ci =>
-        ci.product.id == productBrief.id))
+            ci.product.id == productBrief.id))
 
 
     return <div className="col" key={productBrief.id}>
@@ -28,21 +30,16 @@ export default function ProductCart({ productBrief }: { productBrief: IProductBr
                 <p className="card-text">{productBrief.description}</p>
             </div>
             <div className="card-footer d-flex justify-content-between align-items-center">
-                <div>
-                    {
-                        typeof productBrief.actionPrice == "undefined"
-                            ? <div><b>₴ {productBrief.price.toFixed(2)}</b></div>
-                            : <div>
-                                <div>
-                                    <div className="strike-price">₴ {productBrief.price.toFixed(2)}</div>
-                                </div>
-                                <div><b><b>₴ {productBrief.actionPrice.toFixed(2)}</b></b></div>
-                            </div>
-                    }
-                </div>
-                <button className="btn btn-outline-success" onClick={addToCartClick}>
-                    <i className="bi bi-cart"></i>
-                </button>
+                <StrikePrice productBrief={productBrief}/>
+                {isInCart
+                    ? <button className="btn btn-success" onClick={() => navigate('/cart')}>
+                        <i className="bi bi-cart-check"></i>
+                    </button>
+                    : <button className="btn btn-outline-success" onClick={addToCartClick}>
+                        <i className="bi bi-cart"></i>
+                    </button>
+                }
+
             </div>
         </div>
     </div>

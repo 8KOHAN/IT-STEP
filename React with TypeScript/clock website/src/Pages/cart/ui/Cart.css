@@ -1,12 +1,26 @@
-.shopping-cart-wrapper{
-    width: 80%;
+.shopping-cart-wrapper {
+    width: 95%;
     margin: auto;
-    background-color: aliceblue;
+    background-color:darkgoldenrod;
     padding: 5px;
-    border: 1px solid black;
+    border: 10px outset goldenrod;
     border-radius: 5px;
 }
 
-.shopping-cart-img{
+.shopping-cart-img {
+    width: 300px;
     border-radius: 5px;
+}
+
+.shopping-cart-name {
+    color:beige;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: capitalize; 
+}
+
+.shopping-cart-price {
+    color:beige;
+    font-size: 24px;
+    font-weight: 600;
 }

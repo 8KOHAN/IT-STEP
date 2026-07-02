@@ -1,6 +1,9 @@
 import { useContext } from "react"
 import "./ui/Cart.css"
 import AppContext from "../../Features/_context/AppContext"
+import Counter from "../../Widgets/counter/Counter";
+import type ICartItem from "../../Entities/cart/model/ICartItem";
+import StrikePrice from "../../Widgets/strike_price/StrikePrice";
 
 export default function Cart() {
     const { cart } = useContext(AppContext);
@@ -10,30 +13,50 @@ export default function Cart() {
             <h1>Shopping Cart</h1>
             {cart.length == 0
                 ? <p>Cart is empty</p>
-                : cart.map(ci => <div key={ci.product.id} className="shopping-cart-wrapper row mb-3">
-                    <div className="col col-2">
-                        <img src={ci.product.imageUrl}
-                            alt={ci.product.name}
-                            className="shopping-cart-img w-100" />
-                    </div>
-                    <div className="col col-7">
-                        {ci.product.name}
-                    </div>
-                    <div className="col col-1">
-                        {ci.product.price}
-                    </div>
-                    <div className="col col-2">
-                        {ci.quantity}
-                    </div>
-                    <div className="col col-1">
-                        {ci.product.price * ci.quantity}
-                    </div>
-
-                </div>)}
+                : cart.map(ci => <CartItemView key={ci.product.id} ci={ci} />)}
         </div>
 
         <div className="col col-4 bg-light">
             <h2>Order summary</h2>
         </div>
     </div>
+}
+
+function CartItemView({ ci }: { ci: ICartItem }) {
+    const { cart, setCart } = useContext(AppContext);
+
+    const onQuantityChange = (quantity: number) => {
+        if (quantity > 0) {
+            ci.quantity = quantity
+            setCart([...cart]);
+        } else {
+            if (confirm("Delete?")) {
+
+            }
+        }
+        console.log(quantity);
+    }
+
+    return (
+        <div className="shopping-cart-wrapper row mb-3">
+            <div>
+                <img src={ci.product.imageUrl}
+                    alt={ci.product.name}
+                    className="shopping-cart-img" />
+                <div className="shopping-cart-name">
+                    {ci.product.name}
+                </div>
+                <div className="shopping-cart-price">
+                    <StrikePrice productBrief={ci.product}/>
+                </div>
+            </div>
+            <div className="">
+                <Counter initialQuantity={ci.quantity}
+                    onChange={onQuantityChange} />
+            </div>
+            <div className="">
+                ₴{ci.product.price * ci.quantity}
+            </div>
+        </div>
+    )
 }
