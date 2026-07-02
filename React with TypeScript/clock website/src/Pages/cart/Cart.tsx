@@ -11,9 +11,9 @@ export default function Cart() {
     return <div className="row">
         <div className="col col-8">
             <h1>Shopping Cart</h1>
-            {cart.length == 0
+            {cart.cartItems.length == 0
                 ? <p>Cart is empty</p>
-                : cart.map(ci => <CartItemView key={ci.product.id} ci={ci} />)}
+                : cart.cartItems.map(ci => <CartItemView key={ci.product.id} ci={ci} />)}
         </div>
 
         <div className="col col-4 bg-light">
@@ -41,14 +41,16 @@ function CartItemView({ ci }: { ci: ICartItem }) {
         } else {
             change = false;
             if (confirm("Delete?")) {
-                setCart(
-                    cart.filter(item => item.product.id !== ci.product.id)
+                setCart({
+                    cartItems: cart.cartItems.filter(item => item.product.id !== ci.product.id),
+                    price: 0
+                }
                 );
             }
         }
 
         if (change) {
-            setCart([...cart]);
+            setCart({...cart});
         }
 
         console.log(quantity);

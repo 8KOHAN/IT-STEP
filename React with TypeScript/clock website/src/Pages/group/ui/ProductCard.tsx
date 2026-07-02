@@ -9,13 +9,17 @@ export default function ProductCart({ productBrief }: { productBrief: IProductBr
     const navigate = useNavigate();
 
     const addToCartClick = () => {
-        setCart([...cart, {
-            product: productBrief,
-            quantity: 1,
-        }]);
+        setCart({
+            cartItems: [...cart.cartItems, {
+                product: productBrief,
+                quantity: 1,
+                price: productBrief.price
+            }],
+            price: 0,
+        });
     };
 
-    const isInCart = Boolean(cart
+    const isInCart = Boolean(cart.cartItems
         .find(ci =>
             ci.product.id == productBrief.id))
 
