@@ -1,3 +1,5 @@
+import type ICart from "../../Entities/cart/model/ICart";
+import type ICartItem from "../../Entities/cart/model/ICartItem";
 import type IProductBrief from "../../Entities/group/model/IProductBrief";
 import "./ui/StrikePrice.css"
 

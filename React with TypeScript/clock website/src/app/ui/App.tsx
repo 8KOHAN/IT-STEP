@@ -10,13 +10,13 @@ import { useState } from "react";
 import Cart from "../../Pages/cart/Cart";
 import type ICartItem from "../../Entities/cart/model/ICartItem";
 import type ICart from "../../Entities/cart/model/ICart";
+import CartApi from "../../Entities/cart/api/CartApi";
 
 export default function App() {
     const [cart, setCart] = useState<ICart>({cartItems: [], price: 0})
     const updateCart = (cart: ICart): void => {
-        
-
-        setCart(cart);
+        CartApi.calculateCart(cart)
+        .then(setCart)
     };
 
     return (

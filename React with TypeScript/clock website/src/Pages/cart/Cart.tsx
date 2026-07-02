@@ -58,6 +58,8 @@ function CartItemView({ ci }: { ci: ICartItem }) {
         return change;
     }
 
+    const fullPrice = ci.product.price * ci.quantity;
+    
     return (
         <div className="shopping-cart-wrapper">
             <div>
