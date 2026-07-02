@@ -7,20 +7,22 @@ export default function Counter({
     onChange
 }: {
     initialQuantity: number,
-    onChange?: (quantity: number) => void
+    onChange?: (quantity: number) => boolean
 }) {
     const [count, setCount] = useState<number>(initialQuantity ?? 0);
 
     return (
         <div className="Counter-Wrapper">
             <RoundButton label="-" action={() => {
-                setCount(count - 1);
-                if (onChange) onChange(count - 1)
+                if (onChange && onChange(count - 1)) {
+                    setCount(count - 1);
+                }
             }} />
             <span className="count">{count}</span>
             <RoundButton label="+" action={() => {
-                setCount(count + 1);
-                if (onChange) onChange(count + 1)
+                if (onChange && onChange(count + 1)) {
+                    setCount(count + 1);
+                }
             }} />
         </div>
     );

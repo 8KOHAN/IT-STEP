@@ -1,10 +1,12 @@
 .shopping-cart-wrapper {
     width: 95%;
+    max-width: 800px;
     margin: auto;
     background-color:darkgoldenrod;
     padding: 5px;
     border: 10px outset goldenrod;
     border-radius: 5px;
+    margin-bottom: 10px;
 
     display: flex;
     flex-direction: row;
@@ -32,4 +34,8 @@
 .shopping-cart-final-price{
      font-size: 20px;
     font-weight: 600;
+}
+
+.shopping-cart-counter-wrapper{
+    margin-left: auto;
 }

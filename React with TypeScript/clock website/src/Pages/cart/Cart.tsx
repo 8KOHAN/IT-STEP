@@ -26,15 +26,34 @@ function CartItemView({ ci }: { ci: ICartItem }) {
     const { cart, setCart } = useContext(AppContext);
 
     const onQuantityChange = (quantity: number) => {
+        let change = true;
+
+        if (typeof (ci.product.stock) != "undefined") {
+            if (quantity > ci.product.stock) {
+                quantity -= 1;
+                change = false
+            }
+
+        }
+
         if (quantity > 0) {
             ci.quantity = quantity
-            setCart([...cart]);
         } else {
+            change = false;
             if (confirm("Delete?")) {
-
+                setCart(
+                    cart.filter(item => item.product.id !== ci.product.id)
+                );
             }
         }
+
+        if (change) {
+            setCart([...cart]);
+        }
+
         console.log(quantity);
+
+        return change;
     }
 
     return (
@@ -50,7 +69,7 @@ function CartItemView({ ci }: { ci: ICartItem }) {
                     <StrikePrice productBrief={ci.product} />
                 </div>
             </div>
-            <div>
+            <div className="shopping-cart-counter-wrapper">
                 <div className="shopping-cart-counter">
                     <Counter initialQuantity={ci.quantity}
                         onChange={onQuantityChange} />
