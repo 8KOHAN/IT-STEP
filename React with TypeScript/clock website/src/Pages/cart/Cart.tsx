@@ -38,7 +38,7 @@ function CartItemView({ ci }: { ci: ICartItem }) {
     }
 
     return (
-        <div className="shopping-cart-wrapper row mb-3">
+        <div className="shopping-cart-wrapper">
             <div>
                 <img src={ci.product.imageUrl}
                     alt={ci.product.name}
@@ -47,15 +47,21 @@ function CartItemView({ ci }: { ci: ICartItem }) {
                     {ci.product.name}
                 </div>
                 <div className="shopping-cart-price">
-                    <StrikePrice productBrief={ci.product}/>
+                    <StrikePrice productBrief={ci.product} />
                 </div>
             </div>
-            <div className="">
-                <Counter initialQuantity={ci.quantity}
-                    onChange={onQuantityChange} />
-            </div>
-            <div className="">
-                ₴{ci.product.price * ci.quantity}
+            <div>
+                <div className="shopping-cart-counter">
+                    <Counter initialQuantity={ci.quantity}
+                        onChange={onQuantityChange} />
+                </div>
+                <div className="shopping-cart-final-price">
+                    {
+                        typeof ci.product.actionPrice == "undefined"
+                            ? (ci.product.price * ci.quantity).toFixed(2)
+                            : (ci.product.actionPrice * ci.quantity).toFixed(2)
+                    }
+                </div>
             </div>
         </div>
     )
