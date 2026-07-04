@@ -2,15 +2,25 @@
     width: 100%;
 }
 
+.cart-wrapper h1 {
+    margin-left: 10px
+}
+
+.order-wrapper,
+.shopping-cart-wrapper {
+    background-color:darkgoldenrod;
+    border: 10px outset goldenrod;
+    border-radius: 5px;
+    height: max-content;
+    padding: 5px;
+}
+
 .shopping-cart-wrapper {
     width: 95%;
     margin-left: 10px;
     margin-bottom: 10px;
     padding: 5px;
 
-    background-color:darkgoldenrod;
-    border: 10px outset goldenrod;
-    border-radius: 5px;
 
     display: flex;
     flex-direction: row;
@@ -42,4 +52,18 @@
 
 .shopping-cart-counter-wrapper{
     margin-left: auto;
+}
+
+
+@media (max-width: 800px) {
+    .shopping-cart-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .cart-wrapper {
+        flex-direction: column;
+    }
 }

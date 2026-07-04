@@ -8,18 +8,33 @@ import StrikePrice from "../../Widgets/strike_price/StrikePrice";
 export default function Cart() {
     const { cart } = useContext(AppContext);
 
-    return <div className="row">
-        <div className="col col-8">
+    return <div className="cart-wrapper row">
             <h1>Shopping Cart</h1>
+        <div className="col col-8">
             {cart.cartItems.length == 0
                 ? <p>Cart is empty</p>
                 : cart.cartItems.map(ci => <CartItemView key={ci.product.id} ci={ci} />)}
         </div>
 
-        <div className="col col-4 bg-light">
-            <h2>Order summary</h2>
+        <div className='order-wrapper col col-4'>
+            <div className='mt-2 bg-light border p-0'>
+                <h3 className='bg-body-tertiary border-bottom py-2 text-center'>Order summary</h3>
+                <div className='d-flex justify-content-between mx-2 mb-2'>
+                    <span>Subtotal</span>
+                    <b>₴{cart.cartItems.reduce((acc, x) => acc + x.price, 0.0).pad2()}</b>
+                </div>
+                <div className='d-flex justify-content-between mx-2 mb-3'>
+                    <span>Delivery</span>
+                    <b>{cart.delivery}</b>
+                </div>
+                <div className='d-flex justify-content-between px-2 mb-1 border-top py-2'>
+                    <span>Total</span>
+                    <b>₴{cart.price.pad2()}</b>
+                </div>
+            </div>
+            <button className='btn btn-success w-100 mt-2'>Checkout</button>
         </div>
-    </div>
+    </div>;
 }
 
 function CartItemView({ ci }: { ci: ICartItem }) {
@@ -50,7 +65,7 @@ function CartItemView({ ci }: { ci: ICartItem }) {
         }
 
         if (change) {
-            setCart({...cart});
+            setCart({ ...cart });
         }
 
         console.log(quantity);
@@ -58,8 +73,6 @@ function CartItemView({ ci }: { ci: ICartItem }) {
         return change;
     }
 
-    const fullPrice = ci.product.price * ci.quantity;
-    
     return (
         <div className="shopping-cart-wrapper">
             <div>
@@ -79,7 +92,7 @@ function CartItemView({ ci }: { ci: ICartItem }) {
                         onChange={onQuantityChange} />
                 </div>
                 <div className="shopping-cart-final-price">
-                    {
+                    ₴{
                         typeof ci.product.actionPrice == "undefined"
                             ? (ci.product.price * ci.quantity).pad2()
                             : (ci.product.actionPrice * ci.quantity).pad2()
