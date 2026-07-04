@@ -9,8 +9,8 @@ export default function Cart() {
     const { cart } = useContext(AppContext);
 
     return <div className="cart-wrapper row">
-            <h1>Shopping Cart</h1>
-        <div className="col col-8">
+        <h1>Shopping Cart</h1>
+        <div className="shopping-cart-root col col-8">
             {cart.cartItems.length == 0
                 ? <p>Cart is empty</p>
                 : cart.cartItems.map(ci => <CartItemView key={ci.product.id} ci={ci} />)}
@@ -76,9 +76,11 @@ function CartItemView({ ci }: { ci: ICartItem }) {
     return (
         <div className="shopping-cart-wrapper">
             <div>
-                <img src={ci.product.imageUrl}
-                    alt={ci.product.name}
-                    className="shopping-cart-img" />
+                <div className="shopping-cart-img-wrapper">
+                    <img src={ci.product.imageUrl}
+                        alt={ci.product.name}
+                        className="shopping-cart-img" />
+                </div>
                 <div className="shopping-cart-name">
                     {ci.product.name}
                 </div>

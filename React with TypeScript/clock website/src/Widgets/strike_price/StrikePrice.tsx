@@ -1,5 +1,3 @@
-import type ICart from "../../Entities/cart/model/ICart";
-import type ICartItem from "../../Entities/cart/model/ICartItem";
 import type IProductBrief from "../../Entities/group/model/IProductBrief";
 import "./ui/StrikePrice.css"
 
@@ -9,12 +7,12 @@ export default function StrikePrice({ productBrief }:
         <div>
             {
                 typeof productBrief.actionPrice == "undefined"
-                    ? <div><b>₴ {productBrief.price.toFixed(2)}</b></div>
+                    ? <div><b>₴{productBrief.price.toFixed(2)}</b></div>
                     : <div>
                         <div>
-                            <div className="strike-price">₴ {productBrief.price.toFixed(2)}</div>
+                            <div className="strike-price">₴{productBrief.price.toFixed(2)}</div>
                         </div>
-                        <div><b><b>₴ {productBrief.actionPrice.toFixed(2)}</b></b></div>
+                        <div><b><b>₴{productBrief.actionPrice.toFixed(2)}</b></b></div>
                     </div>
             }
         </div>
