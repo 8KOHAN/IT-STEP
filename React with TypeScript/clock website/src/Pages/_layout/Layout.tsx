@@ -7,41 +7,50 @@ export default function Layout() {
     const { cart } = useContext(AppContext);
 
     return <>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-sm bg-body-tertiary">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                    <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
-                                Home <i className="bi bi-house"></i>
+                                <i className="bi bi-house"></i>
                             </Link>
                         </li>
                         <li className="nav-item cart-nav">
                             <Link to="/cart" className="nav-link">
-                                <>Cart </>
-                                <span>{cart.length}</span>
+                                <span>{cart.cartItems.length}</span>
                                 <i className="bi bi-cart"></i>
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/Privacy" className="nav-link">
-                                Privacy <i className="bi bi-lock"></i>
+                                <i className="bi bi-lock"></i>
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/no-page" className="nav-link">
-                                404 <i className="bi bi-sign-stop"></i>
+                                <i className="bi bi-sign-stop"></i>
                             </Link>
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="button">Search</button>
-                    </form>
+
+                    <div className="d-flex direction-row">
+                        <form className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-success" type="button">Search</button>
+                        </form>
+
+                        <span style={{marginLeft: "10px"}}>
+                            <Link to="/Auth" className="nav-link">
+                                <i className="bi bi-person-square"></i>
+                            </Link>
+                        </span>
+
+                    </div>
                 </div>
             </div>
         </nav>

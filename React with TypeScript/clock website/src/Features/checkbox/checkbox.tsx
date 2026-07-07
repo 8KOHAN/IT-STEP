@@ -1,6 +1,6 @@
 import "./ui/checkbox.css"
 
-export default function checkbox({ label } : { label: string }) {
+export default function Checkbox({ label } : { label: string }) {
 
 
     return (

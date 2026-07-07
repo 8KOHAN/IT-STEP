@@ -1,0 +1,41 @@
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.auth-form {
+    background-color: #e0e0e0;
+    width: 300px;
+    height: 500px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 0 6px lightgray;
+}
+
+.auth-form-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    width: 95%;
+}
+
+.remember-me-wrapper {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sign-button {
+    margin-top: 5px;
+}
+
+.flex-1 {
+    flex: 1 1 0px;
+}
+
+.auth-header {
+    text-align: center;
+    margin: 10px 0;
+}

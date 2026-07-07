@@ -11,6 +11,7 @@ import { useState } from "react";
 import Cart from "../../Pages/cart/Cart";
 import type ICart from "../../Entities/cart/model/ICart";
 import CartApi from "../../Entities/cart/api/CartApi";
+import Auth from "../../Pages/authorization/Authorization";
 
 export default function App() {
     const [cart, setCart] = useState<ICart>({cartItems: [], price: 0})
@@ -27,6 +28,7 @@ export default function App() {
                         <Route index element={<Home />} />
                         <Route path="cart" element={<Cart />} />
                         <Route path="group/:slug" element={<Group />} />
+                        <Route path="Auth" element={<Auth />} />
 
 
                         <Route path="Privacy" element={<Privacy />} />
