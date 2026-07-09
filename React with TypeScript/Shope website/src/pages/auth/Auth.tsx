@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import "./ui/Auth.css"
 import Checkbox from "../../Features/checkbox/Checkbox";
 import SignUp from "./ui/sign_up/SignUp"
+import UserApi from "../../entities/user/api/UserApi";
 
 export default function Auth() {
     const [pageMode, setPageMode] = useState<string>("singIn")
@@ -54,7 +55,11 @@ function SignIn() {
     }, [login, password])
 
     const signInClick = () => {
-        
+        UserApi.authenticate(login, password)
+        .then(u => {
+            
+        })
+        .catch(err => {});
     };
 
 
