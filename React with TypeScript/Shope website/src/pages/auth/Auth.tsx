@@ -70,7 +70,12 @@ function SignIn() {
 
     const signInClick = () => {
         UserApi.authenticate(login, password)
-        .then(setUser)
+        .then(u => {
+
+            window.localStorage.setItem("p42-token", u.token);
+            setUser(u);
+        }
+        )
         .catch(err => {
             if(err === 401) {
                 alert("у входе отказано. проверте данные")
