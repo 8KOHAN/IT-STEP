@@ -1,17 +1,28 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./ui/Auth.css"
-import Checkbox from "../../Features/checkbox/Checkbox";
 import SignUp from "./ui/sign_up/SignUp"
 import UserApi from "../../entities/user/api/UserApi";
+import AppContext from "../../Features/_context/AppContext";
+
+const PageModes = {
+    signIn: 'signIn',
+    signUp: 'signUp',
+    profile: 'profile',
+    forgotPassword: 'forgotPassword',
+} as const;
+
+type PageModes = (typeof PageModes)[keyof typeof PageModes]
 
 export default function Auth() {
-    const [pageMode, setPageMode] = useState<string>("singIn")
+    const {user} = useContext(AppContext);
+
+    const [pageMode, setPageMode] = useState<PageModes>(user ? PageModes.profile : PageModes.signIn);
 
     return (
         <div className="auth-wrapper">
             <div className="auth-form">
                 <h2>
-                    {pageMode == "signIn" ? "sign in" : "sign up"}
+                    {pageMode == PageModes.signIn ? "sign in" : "sign up"}
                 </h2>
                 <div className='d-flex justify-content-between mx-2 gap-2'>
                     <button className=
@@ -33,7 +44,7 @@ export default function Auth() {
                         sign up
                     </button>
                 </div>
-                {pageMode == "signIn" ? <SignIn /> : <SignUp />}
+                {pageMode == PageModes.signIn ? <SignIn /> : <SignUp />}
 
             </div>
 
@@ -46,6 +57,7 @@ function SignIn() {
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isFormValid, setFormValid] = useState<boolean>(false)
+    const {setUser} = useContext(AppContext);
 
     useEffect(() => {
         setFormValid(
@@ -56,10 +68,12 @@ function SignIn() {
 
     const signInClick = () => {
         UserApi.authenticate(login, password)
-        .then(u => {
-            
-        })
-        .catch(err => {});
+        .then(setUser)
+        .catch(err => {
+            if(err === 401) {
+                alert("у входе отказано. проверте данные")
+            }
+        });
     };
 
 
