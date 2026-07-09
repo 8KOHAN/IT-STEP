@@ -71,7 +71,7 @@ function SignIn() {
     const signInClick = () => {
         UserApi.authenticate(login, password)
         .then(u => {
-            window.localStorage.setItem("p42-token", u.token);
+            
             setUser(u);
         }
         )
