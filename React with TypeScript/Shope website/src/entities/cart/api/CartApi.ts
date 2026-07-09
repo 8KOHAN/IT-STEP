@@ -19,8 +19,10 @@ export default class CartApi {
                     newCart.price *= 0.95;
                     newCart.discount = "5%";
                 } else{
-                    newCart.discount = undefined;
+                    newCart.discount = "5%";
                 }
+
+                newCart.delivery = 100;
                 resolve(newCart)
             }, 500);
         })

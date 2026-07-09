@@ -19,8 +19,8 @@ export default function StrikePrice({ productBrief }:
     )
 }
 
-function StrikePriceRaw({ priceBefore, priceAfter }:
-    { priceBefore: Number, priceAfter: Number }) {
+export function StrikePriceRaw({ priceBefore, priceAfter }:
+    { priceBefore: number, priceAfter: number }) {
     return (
         <div>
             {

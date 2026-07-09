@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import "./ui/Cart.css"
 import AppContext from "../../Features/_context/AppContext"
-import Counter from "../../Widgets/counter/Counter";
+import Counter from "../../widgets/counter/Counter";
 import type ICartItem from "../../Entities/cart/model/ICartItem";
-import StrikePrice from "../../Widgets/strike_price/StrikePrice";
+import StrikePrice, { StrikePriceRaw } from "../../Widgets/strike_price/StrikePrice";
 
 export default function Cart() {
     const { cart } = useContext(AppContext);
@@ -21,11 +21,16 @@ export default function Cart() {
                 <h3 className='bg-body-tertiary border-bottom py-2 text-center'>Order summary</h3>
                 <div className='d-flex justify-content-between mx-2 mb-2'>
                     <span>Subtotal</span>
-                    <b>₴{cart.cartItems.reduce((acc, x) => acc + x.price, 0.0).pad2()}</b>
+                    {
+                        cart.price < (cart.cartItems.reduce((acc, x) => acc + x.price, 0.0))
+                            ? <StrikePriceRaw priceBefore={cart.cartItems.reduce((acc, x) => acc + x.price, 0.0)}
+                                priceAfter={cart.price} />
+                            : <b>₴{cart.cartItems.reduce((acc, x) => acc + x.price, 0.0).pad2()}</b>
+                    }
                 </div>
                 <div className='d-flex justify-content-between mx-2 mb-3'>
                     <span>Delivery</span>
-                    <b>{cart.delivery}</b>
+                    <b>₴{cart.delivery}</b>
                 </div>
                 <div className='d-flex justify-content-between px-2 mb-1 border-top py-2'>
                     <span>Total</span>
@@ -34,7 +39,7 @@ export default function Cart() {
             </div>
             <button className='btn btn-success w-100 mt-2'>Checkout</button>
         </div>
-    </div>;
+    </div >;
 }
 
 function CartItemView({ ci }: { ci: ICartItem }) {
