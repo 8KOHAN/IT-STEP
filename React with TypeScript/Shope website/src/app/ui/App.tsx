@@ -13,7 +13,7 @@ import type ICart from "../../entities/cart/model/ICart";
 import CartApi from "../../entities/cart/api/CartApi";
 import Auth from "../../pages/auth/Auth";
 import type IUser from "../../entities/user/model/IUser";
-import { getRememberUser, getUserFromJwt } from "../../entities/user/lib/UserLib";
+import { getRememberUser} from "../../entities/user/lib/UserLib";
 
 export default function App() {
     const [cart, setCart] = useState<ICart>({cartItems: [], price: 0})
