@@ -4,6 +4,7 @@ import SignUp from "./ui/sign_up/SignUp"
 import UserApi from "../../entities/user/api/UserApi";
 import AppContext from "../../Features/_context/AppContext";
 import Profile from "./ui/profile/Profile";
+import { rememberUser } from "../../entities/user/lib/UserLib";
 
 const PageModes = {
     signIn: 'signIn',
@@ -71,7 +72,7 @@ function SignIn() {
     const signInClick = () => {
         UserApi.authenticate(login, password)
         .then(u => {
-            
+            rememberUser(u);
             setUser(u);
         }
         )

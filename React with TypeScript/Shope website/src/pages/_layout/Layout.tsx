@@ -2,9 +2,15 @@ import { Link, Outlet } from "react-router-dom"
 import "./ui/Layout.css"
 import { useContext } from "react"
 import AppContext from "../../Features/_context/AppContext"
+import { clearRememberUser } from "../../entities/user/lib/UserLib";
 
 export default function Layout() {
     const { cart, user, setUser} = useContext(AppContext);
+
+    const logoutClick = () => {
+        clearRememberUser();
+        setUser(undefined);
+    }
 
     return <>
         <nav className="navbar navbar-expand-sm bg-body-tertiary">
@@ -51,7 +57,7 @@ export default function Layout() {
                             </span>
 
                             {user && <span style={{ marginLeft: "10px" }} role="button" 
-                            onClick={() => setUser(undefined)}>
+                            onClick={logoutClick}>
                                 <i className="bi bi-box-arrow-right"></i>
                             </span>}
 
