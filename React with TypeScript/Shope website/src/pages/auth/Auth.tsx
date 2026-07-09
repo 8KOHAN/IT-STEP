@@ -3,6 +3,7 @@ import "./ui/Auth.css"
 import SignUp from "./ui/sign_up/SignUp"
 import UserApi from "../../entities/user/api/UserApi";
 import AppContext from "../../Features/_context/AppContext";
+import Profile from "./ui/profile/Profile";
 
 const PageModes = {
     signIn: 'signIn',
@@ -19,6 +20,7 @@ export default function Auth() {
     const [pageMode, setPageMode] = useState<PageModes>(user ? PageModes.profile : PageModes.signIn);
 
     return (
+        user ? <Profile /> : 
         <div className="auth-wrapper">
             <div className="auth-form">
                 <h2>
