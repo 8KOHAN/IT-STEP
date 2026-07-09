@@ -1,0 +1,7 @@
+.reg-form-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    width: 95%;
+}
