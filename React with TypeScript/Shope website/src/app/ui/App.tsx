@@ -7,12 +7,13 @@ import Layout from "../../pages/_layout/Layout";
 import NotFound from "../../pages/not_found/NotFound";
 import Privacy from "../../pages/privacy/Privacy";
 import AppContext from "../../Features/_context/AppContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cart from "../../pages/cart/Cart";
 import type ICart from "../../entities/cart/model/ICart";
 import CartApi from "../../entities/cart/api/CartApi";
 import Auth from "../../pages/auth/Auth";
 import type IUser from "../../entities/user/model/IUser";
+import { getUserFromJwt } from "../../entities/user/lib/UserLib";
 
 export default function App() {
     const [cart, setCart] = useState<ICart>({cartItems: [], price: 0})
@@ -21,6 +22,13 @@ export default function App() {
         CartApi.calculateCart(cart)
         .then(setCart)
     };
+
+    useEffect(() => {
+        let token = window.localStorage.getItem("p42-token");
+        if(token) {
+            setUser(getUserFromJwt(token));
+        }
+    }, [])
 
     return (
         <AppContext.Provider value={{cart, setCart: updateCart, user, setUser}}>

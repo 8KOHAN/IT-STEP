@@ -1,4 +1,4 @@
-import Base64 from "../../../shared/base64/Base64";
+import { getUserFromJwt } from "../lib/UserLib";
 import type IUser from "../model/IUser";
 
 export default class UserApi {
@@ -12,15 +12,7 @@ export default class UserApi {
                 if(login == "user" && password == "123") {
                     let jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzgzNDQwMDE5NTcxLCJleHAiOjE3ODQ2NDk2NjIwMDAsIm5hbWUiOiJFeHBlcmluY2VkIFVzZXIiLCJlbWFpbCI6InVzZXJAaS51YSJ9.gzSraSYS8EXBxLN_oWnFSRgCzcmJmMjLiuyu5CSpyHI";
 
-                    const payload = jwt.split(".")[1];
-                    const jsonString = Base64.decodeUrl(payload);
-                    const jsonObject = JSON.parse(jsonString);
-                    resolve ({
-                        token: jwt,
-                        email: jsonObject.email,
-                        name: jsonObject.name,
-                        login: jsonObject.sub,
-                    })
+                    resolve (getUserFromJwt(jwt))
                 }
                 else {
                     reject(401);
