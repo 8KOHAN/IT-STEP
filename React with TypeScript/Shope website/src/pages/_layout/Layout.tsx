@@ -4,7 +4,7 @@ import { useContext } from "react"
 import AppContext from "../../Features/_context/AppContext"
 
 export default function Layout() {
-    const { cart } = useContext(AppContext);
+    const { cart, user, setUser} = useContext(AppContext);
 
     return <>
         <nav className="navbar navbar-expand-sm bg-body-tertiary">
@@ -43,12 +43,20 @@ export default function Layout() {
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="button">Search</button>
                         </form>
+                        <div className="d-flex align-items-center">
+                            <span style={{ marginLeft: "20px" }} title={user ? "кабинет пользывателя" : "вход до сайту"}>
+                                <Link to="/Auth" className="nav-link">
+                                    <i className="bi bi-person-square"></i>
+                                </Link>
+                            </span>
 
-                        <span style={{marginLeft: "10px"}}>
-                            <Link to="/Auth" className="nav-link">
-                                <i className="bi bi-person-square"></i>
-                            </Link>
-                        </span>
+                            {user && <span style={{ marginLeft: "10px" }} role="button" 
+                            onClick={() => setUser(undefined)}>
+                                <i className="bi bi-box-arrow-right"></i>
+                            </span>}
+
+                        </div>
+
 
                     </div>
                 </div>
