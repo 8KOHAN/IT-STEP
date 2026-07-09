@@ -77,8 +77,14 @@ export default function SignUp() {
                     aria-label="Repeat Password" aria-describedby="repeat-addon" />
             </div>
 
-            <div className="remember-me-wrapper">
-                {Checkbox({ label: " Read all" })}
+            <div className="input-group mb-3">
+                <div className="input-group-text">
+                    <input className="form-check-input mt-0" type="checkbox"
+                        onChange={e => setFormData({ ...formData, isAgree: e.target.checked })}
+                        aria-label="Погодження з правилами сайту" />
+                </div>
+                <input type="text" className="form-control" aria-label="Погодження з правилами сайту"
+                    value="Я погоджуюсь з правилами сайту" readOnly />
             </div>
 
             <button className=

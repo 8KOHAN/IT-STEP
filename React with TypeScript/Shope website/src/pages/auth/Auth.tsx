@@ -78,9 +78,8 @@ function SignIn() {
                     onChange={e => setPassword(e.target.value)}
                     aria-label="Password" aria-describedby="password-addon" />
             </div>
-            <div className="remember-me-wrapper">
-                {Checkbox({ label: "remember me" })}
-            </div>
+
+            
 
             <button className=
                 {

@@ -18,3 +18,21 @@ export default function StrikePrice({ productBrief }:
         </div>
     )
 }
+
+function StrikePriceRaw({ priceBefore, priceAfter }:
+    { priceBefore: Number, priceAfter: Number }) {
+    return (
+        <div>
+            {
+                <div>
+                    <div>
+                        <div className="strike-price">₴{priceBefore.toFixed(2)}</div>
+                    </div>
+                    <div>
+                        <b><b>₴{priceAfter.toFixed(2)}</b></b>
+                    </div>
+                </div>
+            }
+        </div>
+    )
+}

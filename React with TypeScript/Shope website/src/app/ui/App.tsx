@@ -1,17 +1,17 @@
-import "../../Shared/extensions/NumberExtensions"
+import "../../shared/extensions/NumberExtensions"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "../../Pages/home/home"
+import Home from "../../pages/home/home"
 import "./App.css"
-import Group from "../../Pages/group/group";
-import Layout from "../../Pages/_layout/Layout";
-import NotFound from "../../Pages/not_found/NotFound";
-import Privacy from "../../Pages/privacy/Privacy";
+import Group from "../../pages/group/group";
+import Layout from "../../pages/_layout/Layout";
+import NotFound from "../../pages/not_found/NotFound";
+import Privacy from "../../pages/privacy/Privacy";
 import AppContext from "../../Features/_context/AppContext";
 import { useState } from "react";
-import Cart from "../../Pages/cart/Cart";
+import Cart from "../../pages/cart/Cart";
 import type ICart from "../../Entities/cart/model/ICart";
-import CartApi from "../../Entities/cart/api/CartApi";
-import Auth from "../../Pages/authorization/Auth";
+import CartApi from "../../entities/cart/api/CartApi";
+import Auth from "../../pages/auth/Auth";
 
 export default function App() {
     const [cart, setCart] = useState<ICart>({cartItems: [], price: 0})
