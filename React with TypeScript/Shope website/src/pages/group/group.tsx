@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import "./ui/group.css";
 import { useEffect, useState } from "react";
-import type IGroupProduct from "../../Entities/group/model/IGroupProduct";
-import GroupApi from "../../Entities/group/api/GroupApi";
+import type IGroupProduct from "../../entities/group/model/IGroupProduct";
+import GroupApi from "../../entities/group/api/GroupApi";
 import ProductCard from "./ui/ProductCard";
-import GroupsWidget from "../../Widgets/groups/GroupsWidget";
+import GroupsWidget from "../../widgets/groups/GroupsWidget";
 
 export default function Group() {
     const { slug } = useParams();

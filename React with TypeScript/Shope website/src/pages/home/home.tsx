@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./ui/home.css"
 import type IGroup from "../../Entities/group/model/IGroup";
-import GroupApi from "../../Entities/group/api/GroupApi";
+import GroupApi from "../../entities/group/api/GroupApi";
 import { Link } from "react-router-dom";
 import AppContext from "../../features/_context/AppContext";
 
@@ -11,7 +11,7 @@ const preload_grp: Array<IGroup> = Array.from({length: 20}, (_, i) => {
         name: "Loading...",
         description: "Loading...",
         slug: "",
-        imageUrl: "/img/серый_фон.png"
+        imageUrl: "/img/чорный_фон.png"
     }
 });
 
@@ -55,7 +55,7 @@ export default function Home() {
         sec: format(data.getSeconds())
     }
 
-    const [groups, setGroups] = useState<Array<IGroup>>([]);
+    const [groups, setGroups] = useState<Array<IGroup>>(preload_grp);
     const { setLoading } = useContext(AppContext)
 
     useEffect(() => {
