@@ -173,7 +173,7 @@ export default class GroupApi {
         return new Promise<Array<IGroup>>((resolve, reject) => {
             setTimeout(
                 () => resolve(groups),
-                500
+                1500
             )
         })
     }
@@ -193,7 +193,7 @@ export default class GroupApi {
                         reject("Not Found");
                     }
                 },
-                500
+                1500
             );
         });
 
