@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./ui/home.css"
 import type IGroup from "../../Entities/group/model/IGroup";
 import GroupApi from "../../Entities/group/api/GroupApi";
 import { Link } from "react-router-dom";
+import AppContext from "../../features/_context/AppContext";
 
 export default function Home() {
     const months = [
@@ -45,9 +46,16 @@ export default function Home() {
     }
 
     const [groups, setGroups] = useState<Array<IGroup>>([]);
+    const { setLoading } = useContext(AppContext)
 
     useEffect(() => {
-        GroupApi.allGroups().then(setGroups);
+        setLoading(true);
+        GroupApi.allGroups()
+            .then(setGroups)
+            .finally(() => {
+                setLoading(false);
+
+            });
     }, []);
 
     return (

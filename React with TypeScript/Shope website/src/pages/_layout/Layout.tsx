@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom"
 import "./ui/Layout.css"
 import { useContext } from "react"
-import AppContext from "../../Features/_context/AppContext"
+import AppContext from "../../features/_context/AppContext"
 import { clearRememberUser } from "../../entities/user/lib/UserLib";
 
 export default function Layout() {
-    const { cart, user, setUser} = useContext(AppContext);
+    const { cart, user, setUser, isLoading } = useContext(AppContext);
 
     const logoutClick = () => {
         clearRememberUser();
@@ -56,8 +56,8 @@ export default function Layout() {
                                 </Link>
                             </span>
 
-                            {user && <span style={{ marginLeft: "10px" }} role="button" 
-                            onClick={logoutClick}>
+                            {user && <span style={{ marginLeft: "10px" }} role="button"
+                                onClick={logoutClick}>
                                 <i className="bi bi-box-arrow-right"></i>
                             </span>}
 
@@ -70,8 +70,12 @@ export default function Layout() {
         </nav>
 
         <main>
-
             <Outlet />
+            {
+                isLoading && <div className="preloader">
+                    
+                </div>
+            }
         </main>
 
         <footer className="border-top bg-body-tertiary">
