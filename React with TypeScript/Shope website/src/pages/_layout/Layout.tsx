@@ -73,7 +73,7 @@ export default function Layout() {
             <Outlet />
             {
                 isLoading && <div className="preloader">
-                    
+                    <img src="/img/cupertino_activity_indicator_selective.gif" alt="loader" />
                 </div>
             }
         </main>

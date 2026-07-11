@@ -5,6 +5,16 @@ import GroupApi from "../../Entities/group/api/GroupApi";
 import { Link } from "react-router-dom";
 import AppContext from "../../features/_context/AppContext";
 
+const preload_grp: Array<IGroup> = Array.from({length: 20}, (_, i) => {
+    return{
+        id: i+1+"",
+        name: "Loading...",
+        description: "Loading...",
+        slug: "",
+        imageUrl: "/img/серый_фон.png"
+    }
+});
+
 export default function Home() {
     const months = [
         "January",

@@ -27,6 +27,14 @@ main {
     bottom: 0;
 
     background-color: #bbbbbbbb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader img {
+    width: 150px;
 }
 
 
