@@ -11,6 +11,8 @@ import Router from "./Router";
 export default function App() {
     const [cart, setCart] = useState<ICart>({cartItems: [], price: 0})
     const [user, setUser] = useState<IUser|undefined>();
+    const [isLoading, setLoading] = useState<boolean>(false);
+
     const updateCart = (cart: ICart): void => {
         CartApi.calculateCart(cart)
         .then(setCart)
@@ -21,7 +23,7 @@ export default function App() {
     }, [])
 
     return (
-        <AppContext.Provider value={{cart, setCart: updateCart, user, setUser}}>
+        <AppContext.Provider value={{cart, setCart: updateCart, user, setUser, isLoading, setLoading}}>
             <Router/>
         </AppContext.Provider>
     );

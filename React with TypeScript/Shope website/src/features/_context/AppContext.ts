@@ -12,6 +12,11 @@ const AppContext = createContext<IAppContext>({
     user: undefined,
     setUser(_) {
         throw "setUser: Not implemanted"
+    },
+
+    isLoading:false,
+    setLoading(_) {
+        throw "setLoading: Not implemented";
     }
 });
 
