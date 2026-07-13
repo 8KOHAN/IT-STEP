@@ -9,3 +9,26 @@
 .sign-button {
     margin-top: 5px;
 }
+
+.Forgotten-Password-Button {
+    background: transparent;
+    border: none;
+    color: #0d6efd;
+    cursor: pointer;
+
+    margin: 12px auto 0;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: color 0.2s ease;
+}
+
+.Forgotten-Password-Button:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+.Forgotten-Password-Button:active {
+    transform: scale(0.98);
+}

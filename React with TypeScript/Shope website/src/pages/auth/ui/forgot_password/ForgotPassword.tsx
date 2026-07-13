@@ -1,6 +1,6 @@
 import "./ForgotPassword.css"
 
-export default function ForgottenPassword() {
+export default function ForgotPassword() {
     return (
         <div>
             ForgottenPassword

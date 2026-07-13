@@ -3,21 +3,14 @@ import "./ui/Auth.css"
 import SignUp from "./ui/sign_up/SignUp"
 import AppContext from "../../features/_context/AppContext";
 import Profile from "./ui/profile/Profile";
-import SignIn from "./ui/sign_in/signIn";
-
-const PageModes = {
-    signIn: 'signIn',
-    signUp: 'signUp',
-    profile: 'profile',
-    forgotPassword: 'forgotPassword',
-} as const;
-
-type PageModes = (typeof PageModes)[keyof typeof PageModes]
+import SignIn from "./ui/sign_in/SignIn";
+import ForgotPassword from "./ui/forgot_password/ForgotPassword";
+import { PageModes, type PageMode } from "./model/PageModes";
 
 export default function Auth() {
     const {user} = useContext(AppContext);
 
-    const [pageMode, setPageMode] = useState<PageModes>(user ? PageModes.profile : PageModes.signIn);
+    const [pageMode, setPageMode] = useState<PageMode>(user ? PageModes.profile : PageModes.signIn);
 
     return (
         user ? <Profile /> : 
@@ -46,7 +39,7 @@ export default function Auth() {
                         sign up
                     </button>
                 </div>
-                {pageMode == PageModes.signIn ? <SignIn /> : <SignUp />}
+                {pageMode == PageModes.signIn ? <SignIn setPageMode={setPageMode} /> : pageMode == PageModes.signUp ? <SignUp/> : <ForgotPassword/>}
 
             </div>
 

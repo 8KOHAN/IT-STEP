@@ -14,7 +14,7 @@ const initialFormData: IFormData = {
     email: "",
     password: "",
     repeat: "",
-    isAgree: true,
+    isAgree: false,
 }
 
 function isEmailValid(email: string) {

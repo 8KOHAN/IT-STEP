@@ -1,14 +1,20 @@
 import { useContext, useEffect, useState } from "react";
-import "./signIn.css"
+import "./SignIn.css"
 import AppContext from "../../../../features/_context/AppContext";
 import { rememberUser } from "../../../../entities/user/lib/UserLib";
 import UserApi from "../../../../entities/user/api/UserApi";
+import { PageModes, type PageMode } from "../../model/PageModes";
 
-export default function SignIn() {
+type SignInProps = {
+    setPageMode: React.Dispatch<React.SetStateAction<PageMode>>;
+};
+
+export default function SignIn({setPageMode}: SignInProps) {
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isFormValid, setFormValid] = useState<boolean>(false)
     const {setUser} = useContext(AppContext);
+
 
     useEffect(() => {
         setFormValid(
@@ -31,7 +37,6 @@ export default function SignIn() {
         });
     };
 
-
     return (
         <div className="auth-form-content">
 
@@ -53,8 +58,6 @@ export default function SignIn() {
                     aria-label="Password" aria-describedby="password-addon" />
             </div>
 
-            
-
             <button className=
                 {
                     `sign-button btn btn-${isFormValid
@@ -63,6 +66,10 @@ export default function SignIn() {
                 }
                 onClick={isFormValid ? signInClick : undefined}>
                 sign in
+            </button>
+
+            <button className="Forgotten-Password-Button" onClick={() => setPageMode(PageModes.forgotPassword)}>
+                забыли пороль?
             </button>
 
         </div>
