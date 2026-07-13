@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom"
 import "./ui/Layout.css"
-import { useContext, useEffect} from "react"
+import { useContext} from "react"
 import AppContext from "../../features/_context/AppContext"
 import { clearRememberUser } from "../../entities/user/lib/UserLib";
 

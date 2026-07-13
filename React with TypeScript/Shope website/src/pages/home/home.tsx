@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "./ui/home.css"
-import type IGroup from "../../Entities/group/model/IGroup";
+import type IGroup from "../../entities/group/model/IGroup";
 import GroupApi from "../../entities/group/api/GroupApi";
 import { Link } from "react-router-dom";
 import AppContext from "../../features/_context/AppContext";

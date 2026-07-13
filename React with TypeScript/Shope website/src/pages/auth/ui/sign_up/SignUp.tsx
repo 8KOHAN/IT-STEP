@@ -1,6 +1,5 @@
 import { useState } from "react"
 import "./SignUp.css"
-import Checkbox from "../../../../Features/checkbox/Checkbox";
 
 interface IFormData {
     login: string,

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./Profile.css";
-import AppContext from "../../../../Features/_context/AppContext";
+import AppContext from "../../../../features/_context/AppContext";
 
 export default function Profile() {
     const {user} = useContext(AppContext);

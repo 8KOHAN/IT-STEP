@@ -1,4 +1,4 @@
-import type IProductBrief from "../../Entities/group/model/IProductBrief";
+import type IProductBrief from "../../entities/group/model/IProductBrief";
 import "./ui/StrikePrice.css"
 
 export default function StrikePrice({ productBrief }:

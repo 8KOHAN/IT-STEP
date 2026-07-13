@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import "./ui/Auth.css"
 import SignUp from "./ui/sign_up/SignUp"
 import UserApi from "../../entities/user/api/UserApi";
-import AppContext from "../../Features/_context/AppContext";
+import AppContext from "../../features/_context/AppContext";
 import Profile from "./ui/profile/Profile";
 import { rememberUser } from "../../entities/user/lib/UserLib";
 

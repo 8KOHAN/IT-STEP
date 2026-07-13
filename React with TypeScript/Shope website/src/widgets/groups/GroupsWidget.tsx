@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './ui/GroupsWidget.css'
-import type IGroup from '../../Entities/group/model/IGroup';
-import GroupApi from '../../Entities/group/api/GroupApi';
+import type IGroup from '../../entities/group/model/IGroup';
+import GroupApi from '../../entities/group/api/GroupApi';
 import { Link } from 'react-router-dom';
 
 export default function GroupsWidget() {

@@ -1,6 +1,6 @@
 import "./ui/Counter.css"
 import { useState } from "react";
-import RoundButton from "../../Features/round-button/RoundButton";
+import RoundButton from "../../features/round-button/RoundButton";
 
 export default function Counter({
     initialQuantity,

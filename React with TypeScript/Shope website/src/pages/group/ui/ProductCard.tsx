@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import type IProductBrief from "../../../Entities/group/model/IProductBrief";
+import type IProductBrief from "../../../entities/group/model/IProductBrief";
 import { useContext } from "react";
-import AppContext from "../../../Features/_context/AppContext";
-import StrikePrice from "../../../Widgets/strike_price/StrikePrice";
+import AppContext from "../../../features/_context/AppContext";
+import StrikePrice from "../../../widgets/strike_price/StrikePrice";
 
 export default function ProductCart({ productBrief }: { productBrief: IProductBrief }) {
     const { cart, setCart } = useContext(AppContext)

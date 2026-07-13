@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import "./ui/Cart.css"
-import AppContext from "../../Features/_context/AppContext"
+import AppContext from "../../features/_context/AppContext"
 import Counter from "../../widgets/counter/Counter";
-import type ICartItem from "../../Entities/cart/model/ICartItem";
-import StrikePrice, { StrikePriceRaw } from "../../Widgets/strike_price/StrikePrice";
+import type ICartItem from "../../entities/cart/model/ICartItem";
+import StrikePrice, { StrikePriceRaw } from "../../widgets/strike_price/StrikePrice";
 
 export default function Cart() {
     const { cart } = useContext(AppContext);
