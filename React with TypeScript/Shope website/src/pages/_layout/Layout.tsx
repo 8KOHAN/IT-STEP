@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom"
 import "./ui/Layout.css"
-import { useContext } from "react"
+import { useContext, useEffect} from "react"
 import AppContext from "../../features/_context/AppContext"
 import { clearRememberUser } from "../../entities/user/lib/UserLib";
 
@@ -69,11 +69,12 @@ export default function Layout() {
             </div>
         </nav>
 
+
         <main>
             <Outlet />
             {
                 isLoading && <div className="preloader">
-                    <img src="/img/cupertino_activity_indicator_selective.gif" alt="loader" />
+                    
                 </div>
             }
         </main>

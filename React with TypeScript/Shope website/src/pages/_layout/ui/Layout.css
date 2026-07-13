@@ -26,11 +26,13 @@ main {
     right: 0;
     bottom: 0;
 
-    background-color: #bbbbbbbb;
-
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-color: #bbbbbbbb;
+
+    z-index: 100;
 }
 
 .preloader img {
