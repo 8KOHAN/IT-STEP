@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./SignIn.css"
-import AppContext from "../../../../features/_context/AppContext";
-import { rememberUser } from "../../../../entities/user/lib/UserLib";
-import UserApi from "../../../../entities/user/api/UserApi";
 import { PageModes, type PageMode } from "../../model/PageModes";
+import { SignInClick } from "../../lib/SignInClick";
 
 type SignInProps = {
     setPageMode: React.Dispatch<React.SetStateAction<PageMode>>;
@@ -13,8 +11,7 @@ export default function SignIn({setPageMode}: SignInProps) {
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isFormValid, setFormValid] = useState<boolean>(false)
-    const {setUser} = useContext(AppContext);
-
+    const signIn = SignInClick();
 
     useEffect(() => {
         setFormValid(
@@ -22,20 +19,6 @@ export default function SignIn({setPageMode}: SignInProps) {
             password.length > 2
         )
     }, [login, password])
-
-    const signInClick = () => {
-        UserApi.authenticate(login, password)
-        .then(u => {
-            rememberUser(u);
-            setUser(u);
-        }
-        )
-        .catch(err => {
-            if(err === 401) {
-                alert("у входе отказано. проверте данные")
-            }
-        });
-    };
 
     return (
         <div className="auth-form-content">
@@ -64,7 +47,7 @@ export default function SignIn({setPageMode}: SignInProps) {
                         ? "primary"
                         : "secondary"}`
                 }
-                onClick={isFormValid ? signInClick : undefined}>
+                onClick={() => signIn(login, password)}>
                 sign in
             </button>
 

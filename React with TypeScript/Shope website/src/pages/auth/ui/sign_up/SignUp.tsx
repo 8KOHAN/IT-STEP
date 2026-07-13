@@ -26,16 +26,24 @@ export default function SignUp() {
         useState<IFormData>(initialFormData);
 
     const valids = {
+        login: /^[a-zA-Z0-9_]{3,20}$/.test(formData.login),
         email: isEmailValid(formData.email),
+        password:
+            /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/.test(formData.password),
+        repeat:
+            formData.password === formData.repeat,
+        isAgree: formData.isAgree,
     };
 
-    const isFormValid: boolean = formData.login.length > 2 &&
-        formData.password.length > 2 &&
-        formData.email.length > 5 &&
-        formData.password == formData.repeat &&
-        formData.isAgree;
+    const isFormValid =
+        valids.login &&
+        valids.email &&
+        valids.password &&
+        valids.repeat &&
+        valids.isAgree;
 
     const emailFeedback = "Адреса e-пошти повинна мистити символи '@' та '.'";
+
 
     return (
         <div className="reg-form-content">
@@ -52,7 +60,14 @@ export default function SignUp() {
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="login-addon"><i className="bi bi-lock"></i></span>
-                <input className="form-control"
+                <input className={
+                    "form-control " +
+                    (formData.login.length === 0
+                        ? ""
+                        : valids.login
+                            ? "is-valid"
+                            : "is-invalid")
+                }
                     type='text' placeholder='Логін'
                     value={formData.login}
                     onChange={e => setFormData({ ...formData, login: e.target.value })}
@@ -61,7 +76,14 @@ export default function SignUp() {
 
             <div className="input-group mb-3">
                 <span className="input-group-text" id="password-addon"><i className="bi bi-key"></i></span>
-                <input className="form-control"
+                <input className={
+                    "form-control " +
+                    (formData.password.length === 0
+                        ? ""
+                        : valids.password
+                            ? "is-valid"
+                            : "is-invalid")
+                }
                     type='password' placeholder='********'
                     value={formData.password}
                     onChange={e => setFormData({ ...formData, password: e.target.value })}
@@ -69,7 +91,14 @@ export default function SignUp() {
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="repeat-addon"><i className="bi bi-key-fill"></i></span>
-                <input className="form-control"
+                <input className={
+                    "form-control " +
+                    (formData.repeat.length === 0
+                        ? ""
+                        : valids.repeat
+                            ? "is-valid"
+                            : "is-invalid")
+                }
                     type='password' placeholder='********'
                     value={formData.repeat}
                     onChange={e => setFormData({ ...formData, repeat: e.target.value })}

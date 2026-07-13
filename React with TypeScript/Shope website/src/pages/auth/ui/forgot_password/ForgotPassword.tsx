@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import "./ForgotPassword.css"
-import { getRememberUser } from "../../../../entities/user/lib/UserLib";
+import { SignInClick } from "../../lib/SignInClick";
 
 export default function ForgotPassword() {
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [repeat, setRepeat] = useState<string>("");
     const [isFormValid, setFormValid] = useState<boolean>(false)
+    const signIn = SignInClick();
 
     useEffect(() => {
             setFormValid(
-                login === getRememberUser()?.login &&
+                login.length > 2 &&
                 password.length > 2
             )
         }, [login, password])
@@ -45,11 +46,11 @@ export default function ForgotPassword() {
 
             <button className=
                 {
-                    `sign-button btn btn-${isFormValid
+                    `sign-button  btn btn-${isFormValid
                         ? "primary"
                         : "secondary"}`
                 }
-                onClick={isFormValid ? signInClick : undefined}>
+                onClick={() => signIn(login, password)}>
                 sign in
             </button>
         </div>
