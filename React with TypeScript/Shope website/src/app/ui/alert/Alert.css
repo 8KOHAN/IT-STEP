@@ -1,0 +1,22 @@
+.alert-bg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background: #77777777;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-fg {
+    background-color: #fcfcfc;
+    width: 33vw;
+    min-width: 300px;
+    
+    height: 50vh;
+    min-height: 450px
+}
