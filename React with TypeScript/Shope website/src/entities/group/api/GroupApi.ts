@@ -1,5 +1,6 @@
 import type IGroup from "../model/IGroup";
 import type IGroupProduct from "../model/IGroupProduct";
+import Request from "../../_request/Request";
 
 const groups: Array<IGroup> = [
     {
@@ -170,32 +171,23 @@ const groupProducts: Record<string, IGroupProduct> = {
 
 export default class GroupApi {
     static allGroups(): Promise<Array<IGroup>> {
-        return new Promise<Array<IGroup>>((resolve, reject) => {
-            setTimeout(
-                () => resolve(groups),
-                1500
-            )
-        })
+        // return new Promise<Array<IGroup>>((resolve, reject) => {
+        //     setTimeout(
+        //         () => resolve(groups),
+        //         1500
+        //     )
+        // })
+
+        return Request.getCached("/groups", undefined, groups) as Promise<Array<IGroup>>
     }
 
     static groupDetails(slug: string): Promise<IGroupProduct> {
-        return new Promise<IGroupProduct>((resolve, reject) => {
-            setTimeout(
-                () => {
-                    let group = groups.find(g => g.slug == slug);
-                    if (group) {
-                        resolve({
-                            group,
-                            products: typeof groupProducts[slug] == "undefined" ? [] : groupProducts[slug].products,
-                        });
-                    }
-                    else {
-                        reject("Not Found");
-                    }
-                },
-                1500
-            );
-        });
+        return Request.getCached(`/group/:${slug}`, undefined,
+            {
+                group: groups.find(g => g.slug == slug),
+                products: typeof groupProducts[slug] == "undefined" ? [] : groupProducts[slug].products
+            }
+        ) as Promise<IGroupProduct>;
 
     }
 }
