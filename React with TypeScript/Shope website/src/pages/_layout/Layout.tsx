@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom"
 import "./ui/Layout.css"
-import { useContext} from "react"
+import { useContext } from "react"
 import AppContext from "../../features/_context/AppContext"
 import { clearRememberUser } from "../../entities/user/lib/UserLib";
 
 export default function Layout() {
-    const { cart, user, setUser, isLoading } = useContext(AppContext);
+    const { cart, user, setUser, isLoading, showAlert } = useContext(AppContext);
 
     const logoutClick = () => {
         clearRememberUser();
@@ -41,6 +41,13 @@ export default function Layout() {
                             <Link to="/no-page" className="nav-link">
                                 <i className="bi bi-sign-stop"></i>
                             </Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <span onClick={() => showAlert({ message: "Hello" })}
+                                className="nav-link">
+                                <i className="bi bi-key"></i>
+                            </span>
                         </li>
                     </ul>
 

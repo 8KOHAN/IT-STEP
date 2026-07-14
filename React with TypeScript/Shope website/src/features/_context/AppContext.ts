@@ -17,7 +17,11 @@ const AppContext = createContext<IAppContext>({
     isLoading:false,
     setLoading(_) {
         throw "setLoading: Not implemented";
-    }
+    },
+
+    showAlert(_) {
+        throw "showAlert: Not implemented"
+    },
 });
 
 export default AppContext;
