@@ -15,7 +15,6 @@ export default function App() {
     const [user, setUser] = useState<IUser | undefined>();
     const [isLoading, setLoading] = useState<boolean>(false);
     const [alertData, setAlertData] = useState<IAlertData | null>(null)
-    const showAlert = setAlertData;
 
     const updateCart = (cart: ICart): void => {
         CartApi.calculateCart(cart)
@@ -31,10 +30,10 @@ export default function App() {
             cart, setCart: updateCart,
             user, setUser,
             isLoading, setLoading,
-            showAlert
+            showAlert: setAlertData,
         }}>
             <Router />
-            {alertData && <Alert />}
+            {alertData && <Alert data={alertData} />}
         </AppContext.Provider>
     );
 
