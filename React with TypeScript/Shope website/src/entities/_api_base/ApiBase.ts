@@ -6,7 +6,7 @@ interface ICacheItem {
 
 const cache: Record<string, ICacheItem> = {};
 
-export default class Request {
+export default class ApiBase {
     static getCached(url: string, conf?: object, fallback?: Object): Promise<object> {
         return new Promise((resolve, reject) => {
             if (typeof cache[url] != 'undefined') {

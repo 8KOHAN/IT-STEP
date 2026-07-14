@@ -1,6 +1,6 @@
 import type IGroup from "../model/IGroup";
 import type IGroupProduct from "../model/IGroupProduct";
-import Request from "../../_request/Request";
+import ApiBase from "../../_api_base/ApiBase";
 
 const groups: Array<IGroup> = [
     {
@@ -178,11 +178,11 @@ export default class GroupApi {
         //     )
         // })
 
-        return Request.getCached("/groups", undefined, groups) as Promise<Array<IGroup>>
+        return ApiBase.getCached("/groups", undefined, groups) as Promise<Array<IGroup>>
     }
 
     static groupDetails(slug: string): Promise<IGroupProduct> {
-        return Request.getCached(`/group/:${slug}`, undefined,
+        return ApiBase.getCached(`/group/:${slug}`, undefined,
             {
                 group: groups.find(g => g.slug == slug),
                 products: typeof groupProducts[slug] == "undefined" ? [] : groupProducts[slug].products
