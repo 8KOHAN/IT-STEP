@@ -19,7 +19,7 @@ main {
     position: relative;
 }
 
-.preloader{
+.preloader {
     position: absolute;
     left: 0;
     top: 0;
@@ -36,7 +36,7 @@ main {
 }
 
 .preloader img {
-     position: fixed;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -65,4 +65,10 @@ footer {
     left: 13.5px;
     top: -2px;
     font-size: smaller;
+}
+
+@media (max-width: 450px) {
+    .preloader img {
+        width: 100px;
+    }
 }
