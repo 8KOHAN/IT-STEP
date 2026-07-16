@@ -9,8 +9,12 @@ export default function Alert({ data }: { data: IAlertData }) {
     const title = data.title ? data.title : "Модальное вікно";
 
     return (
-        <div className="alert-bg">
-            <div className="alert-fg shadow-lg">
+        <div className="alert-bg" onClick={() => {
+            if (data.isCancelable) {
+                showAlert(null)
+            }
+        }}>
+            <div className="alert-fg shadow-lg" onClick={e => e.stopPropagation()}>
                 <div className="alert-header">
                     <h2>{title}</h2>
                 </div>
@@ -18,14 +22,17 @@ export default function Alert({ data }: { data: IAlertData }) {
                     {data.message}
                 </div>
 
-                {data.buttons && data.buttons.length > 0
-                    ? data.buttons.map(btn => <button key={btn.title}
-                        onClick={btn.action}>{btn.title}</button>)
-
-                    : <button className="btn btn-danger"
+                <div className="alert-buttons">
+                    {data.buttons && data.buttons.length > 0
+                        ? data.buttons.map(btn => <button className="buttons" key={btn.title}
+                            onClick={btn.action}>{btn.title}</button>)
+                        : null
+                    }
+                    <button className="alert-btn-close btn btn-danger"
                         onClick={() => showAlert(null)}
                     ><i className="bi bi-x-circle"> Close</i></button>
-                }
+
+                </div>
             </div>
         </div>
     );

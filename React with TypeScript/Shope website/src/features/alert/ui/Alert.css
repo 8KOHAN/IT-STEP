@@ -44,8 +44,20 @@
     border-radius: 12px;
 }
 
-.alert-fg button {
+.alert-buttons {
     margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.alert-btn-close{
+    margin-top: 25px;
     height: 40px;
     border-radius: 10px;
 }
