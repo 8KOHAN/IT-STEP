@@ -5,4 +5,5 @@ export default interface IAlertData {
     message: string,
     buttons?: IAlertButton[],
     isCancelable?: boolean,
+    onCancel?: () => void,
 }

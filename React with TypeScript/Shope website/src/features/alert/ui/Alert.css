@@ -50,14 +50,8 @@
     flex-direction: column;
 }
 
-.buttons {
+.alert-fg button {
     margin-top: 10px;
-    height: 40px;
-    border-radius: 10px;
-}
-
-.alert-btn-close{
-    margin-top: 25px;
     height: 40px;
     border-radius: 10px;
 }

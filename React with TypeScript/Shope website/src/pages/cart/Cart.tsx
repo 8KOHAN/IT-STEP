@@ -43,7 +43,7 @@ export default function Cart() {
 }
 
 function CartItemView({ ci }: { ci: ICartItem }) {
-    const { cart, setCart } = useContext(AppContext);
+    const { cart, setCart, showAlert } = useContext(AppContext);
 
     const onQuantityChange = (quantity: number) => {
         let change = true;
@@ -60,12 +60,24 @@ function CartItemView({ ci }: { ci: ICartItem }) {
             ci.quantity = quantity
         } else {
             change = false;
-            if (confirm("Delete?")) {
-                setCart({
-                    cartItems: cart.cartItems.filter(item => item.product.id !== ci.product.id),
-                    price: 0
-                }
-                );
+
+            {
+                showAlert({
+                    title: "подтверждение дейстивя",
+                    message: "Удалить з кошику товар " + ci.product.name + "?",
+                    isCancelable: true,
+                    buttons: [
+                        {
+                            title: "Да", action: () => {
+                                setCart({
+                                    cartItems: cart.cartItems.filter(item => item.product.id !== ci.product.id),
+                                    price: 0
+                                } )
+                            }
+                        },
+                        { title: "Нет", action: () => { } }
+                    ]
+                })
             }
         }
 

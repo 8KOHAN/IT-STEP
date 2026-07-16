@@ -24,13 +24,18 @@ export default function Alert({ data }: { data: IAlertData }) {
 
                 <div className="alert-buttons">
                     {data.buttons && data.buttons.length > 0
-                        ? data.buttons.map(btn => <button className="buttons" key={btn.title}
-                            onClick={btn.action}>{btn.title}</button>)
-                        : null
+                        ? data.buttons.map(btn => <button key={btn.title}
+                            onClick={() => {
+                                if (btn.action) {
+                                    btn.action();
+                                }
+                                showAlert(null)
+                            }}>{btn.title}</button>)
+                        : <button className="btn btn-danger"
+                            onClick={() => showAlert(null)}
+                        ><i className="bi bi-x-circle"> Close</i></button>
                     }
-                    <button className="alert-btn-close btn btn-danger"
-                        onClick={() => showAlert(null)}
-                    ><i className="bi bi-x-circle"> Close</i></button>
+
 
                 </div>
             </div>
