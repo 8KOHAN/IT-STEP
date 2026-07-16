@@ -49,6 +49,26 @@ export default function Layout() {
                                 <i className="bi bi-key"></i>
                             </span>
                         </li>
+                        <li className="nav-item">
+                            <span onClick={() => showAlert({
+                                message: "Hello",
+                                buttons: [{ title: "Ok" }]
+                            })}
+                                className="nav-link">
+                                <i className="bi bi-key"></i>
+                            </span>
+                        </li>
+                        <li className="nav-item">
+                            <span onClick={() => showAlert({
+                                message: "Hello",
+                                buttons: [{title: "Yes", action: () => console.log("Yes")},
+                                    {title: "No", action: () => console.log("No")},
+                                ]
+                            })}
+                                className="nav-link">
+                                <i className="bi bi-key"></i>
+                            </span>
+                        </li>
                     </ul>
 
                     <div className="d-flex direction-row">

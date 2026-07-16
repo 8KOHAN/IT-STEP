@@ -17,9 +17,15 @@ export default function Alert({ data }: { data: IAlertData }) {
                 <div className="alert-message shadow-sm">
                     {data.message}
                 </div>
-                <button className="btn btn-danger"
-                    onClick={() => showAlert(null)}
-                ><i className="bi bi-x-circle"> Close</i></button>
+
+                {data.buttons && data.buttons.length > 0
+                    ? data.buttons.map(btn => <button key={btn.title}
+                        onClick={btn.action}>{btn.title}</button>)
+
+                    : <button className="btn btn-danger"
+                        onClick={() => showAlert(null)}
+                    ><i className="bi bi-x-circle"> Close</i></button>
+                }
             </div>
         </div>
     );

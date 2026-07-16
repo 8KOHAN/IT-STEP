@@ -13,14 +13,14 @@ export default function Auth() {
     const { setLoading } = useContext(AppContext);
 
     useEffect(() => {
-    setLoading(true);
+        setLoading(true);
 
-    const timer = setTimeout(() => {
-        setLoading(false);
-    }, 1500);
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1500);
 
-    return () => clearTimeout(timer);
-}, []);
+        return () => clearTimeout(timer);
+    }, []);
 
     const [pageMode, setPageMode] = useState<PageMode>(user ? PageModes.profile : PageModes.signIn);
 

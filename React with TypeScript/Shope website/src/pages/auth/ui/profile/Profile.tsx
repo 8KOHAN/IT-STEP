@@ -12,6 +12,7 @@ export default function Profile() {
         setUser(undefined);
     };
 
+    
     const deleteProfile = () => {
         if (!confirmDelete) return;
 
