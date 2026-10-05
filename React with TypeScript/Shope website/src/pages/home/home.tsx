@@ -44,6 +44,7 @@ export default function Home() {
 
     const data: Date = new Date();
     const format = (n: number) => String(n).padStart(2, "0");
+
     const time = {
         year: data.getFullYear(),
         month: format(data.getMonth() + 1),
@@ -56,12 +57,13 @@ export default function Home() {
     }
 
     const [groups, setGroups] = useState<Array<IGroup>>(preload_grp);
-    const { setLoading, locale } = useContext(AppContext)
-    const [pagination, setPagination] = useState<IPagination | undefined>()
-    const [currentPage, setCurrentPage] = useState(1)
+    const { setLoading, locale } = useContext(AppContext);
+    const [pagination, setPagination] = useState<IPagination | undefined>();
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         setLoading(true);
+
         GroupApi.allGroups(currentPage)
             .then(grp => {
                 setGroups(grp.data);
@@ -69,63 +71,143 @@ export default function Home() {
             })
             .finally(() => {
                 setLoading(false);
-
             });
     }, [currentPage]);
 
-    const prevClick = () => setCurrentPage(currentPage - 1)
-    const nextClick = () => setCurrentPage(currentPage + 1)
-    const gotoClick = (p: number) => setCurrentPage(p)
+    const prevClick = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const nextClick = () => {
+        if (pagination && currentPage < pagination.totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const gotoClick = (page: number) => {
+        if (page >= 1 && pagination && page <= pagination.totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
+    const getPageNumbers = () => {
+        if (!pagination) {
+            return [];
+        }
+
+        const totalPages = pagination.totalPages;
+
+        if (totalPages <= 3) {
+            return Array.from(
+                { length: totalPages },
+                (_, i) => i + 1
+            );
+        }
+
+        if (currentPage <= 2) {
+            return [1, 2, 3];
+        }
+
+        if (currentPage >= totalPages - 1) {
+            return [totalPages - 2, totalPages - 1, totalPages];
+        }
+
+        return [
+            currentPage - 1,
+            currentPage,
+            currentPage + 1
+        ];
+    };
 
     return (
         <div className="home-wrapper">
             <h1>{locale.homePageTitle}</h1>
 
-            <div className="cards row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-md-3 row-cols-xxl-5 g-4">
-                {groups.map(g => <div className="col" key={g.id}>
-                    <div className="card h-100">
-                        <Link to={`/group/${g.slug}`}>
-                            <img src={g.imageUrl} className="card-img-top" alt={g.name} />
-                            <div className="card-body">
-                                <h5 className="card-title">{g.name}</h5>
-                                <p className="card-text">{g.description}</p>
-                            </div>
-                        </Link>
+            <div className="cards row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-md-3 row-cols-xxl-5 g-4">
+                {groups.map(g =>
+                    <div className="col" key={g.id}>
+                        <div className="card h-100">
+                            <Link to={`/group/${g.slug}`}>
+                                <img
+                                    src={g.imageUrl}
+                                    className="card-img-top"
+                                    alt={g.name}
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title">{g.name}</h5>
+                                    <p className="card-text">{g.description}</p>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
-                </div>)}
-
+                )}
             </div>
-            {pagination &&
-                <nav className="my-4" aria-label="Page navigation example">
+
+            {pagination && pagination.totalPages > 0 &&
+                <nav className="my-4" aria-label="Page navigation">
                     <ul className="pagination">
-                        <li className="page-item" role={currentPage > 1 ? "button" : undefined}>
-                            <a className="page-link" href="#" aria-label="Previous"
-                                onClick={pagination.page > 1 ? prevClick : undefined}>
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
+
+                        <li
+                            className={
+                                "page-item" +
+                                (currentPage === 1 ? " disabled" : "")
+                            }
+                        >
+                            <button
+                                className="page-link"
+                                aria-label="Previous"
+                                onClick={prevClick}
+                                disabled={currentPage === 1}
+                            >
+                                &laquo;
+                            </button>
                         </li>
 
-                        {Array.from({ length: pagination.totalPages }, (_, i) =>
-                            <li className={"page-item" + (i + 1 == currentPage ? " active" : "")}
-                                role={i + 1 != currentPage ? "button" : undefined}>
-                                <a className="page-link"
-                                    onClick={i + 1 != currentPage ? () => gotoClick(i + 1) : undefined}>
-                                    {i + 1}
-                                </a>
+                        {getPageNumbers().map(page =>
+                            <li
+                                key={page}
+                                className={
+                                    "page-item" +
+                                    (page === currentPage ? " active" : "")
+                                }
+                            >
+                                <button
+                                    className="page-link"
+                                    onClick={() => gotoClick(page)}
+                                    disabled={page === currentPage}
+                                >
+                                    {page}
+                                </button>
                             </li>
                         )}
 
-                        <li className="page-item" role={currentPage > 1 ? "button" : undefined}>
-                            <a className="page-link" href="#" aria-label="Next"
-                                onClick={pagination.page < pagination.totalPages ? nextClick : undefined}>
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
+                        <li
+                            className={
+                                "page-item" +
+                                (
+                                    currentPage === pagination.totalPages
+                                        ? " disabled"
+                                        : ""
+                                )
+                            }
+                        >
+                            <button
+                                className="page-link"
+                                aria-label="Next"
+                                onClick={nextClick}
+                                disabled={
+                                    currentPage === pagination.totalPages
+                                }
+                            >
+                                &raquo;
+                            </button>
                         </li>
+
                     </ul>
                 </nav>
             }
-
-
 
             <div className="clock">
                 <h2>{time.hour}:{time.min}</h2>
@@ -170,6 +252,6 @@ export default function Home() {
                     </tr>
                 </tbody>
             </table>
-        </div >
+        </div>
     );
 }

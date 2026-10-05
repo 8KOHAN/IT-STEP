@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import "./Profile.css";
 import AppContext from "../../../../features/_context/AppContext";
-import { clearRememberUser } from "../../../../entities/user/lib/UserLib";
+import { clearRememberedUser } from "../../../../entities/user/lib/UserLib";
 
 export default function Profile() {
     const { user, setUser } = useContext(AppContext);
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     const logout = () => {
-        clearRememberUser();
+        clearRememberedUser();
         setUser(undefined);
     };
 
@@ -16,7 +16,7 @@ export default function Profile() {
     const deleteProfile = () => {
         if (!confirmDelete) return;
 
-        clearRememberUser();
+        clearRememberedUser();
         setUser(undefined);
 
         alert("Профіль видалено");

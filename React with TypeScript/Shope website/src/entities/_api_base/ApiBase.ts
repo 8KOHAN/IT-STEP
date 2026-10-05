@@ -26,7 +26,7 @@ export default class ApiBase {
 
             if(url.startsWith('/')) {   // скорочена (відносна) адреса
                 // додаємо адресу бекенду
-                url = "https://localhost:7149/api" + url;
+                url = "https://localhost:7132/api" + url;
             }
             fetch(url, conf)
             .then(r => r.json())   // REST - це точно JSON
