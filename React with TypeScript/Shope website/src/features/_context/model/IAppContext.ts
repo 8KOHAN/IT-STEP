@@ -4,13 +4,12 @@ import type IAlertData from "../../alert/model/IAlertData";
 
 export default interface IAppContext {
     cart: ICart,
-    setCart(cart: ICart): void,
-
+    setCart(cart: ICart):void,
     user?: IUser,
-    setUser(user: IUser | undefined): void,
-
-    isLoading: boolean,
-    setLoading(isLoading: boolean): void,
-
-    showAlert(alertData: IAlertData | null): void,
+    setUser(user:IUser|undefined):void,
+    isLoading:boolean, 
+    setLoading(isLoading:boolean):void,
+    showAlert(alertData:IAlertData|null):void,
+    locale:Record<string,string>,
+    switchLocale(locale:Record<string,string>):void,
 }

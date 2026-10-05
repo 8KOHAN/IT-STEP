@@ -1,6 +1,7 @@
 import type IGroup from "../model/IGroup";
 import type IGroupProduct from "../model/IGroupProduct";
 import ApiBase from "../../_api_base/ApiBase";
+import type IRestResponse from "../../_api_base/model/IRestResponse";
 
 const groups: Array<IGroup> = [
     {
@@ -170,24 +171,21 @@ const groupProducts: Record<string, IGroupProduct> = {
 }
 
 export default class GroupApi {
-    static allGroups(): Promise<Array<IGroup>> {
-        // return new Promise<Array<IGroup>>((resolve, reject) => {
-        //     setTimeout(
-        //         () => resolve(groups),
-        //         1500
-        //     )
-        // })
 
-        return ApiBase.getCached("/groups", undefined, groups) as Promise<Array<IGroup>>
+    static allGroups(page:number=1, pageSize:number=3): Promise<IRestResponse> {
+        return ApiBase.getCached(`/group?pageSize=${pageSize}&page=${page}`, undefined, groups) as Promise<IRestResponse>;
     }
 
-    static groupDetails(slug: string): Promise<IGroupProduct> {
-        return ApiBase.getCached(`/group/:${slug}`, undefined,
-            {
+    static groupDetails(slug:string): Promise<IGroupProduct> {
+        return ApiBase.getCached(
+            `/group/${slug}`, 
+            undefined, {
                 group: groups.find(g => g.slug == slug),
-                products: typeof groupProducts[slug] == "undefined" ? [] : groupProducts[slug].products
-            }
+                products: typeof groupProducts[slug] == 'undefined'
+                ? [] 
+                : groupProducts[slug].products,
+            }            
         ) as Promise<IGroupProduct>;
-
     }
+
 }

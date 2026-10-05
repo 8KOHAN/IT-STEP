@@ -4,10 +4,11 @@ import type IGroup from "../../entities/group/model/IGroup";
 import GroupApi from "../../entities/group/api/GroupApi";
 import { Link } from "react-router-dom";
 import AppContext from "../../features/_context/AppContext";
+import type IPagination from "../../entities/_api_base/model/IPagination";
 
-const preload_grp: Array<IGroup> = Array.from({length: 20}, (_, i) => {
-    return{
-        id: i+1+"",
+const preload_grp: Array<IGroup> = Array.from({ length: 20 }, (_, i) => {
+    return {
+        id: i + 1 + "",
         name: "Loading...",
         description: "Loading...",
         slug: "",
@@ -41,7 +42,6 @@ export default function Home() {
         "Sunday"
     ];
 
-
     const data: Date = new Date();
     const format = (n: number) => String(n).padStart(2, "0");
     const time = {
@@ -56,21 +56,30 @@ export default function Home() {
     }
 
     const [groups, setGroups] = useState<Array<IGroup>>(preload_grp);
-    const { setLoading } = useContext(AppContext)
+    const { setLoading, locale } = useContext(AppContext)
+    const [pagination, setPagination] = useState<IPagination | undefined>()
+    const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
         setLoading(true);
-        GroupApi.allGroups()
-            .then(setGroups)
+        GroupApi.allGroups(currentPage)
+            .then(grp => {
+                setGroups(grp.data);
+                setPagination(grp.meta.pagination);
+            })
             .finally(() => {
                 setLoading(false);
 
             });
-    }, []);
+    }, [currentPage]);
+
+    const prevClick = () => setCurrentPage(currentPage - 1)
+    const nextClick = () => setCurrentPage(currentPage + 1)
+    const gotoClick = (p: number) => setCurrentPage(p)
 
     return (
         <div className="home-wrapper">
-            <h1>Shope</h1>
+            <h1>{locale.homePageTitle}</h1>
 
             <div className="cards row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-md-3 row-cols-xxl-5 g-4">
                 {groups.map(g => <div className="col" key={g.id}>
@@ -86,6 +95,35 @@ export default function Home() {
                 </div>)}
 
             </div>
+            {pagination &&
+                <nav className="my-4" aria-label="Page navigation example">
+                    <ul className="pagination">
+                        <li className="page-item" role={currentPage > 1 ? "button" : undefined}>
+                            <a className="page-link" href="#" aria-label="Previous"
+                                onClick={pagination.page > 1 ? prevClick : undefined}>
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        {Array.from({ length: pagination.totalPages }, (_, i) =>
+                            <li className={"page-item" + (i + 1 == currentPage ? " active" : "")}
+                                role={i + 1 != currentPage ? "button" : undefined}>
+                                <a className="page-link"
+                                    onClick={i + 1 != currentPage ? () => gotoClick(i + 1) : undefined}>
+                                    {i + 1}
+                                </a>
+                            </li>
+                        )}
+
+                        <li className="page-item" role={currentPage > 1 ? "button" : undefined}>
+                            <a className="page-link" href="#" aria-label="Next"
+                                onClick={pagination.page < pagination.totalPages ? nextClick : undefined}>
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            }
 
 
 
