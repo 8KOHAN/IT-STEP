@@ -13,6 +13,7 @@ This repository contains my educational projects and homework completed as part 
 - **Network programming/** - Working with the network.
 - **Python/tictactoe/** — Console game "Tic-Tac-Toe" in Python.
 - **System programming/** - System programming in C#.
+- **React with TypeScript/Shop** - Project in React
 
 ## Goal
 
