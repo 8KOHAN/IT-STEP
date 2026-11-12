@@ -11,7 +11,7 @@ This repository contains my educational projects and homework completed as part 
 - **JavaScript/** - Tasks in JS.
 - **MS SQL Server/** - SQL queries.
 - **Network programming/** - Working with the network.
-- **Python/tictactoe/** — Console game "Tic-Tac-Toe" in Python.
+- **Python/** — Tasks in Python.
 - **React with TypeScript/Shope website** - Project in React
 - **System programming/** - System programming in C#.
 
