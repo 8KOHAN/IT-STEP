@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}{{ shoe.name }} — КРОК®{% endblock %}
+{% block content %}
+<section class="detail-page section-shell">
+    <div class="detail-topline"><a href="{{ url_for('index') }}#catalog">← ПОВЕРНУТИСЬ ДО АРХІВУ</a><span>OBJECT / {{ shoe.code }}</span><span>UA / DROP 01</span></div>
+    <div class="detail-layout">
+        <div class="detail-visual" data-hero-visual>
+            <div class="detail-visual__meta"><span>КРОК / ОБ'ЄКТ {{ '%02d'|format(shoe.id) }}</span><span>{{ shoe.label }}</span></div>
+            <div class="detail-visual__image"><img src="{{ shoe.image }}" alt="{{ shoe.name }} — фотографія взуття"></div>
+            <div class="detail-visual__stamp"><span>FIELD<br>TESTED</span><b>0{{ shoe.id }}</b></div>
+            <div class="detail-visual__coords"><span>46°28′N</span><span>30°43′E</span></div>
+            <svg class="detail-visual__route" viewBox="0 0 600 600" fill="none" aria-hidden="true"><path d="M15 480H145V375H278V255H410V125H575"/><circle cx="145" cy="375" r="7"/><circle cx="410" cy="125" r="7"/></svg>
+        </div>
+        <div class="detail-copy">
+            <p class="eyebrow"><span class="eyebrow__marker"></span> {{ shoe.category|upper }} / {{ shoe.pace|upper }}</p>
+            <h1>{{ shoe.name }}</h1>
+            <div class="detail-code-row"><span>{{ shoe.code }}</span><span>АРХІВ / 2026</span></div>
+            <div class="detail-price-row">{% if shoe.old_price %}<del>{{ '{:,.0f}'.format(shoe.old_price).replace(',', ' ') }} ₴</del>{% endif %}<strong>{{ '{:,.0f}'.format(shoe.price).replace(',', ' ') }} <small>₴</small></strong><span class="detail-stock"><i></i> Є В АРХІВІ</span></div>
+            <p class="detail-description">{{ shoe.description }}</p>
+
+            <div class="detail-specs">
+                <div><span>КОЛІР</span><strong>{{ shoe.color }}</strong></div>
+                <div><span>МАТЕРІАЛ</span><strong>{{ shoe.material }}</strong></div>
+                <div><span>РИТМ</span><strong>{{ shoe.pace }}</strong></div>
+                <div><span>ПОКРИТТЯ</span><strong>{{ shoe.surfaces|join(' / ') }}</strong></div>
+            </div>
+
+            <div class="size-selector">
+                <div class="size-selector__heading"><span>ОБЕРИ РОЗМІР / EU</span><span>ТАБЛИЦЯ РОЗМІРІВ ↗</span></div>
+                <div class="size-grid" role="group" aria-label="Розмір взуття">
+                    {% for size in shoe.sizes %}<button type="button" class="size-option {{ 'is-selected' if loop.first else '' }}" data-size-option data-size="{{ size }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ size }}</button>{% endfor %}
+                </div>
+                <p class="size-feedback" data-size-feedback>ОБРАНО РОЗМІР {{ shoe.sizes[0] }} EU</p>
+            </div>
+
+            <div class="detail-actions">
+                <form method="post" action="{{ url_for('add_to_bag', shoe_id=shoe.id) }}" data-async-form="bag">
+                    <input type="hidden" name="size" value="{{ shoe.sizes[0] }}" data-selected-size>
+                    <button type="submit" class="add-to-route"><span>ДОДАТИ ДО МАРШРУТУ</span><b>↗</b></button>
+                </form>
+                <form method="post" action="{{ url_for('toggle_favorite', shoe_id=shoe.id) }}" data-async-form="favorite" class="detail-favorite-form">
+                    <button type="submit" class="detail-favorite {{ 'is-favorite' if shoe.id in favorites else '' }}" aria-pressed="{{ 'true' if shoe.id in favorites else 'false' }}"><span>{{ '♥ У ЗБЕРЕЖЕНИХ' if shoe.id in favorites else '♡ ЗБЕРЕГТИ ОБ’ЄКТ' }}</span><b>+</b></button>
+                </form>
+            </div>
+            <div class="detail-footnote"><span>01 / ВІЛЬНИЙ РУХ</span><span>02 / СВІЙ СИЛУЕТ</span><span>03 / БЕЗ ЗАЙВОГО ШУМУ</span></div>
+        </div>
+    </div>
+
+    <div class="related-section">
+        <div class="related-heading"><span>ПОВ'ЯЗАНІ КООРДИНАТИ / 03</span><a href="{{ url_for('index') }}#catalog">ВЕСЬ АРХІВ ↗</a></div>
+        <div class="related-grid">
+            {% for item in related_shoes %}
+                <a class="related-card" href="{{ url_for('shoe_details', shoe_id=item.id) }}"><span>{{ item.code }}</span><img src="{{ item.image }}" alt="{{ item.name }}" loading="lazy"><strong>{{ item.name }}</strong><small>{{ '{:,.0f}'.format(item.price).replace(',', ' ') }} ₴</small></a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

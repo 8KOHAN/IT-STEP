@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}КРОК® — атлас міського руху{% endblock %}
+
+{% block content %}
+<section class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
+    <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
+
+    <aside class="hero-rail">
+        <span class="hero-rail__top">UA / 001</span>
+        <span class="hero-rail__line"></span>
+        <span class="hero-rail__vertical">АТЛАС МІСЬКОГО РУХУ</span>
+        <span class="hero-rail__bottom">2026</span>
+    </aside>
+
+    <div class="hero-copy">
+        <div class="eyebrow eyebrow--hero"><span class="eyebrow__marker"></span> НЕЗАЛЕЖНИЙ АРХІВ ВЗУТТЯ <span class="eyebrow__slash">/</span> ОДЕСА</div>
+        <h1>МІСТО<br>НЕ <span>ЧЕКАЄ.</span></h1>
+        <div class="hero-subline"><span class="hero-subline__index">[ 46°28′N ]</span><p>Ти не мусиш знати,<br>куди веде наступний крок.</p></div>
+        <div class="hero-actions-row">
+            <a class="action-link action-link--primary" href="#route-builder"><span>ПОБУДУВАТИ МАРШРУТ</span><b>↘</b></a>
+            <span class="hero-caption">ВЗУТТЯ ДЛЯ ТИХ,<br>ХТО НЕ СТОЇТЬ НА МІСЦІ.</span>
+        </div>
+        <div class="hero-bottom-code"><span>FIELD NOTES / 001—008</span><i></i><span>КРОК ЗА КРОКОМ, АЛЕ НЕ ПО КОЛУ.</span></div>
+    </div>
+
+    <div class="hero-visual" data-hero-visual>
+        <div class="hero-visual__top"><span>OBJECT / {{ hero_shoe.code }}</span><span>ПЕРШИЙ СИГНАЛ <b>●</b></span></div>
+        <div class="hero-photo-stage">
+            <div class="hero-photo-backdrop"></div>
+            <div class="hero-photo-grid" aria-hidden="true"></div>
+            <img class="hero-photo" src="{{ hero_shoe.image }}" alt="Кросівки {{ hero_shoe.name }} на міському тлі" fetchpriority="high">
+            <svg class="hero-route-svg" viewBox="0 0 600 620" fill="none" aria-hidden="true">
+                <path class="hero-route-path" d="M65 530 C145 510 120 425 208 405 S340 387 325 285 S385 150 520 96"/>
+                <path class="hero-route-path hero-route-path--thin" d="M38 455 L115 455 L115 336 L248 336 L248 236 L410 236 L410 126 L555 126"/>
+                <circle cx="65" cy="530" r="8"/><circle cx="325" cy="285" r="8"/><circle cx="520" cy="96" r="8"/>
+                <circle class="route-pulse" cx="325" cy="285" r="19"/>
+            </svg>
+            <div class="hero-object-stamp"><span>ПАРА</span><strong>02</strong><span>ВОЛЯ / ELECTRIC</span></div>
+            <div class="hero-coord-tag"><span>46.4825° N</span><span>30.7233° E</span></div>
+            <span class="hero-photo-corner hero-photo-corner--tl"></span><span class="hero-photo-corner hero-photo-corner--br"></span>
+        </div>
+        <div class="hero-visual__bottom"><span>{{ hero_shoe.name }}</span><span>КАТАЛОГ / DROP 01 <b>↗</b></span></div>
+        <div class="hero-vertical-note">ТВОЯ ТРАЄКТОРІЯ НЕ ПОТРЕБУЄ ДОЗВОЛУ</div>
+    </div>
+
+    <div class="hero-scroll-cue"><span>СКРОЛЬ, ЩОБ ЗНАЙТИ СВІЙ НАПРЯМ</span><b>↓</b></div>
+</section>
+
+<div class="ticker" aria-label="Повідомлення бренду">
+    <div class="ticker-track">
+        {% for _ in range(4) %}
+            <span>НЕ СТІЙ НА ЛІНІЇ</span><b>✳</b><span>СТВОРЮЙ СВОЮ</span><b class="ticker-dot">●</b><span>РУХАЙСЯ НЕ ЗА МАПОЮ</span><b>✳</b>
+        {% endfor %}
+    </div>
+</div>
+
+<section class="route-builder section-shell" id="route-builder">
+    <div class="section-kicker"><span>01 / ROUTE ENGINE</span><span>ВИБІР ПОЧИНАЄТЬСЯ З ПОВЕРХНІ</span></div>
+    <div class="route-layout">
+        <div class="route-heading">
+            <p class="eyebrow"><span class="eyebrow__marker"></span> НЕ КАТЕГОРІЯ. ВІДЧУТТЯ.</p>
+            <h2>ЯКИЙ<br><em>СЬОГОДНІ</em><br>МАРШРУТ?</h2>
+            <p class="route-intro">Обери не тип взуття, а свій ландшафт. Архів підсвітить пари, які пасують твоєму ритму.</p>
+        </div>
+        <div class="route-console" data-route-console>
+            <div class="route-console__head"><span>ROUTE SELECTOR / 04 MODES</span><span class="console-live"><i></i> SYSTEM READY</span></div>
+            <div class="route-options" role="group" aria-label="Обрати тип маршруту">
+                <button class="route-option is-active" type="button" data-route-surface="бетон" aria-pressed="true"><span class="route-option__number">R/01</span><span class="route-option__name">БЕТОН</span><span class="route-option__glyph">▦</span><small>МІСЬКА ГЕОМЕТРІЯ</small></button>
+                <button class="route-option" type="button" data-route-surface="асфальт" aria-pressed="false"><span class="route-option__number">R/02</span><span class="route-option__name">АСФАЛЬТ</span><span class="route-option__glyph">〰</span><small>ШВИДКИЙ РИТМ</small></button>
+                <button class="route-option" type="button" data-route-surface="ґрунт" aria-pressed="false"><span class="route-option__number">R/03</span><span class="route-option__name">ҐРУНТ</span><span class="route-option__glyph">⌁</span><small>ПОЗА МЕЖАМИ</small></button>
+                <button class="route-option" type="button" data-route-surface="ніч" aria-pressed="false"><span class="route-option__number">R/04</span><span class="route-option__name">НІЧ</span><span class="route-option__glyph">◒</span><small>ПІСЛЯ ЗАХОДУ</small></button>
+            </div>
+            <div class="route-readout">
+                <div class="route-readout__map" aria-hidden="true">
+                    <svg viewBox="0 0 330 160" fill="none">
+                        <path class="map-line map-line--main" d="M9 125H87V88H142V40H214V78H317"/>
+                        <path class="map-line map-line--secondary" d="M35 12V55H87V88M142 40V12H267V78M214 78V143H290"/>
+                        <path class="map-line map-line--dashed" d="M9 125H87V88H142V40H214V78H317"/>
+                        <circle class="map-node map-node--active" cx="87" cy="88" r="5"/><circle class="map-node" cx="214" cy="78" r="5"/><circle class="map-node" cx="317" cy="78" r="5"/>
+                    </svg>
+                    <span class="map-coordinate map-coordinate--one">46°28′N</span><span class="map-coordinate map-coordinate--two">30°43′E</span>
+                </div>
+                <div class="route-readout__copy">
+                    <span class="micro-label" data-route-code>R/01 — CONCRETE LINES</span>
+                    <h3 data-route-title>РІВНІ ЛІНІЇ.<br>ЧІТКИЙ КРОК.</h3>
+                    <p data-route-description>Міський рельєф, тверде покриття, короткі переходи та довгі дні.</p>
+                    <button class="route-apply" type="button" data-apply-route><span>ПОКАЗАТИ МОЇ ПАРИ</span><b>↗</b></button>
+                </div>
+            </div>
+            <div class="route-console__foot"><span>ВИБІР МОЖНА ЗМІНИТИ БУДЬ-КОЛИ</span><span data-route-results>04 / 08 ОБ'ЄКТІВ</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="catalog-section section-shell" id="catalog">
+    <div class="catalog-heading">
+        <div><div class="section-kicker"><span>02 / THE ARCHIVE</span><span>DROP 001 — 2026</span></div><h2>АРХІВ<br><span>РУХУ.</span></h2></div>
+        <div class="catalog-heading__aside"><p>Кожна пара має власні координати. Знайди ту, що збігається з твоїми.</p><div class="archive-counter"><strong data-visible-count>{{ '%02d'|format(total_count) }}</strong><span>/ {{ '%02d'|format(total_count) }}<br>ОБ'ЄКТІВ</span></div></div>
+    </div>
+
+    <div class="catalog-tools">
+        <div class="catalog-tabs" role="group" aria-label="Категорії взуття">
+            <button type="button" class="catalog-tab is-active" data-category="Усе" aria-pressed="true">ВСЕ <span>08</span></button>
+            {% for category in categories %}<button type="button" class="catalog-tab" data-category="{{ category }}" aria-pressed="false">{{ category|upper }}</button>{% endfor %}
+        </div>
+        <div class="catalog-controls">
+            <label class="catalog-search"><span class="visually-hidden">Пошук у каталозі</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg><input type="search" placeholder="ШУКАТИ ОБ'ЄКТ..." value="{{ active_query }}" autocomplete="off" data-catalog-search></label>
+            <label class="catalog-sort"><span class="visually-hidden">Сортувати каталог</span><select data-catalog-sort><option value="featured">ЗА ДОБІРКОЮ</option><option value="newest">НОВІ СПОЧАТКУ</option><option value="price-asc">ЦІНА ↑</option><option value="price-desc">ЦІНА ↓</option></select><span>↕</span></label>
+        </div>
+    </div>
+    <div class="catalog-state"><span data-catalog-state>ПОКАЗАНО ВСІ ОБ'ЄКТИ / DROP 001</span><button type="button" data-clear-filters>СКИНУТИ ФІЛЬТРИ <b>↺</b></button></div>
+
+    <div class="product-grid" data-product-grid>
+        {% for shoe in shoes %}
+            <article class="product-card product-card--{{ loop.index }}" data-product-card
+                data-id="{{ shoe.id }}" data-name="{{ shoe.name|lower }}" data-category="{{ shoe.category }}"
+                data-color="{{ shoe.color|lower }}" data-description="{{ shoe.description|lower }}"
+                data-surfaces="{{ shoe.surfaces|join(',') }}" data-price="{{ shoe.price }}"
+                data-new="{{ 'true' if shoe.is_new else 'false' }}" data-order="{{ loop.index }}">
+                <div class="product-visual">
+                    <a class="product-visual__link" href="{{ url_for('shoe_details', shoe_id=shoe.id) }}" aria-label="Відкрити {{ shoe.name }}"><img src="{{ shoe.image }}" alt="{{ shoe.name }}" loading="lazy"></a>
+                    <div class="product-visual__top"><span>{{ shoe.code }}</span><span>{{ shoe.label }}</span></div>
+                    <form class="favorite-form" method="post" action="{{ url_for('toggle_favorite', shoe_id=shoe.id) }}" data-async-form="favorite">
+                        <button type="submit" class="favorite-button {{ 'is-favorite' if shoe.id in favorites else '' }}" aria-label="{{ 'Прибрати зі збережених' if shoe.id in favorites else 'Зберегти пару' }}" aria-pressed="{{ 'true' if shoe.id in favorites else 'false' }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 5.8a5.1 5.1 0 0 0-7.2 0L12 7l-1.2-1.2a5.1 5.1 0 0 0-7.2 7.2L12 21l8.4-8a5.1 5.1 0 0 0 0-7.2Z"/></svg></button>
+                    </form>
+                    <span class="product-visual__index">0{{ shoe.id }}</span>
+                    <a class="product-open" href="{{ url_for('shoe_details', shoe_id=shoe.id) }}"><span>ДОСЛІДИТИ ОБ'ЄКТ</span><b>↗</b></a>
+                    <span class="product-crosshair" aria-hidden="true">+</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-info__top"><span>{{ shoe.category|upper }} / {{ shoe.pace|upper }}</span><span>{{ shoe.surfaces[0]|upper }}</span></div>
+                    <div class="product-title-row"><h3><a href="{{ url_for('shoe_details', shoe_id=shoe.id) }}">{{ shoe.name }}</a></h3><div class="product-price">{% if shoe.old_price %}<del>{{ '{:,.0f}'.format(shoe.old_price).replace(',', ' ') }} ₴</del>{% endif %}<strong>{{ '{:,.0f}'.format(shoe.price).replace(',', ' ') }} <small>₴</small></strong></div></div>
+                    <div class="product-info__bottom"><span>РОЗМІРИ {{ shoe.sizes[0] }}—{{ shoe.sizes[-1] }} EU</span>
+                        <form method="post" action="{{ url_for('add_to_bag', shoe_id=shoe.id) }}" data-async-form="bag"><input type="hidden" name="size" value="{{ shoe.sizes[0] }}"><button type="submit" class="quick-add"><span>ДОДАТИ</span><b>+</b></button></form>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="catalog-empty" data-catalog-empty hidden><span>404 / NO SIGNAL</span><h3>ТУТ ПОКИ<br>НЕМАЄ СЛІДУ.</h3><p>Зміни маршрут або прибери фільтри — архів відкритий.</p><button type="button" data-clear-filters>СКИНУТИ ПОШУК <b>↺</b></button></div>
+    <div class="catalog-endline"><span>КІНЕЦЬ ПОТОЧНОГО ФРАГМЕНТА</span><i></i><span>8 З 8 / KROK® ARCHIVE</span></div>
+</section>
+
+<section class="signal-section" id="signal">
+    <div class="signal-map" aria-hidden="true"><svg viewBox="0 0 900 600" fill="none"><path d="M-40 460H210V350H375V220H560V310H760V80H960"/><path d="M90 -20V120H210V350M375 220V70H665V310M560 310V520H830"/><path d="M-20 520L210 350L375 220L560 310L760 80"/><circle cx="210" cy="350" r="12"/><circle cx="560" cy="310" r="12"/><circle cx="760" cy="80" r="12"/></svg></div>
+    <div class="signal-inner section-shell">
+        <div class="signal-top"><span>03 / BRAND SIGNAL</span><span>НЕ ФОЛЬКЛОР. НЕ ДЕКОР. ПОЗИЦІЯ.</span></div>
+        <div class="signal-copy"><p class="eyebrow eyebrow--light"><span class="eyebrow__marker"></span> КОД РУХУ / UA</p><h2>СВОЄ<br>НЕ ТРЕБА<br><em>ПОЯСНЮВАТИ.</em></h2><p>Ми не продаємо легенду про те, ким ти маєш бути. Ми залишаємо простір, щоб ти сам обрав напрям. Місто змінюється. Твій крок — теж.</p><a href="#catalog" class="signal-link"><span>ПЕРЕГЛЯНУТИ АРХІВ</span><b>↗</b></a></div>
+        <div class="signal-coordinate"><span>UA / 46.4825</span><strong>●</strong><span>30.7233 / ODS</span><i>ПІВДЕНЬ. ПОВІТРЯ. РУХ.</i></div>
+        <div class="signal-bottom"><span>СВОЯ ТРАЄКТОРІЯ — ЦЕ НЕ ВИПАДКОВІСТЬ.</span><span>K/UA—001</span></div>
+    </div>
+</section>
+
+<section class="field-notes section-shell" id="field-notes">
+    <div class="field-heading"><div><div class="section-kicker"><span>04 / FIELD NOTES</span><span>МІСТО ЯК ТЕКСТУРА</span></div><h2>НЕ ПРОСТО<br><em>ВИГЛЯДАТИ.</em></h2></div><p>Рух — це не тільки швидкість. Це те, як ти відчуваєш поверхню, простір і себе всередині міста.</p></div>
+    <div class="field-grid">
+        <article class="field-card field-card--wide"><div class="field-card__image"><img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=1400&q=88" alt="Міська текстура і взуття на бетоні" loading="lazy"></div><div class="field-card__label"><span>NOTE / 01</span><strong>БЕТОН НЕ ЗАПИТУЄ.</strong><i>↗</i></div></article>
+        <article class="field-card field-card--narrow"><div class="field-card__image"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1100&q=88" alt="Деталі спортивного взуття" loading="lazy"></div><div class="field-card__label"><span>NOTE / 02</span><strong>ФОРМА МАЄ ЗНАЧЕННЯ.</strong><i>↗</i></div></article>
+    </div>
+</section>
+
+<section class="final-call section-shell">
+    <div class="final-call__meta"><span>ТВІЙ НАСТУПНИЙ КРОК</span><span>NO FIXED ROUTE / 2026</span></div>
+    <h2>РУХАЙСЯ<br><span>ПО-СВОЄМУ.</span></h2>
+    <a href="#route-builder" class="final-call__button"><span>ПОБУДУВАТИ МАРШРУТ</span><b>↗</b></a>
+    <div class="final-call__graphic" aria-hidden="true">↗</div>
+</section>
+{% endblock %}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="uk" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090b0b">
+    <meta name="description" content="КРОК — атлас міського руху. Обирай взуття за власним маршрутом.">
+    <title>{% block title %}КРОК® — атлас руху{% endblock %}</title>
+    <script>
+        (() => {
+            try {
+                const savedTheme = localStorage.getItem('krok-atlas-theme');
+                document.documentElement.dataset.theme = savedTheme === 'paper' ? 'paper' : 'dark';
+            } catch (_) {
+                document.documentElement.dataset.theme = 'dark';
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="scroll-meter" data-scroll-meter></div>
+    <a class="skip-link" href="#main-content">Перейти до вмісту</a>
+
+    <div class="system-strip">
+        <div class="system-strip__left"><span class="system-pulse"></span> KROK / MOVEMENT ARCHIVE</div>
+        <div class="system-strip__center">НЕ МАРШРУТ. <span>НАПРЯМ.</span></div>
+        <div class="system-strip__right"><span>ODESA, UA</span><i></i><time data-kyiv-time>--:--</time><i></i><span>2026 / DROP 01</span></div>
+    </div>
+
+    <header class="site-header" data-site-header>
+        <a class="brand" href="{{ url_for('index') }}" aria-label="КРОК — головна сторінка">
+            <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="brand-name">КРОК<span>®</span><small>ATLAS OF MOTION</small></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Головна навігація">
+            <a href="{{ url_for('index') }}#route-builder"><span>01</span> МАРШРУТ</a>
+            <a href="{{ url_for('index') }}#catalog"><span>02</span> АРХІВ</a>
+            <a href="{{ url_for('index') }}#signal"><span>03</span> КОД</a>
+        </nav>
+
+        <div class="header-actions">
+            <span class="header-location"><b></b> UKRAINE / INDEPENDENT</span>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Перемкнути тему" title="Перемкнути тему">
+                <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1.5v2m0 17v2m10-10h-2m-16 0H2m17.1-7.1-1.4 1.4M6.3 17.7l-1.4 1.4m14.2 0-1.4-1.4M6.3 6.3 4.9 4.9"/></svg>
+                <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.1A8.7 8.7 0 0 1 8.9 3.5 8.8 8.8 0 1 0 20.5 15.1Z"/></svg>
+            </button>
+            <a class="bag-link" href="{{ url_for('bag') }}" aria-label="Кошик, {{ bag_count }} позицій">
+                <span class="bag-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h16l1 13H3L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></span>
+                <span>КОШИК</span><b data-bag-count>{{ bag_count }}</b>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
+        </div>
+
+        <nav class="mobile-nav" data-mobile-nav aria-label="Мобільна навігація">
+            <a href="{{ url_for('index') }}#route-builder"><span>01</span> Маршрут</a>
+            <a href="{{ url_for('index') }}#catalog"><span>02</span> Архів</a>
+            <a href="{{ url_for('index') }}#signal"><span>03</span> Код</a>
+            <a href="{{ url_for('bag') }}"><span>↗</span> Кошик <b data-bag-count>{{ bag_count }}</b></a>
+        </nav>
+    </header>
+
+    <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="toast toast--{{ 'error' if category == 'error' else 'success' }}" role="status">
+                    <span class="toast__signal"></span><span>{{ message }}</span>
+                    <button type="button" data-toast-close aria-label="Закрити повідомлення">×</button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+    <main id="main-content">{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer">
+        <div class="footer-topline"><span>КРОК® / ATLAS OF MOTION</span><span>46°28′N — 30°43′E</span><span>НЕЗАЛЕЖНИЙ АРХІВ / УКРАЇНА</span></div>
+        <div class="footer-main">
+            <div class="footer-brand-lockup"><span class="footer-index">K/UA—001</span><div>КРОК<span>®</span></div><p>Своє місто. Свій напрям.<br>Свій темп.</p></div>
+            <div class="footer-manifesto"><span class="micro-label">ФІНАЛЬНА КООРДИНАТА</span><p>НЕ ШУКАЙ<br><em>ДОЗВОЛУ.</em></p><a href="{{ url_for('index') }}#route-builder">ПОБУДУВАТИ МАРШРУТ <b>↗</b></a></div>
+            <a class="back-to-top" href="#main-content" data-scroll-top><span>ПОВЕРНУТИСЬ</span><b>↑</b></a>
+        </div>
+        <div class="footer-bottom"><span>© 2026 KROK STUDIO</span><span>DESIGNED FOR MOVEMENT</span><span>UKRAINE <b>●</b></span></div>
+        <div class="footer-oversize" aria-hidden="true">КРОК</div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
