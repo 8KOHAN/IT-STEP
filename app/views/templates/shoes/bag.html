@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Твій маршрут — КРОК®{% endblock %}
+{% block content %}
+<section class="bag-page section-shell" data-bag-page>
+    <div class="bag-topline"><a href="{{ url_for('index') }}#catalog">← ДО АРХІВУ</a><span>KROK / YOUR ROUTE</span></div>
+    <div class="bag-heading"><p class="eyebrow"><span class="eyebrow__marker"></span> ЗІБРАНІ КООРДИНАТИ</p><div class="bag-heading__row"><h1>ТВІЙ<br><em>МАРШРУТ.</em></h1><div class="bag-count-large"><strong data-bag-items-count>{{ items|length }}</strong><span>ПОЗИЦІЙ<br>У МАРШРУТІ</span></div></div></div>
+
+    {% if items %}
+        <div class="bag-layout" data-bag-layout>
+            <div class="bag-items" data-bag-items>
+                {% for item in items %}
+                    <article class="bag-item" data-bag-item>
+                        <a class="bag-item__image" href="{{ url_for('shoe_details', shoe_id=item.shoe.id) }}"><img src="{{ item.shoe.image }}" alt="{{ item.shoe.name }}" loading="lazy"><span>{{ item.shoe.code }}</span></a>
+                        <div class="bag-item__info"><span>{{ item.shoe.category|upper }} / {{ item.shoe.color|upper }}</span><h2><a href="{{ url_for('shoe_details', shoe_id=item.shoe.id) }}">{{ item.shoe.name }}</a></h2><p>РОЗМІР {{ item.selected_size }} EU <i>·</i> КІЛЬКІСТЬ {{ item.quantity }}</p></div>
+                        <div class="bag-item__price"><span>ВАРТІСТЬ</span><strong>{{ '{:,.0f}'.format(item.line_total).replace(',', ' ') }} <small>₴</small></strong></div>
+                        <form method="post" action="{{ url_for('remove_from_bag', shoe_id=item.shoe.id, size=item.selected_size) }}" data-async-form="remove" class="bag-remove"><button type="submit" aria-label="Прибрати {{ item.shoe.name }}">×</button></form>
+                    </article>
+                {% endfor %}
+            </div>
+            <aside class="bag-summary" data-bag-summary>
+                <span class="micro-label">ROUTE SUMMARY / 001</span><div class="bag-summary__line"><span>ПОЗИЦІЙ</span><strong data-bag-summary-count>{{ items|length }}</strong></div><div class="bag-summary__total"><span>ЗАГАЛЬНА ВАРТІСТЬ</span><strong data-bag-total>{{ '{:,.0f}'.format(total).replace(',', ' ') }} <small>₴</small></strong></div>
+                <p>Це навчальний каталог. Реальне замовлення та оплата не виконуються.</p><a href="{{ url_for('index') }}#catalog" class="bag-summary__continue">ПРОДОВЖИТИ ДОСЛІДЖЕННЯ <b>↗</b></a>
+            </aside>
+        </div>
+    {% endif %}
+    <div class="bag-empty" data-bag-empty {% if items %}hidden{% endif %}><span class="bag-empty__code">NO ROUTE / 000</span><h2>МАРШРУТ<br><em>ЩЕ ПУСТИЙ.</em></h2><p>Перший об'єкт задає напрям. Повертайся до архіву й обери пару, що рухається з тобою.</p><a href="{{ url_for('index') }}#catalog" class="action-link action-link--primary"><span>ВІДКРИТИ АРХІВ</span><b>↗</b></a></div>
+</section>
+{% endblock %}

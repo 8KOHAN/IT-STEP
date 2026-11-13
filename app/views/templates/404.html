@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}404 / SIGNAL LOST — КРОК®{% endblock %}
+{% block content %}
+<section class="not-found section-shell">
+    <div class="not-found__code">404<span>/</span>LOST</div>
+    <p class="eyebrow"><span class="eyebrow__marker"></span> СИГНАЛ НЕ ЗНАЙДЕНО</p>
+    <h1>ТУТ НЕМАЄ<br><em>ТВОГО СЛІДУ.</em></h1>
+    <p>Ця координата не входить до поточного архіву. Але маршрут можна змінити.</p>
+    <a href="{{ url_for('index') }}" class="action-link action-link--primary"><span>ПОВЕРНУТИСЬ ДО АРХІВУ</span><b>↗</b></a>
+    <div class="not-found__grid" aria-hidden="true"></div>
+</section>
+{% endblock %}
