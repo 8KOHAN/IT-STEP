@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Midnight Escape — A Moment of Peace</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --white: #f5f8f7;
+            --muted: rgba(235, 245, 243, 0.62);
+            --accent: #a9e8d6;
+            --glass: rgba(11, 30, 36, 0.40);
+            --border: rgba(255, 255, 255, 0.17);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 50px 24px;
+            overflow-x: hidden;
+            background: #102a35;
+            color: var(--white);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            content: "";
+            background-image:
+                linear-gradient(
+                    105deg,
+                    rgba(3, 17, 25, 0.80) 0%,
+                    rgba(5, 24, 31, 0.42) 48%,
+                    rgba(3, 17, 25, 0.56) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    rgba(3, 17, 25, 0.64),
+                    transparent 60%
+                ),
+                url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=90");
+            background-position: center;
+            background-size: cover;
+            transform: scale(1.025);
+            animation: reveal 1.8s ease-out both;
+        }
+
+        body::after {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            content: "";
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(96, 198, 187, 0.15),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(70, 135, 175, 0.18),
+                    transparent 35%
+                );
+        }
+
+        .ambient-light {
+            position: fixed;
+            top: 10%;
+            right: 10%;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: rgba(121, 220, 200, 0.09);
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1180px;
+            animation: appear 1.2s ease-out both;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            padding: 0 8px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.24em;
+        }
+
+        .brand-icon {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            color: var(--accent);
+            font-size: 17px;
+        }
+
+        .top-label {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .main-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            min-height: 570px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: rgba(10, 29, 36, 0.34);
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.34),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .main-card::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45%;
+            height: 1px;
+            content: "";
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(183, 244, 226, 0.9),
+                transparent
+            );
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 74px 65px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.27em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 32px;
+            height: 1px;
+            content: "";
+            background: var(--accent);
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(64px, 7.5vw, 104px);
+            font-weight: 400;
+            letter-spacing: -0.065em;
+            line-height: 0.98;
+        }
+
+        h1 span {
+            display: block;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-description {
+            max-width: 350px;
+            margin-top: 30px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .coordinates {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 54px;
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .coordinates span {
+            color: var(--accent);
+        }
+
+        .side-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+            padding: 55px 42px;
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.07),
+                rgba(255, 255, 255, 0.015)
+            );
+        }
+
+        .day-card,
+        .quote-card {
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .section-label::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            content: "";
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+        }
+
+        .day {
+            margin: 25px 0 8px;
+            color: var(--white);
+            font-family: "Playfair Display", serif;
+            font-size: clamp(29px, 4vw, 43px);
+            font-weight: 400;
+            line-height: 1.15;
+        }
+
+        .day-description {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .quote-card {
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+
+        .quote-symbol {
+            position: absolute;
+            top: 8px;
+            right: 22px;
+            color: rgba(169, 232, 214, 0.16);
+            font-family: "Playfair Display", serif;
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .quote-text {
+            position: relative;
+            z-index: 1;
+            margin: 27px 0 0;
+            color: rgba(255, 255, 255, 0.91);
+            font-family: "Playfair Display", serif;
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 1.65;
+        }
+
+        .quote-bottom {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 26px;
+            color: var(--accent);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .quote-bottom::before {
+            width: 24px;
+            height: 1px;
+            content: "";
+            background: var(--accent);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 25px 8px 0;
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .footer-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: scale(1.08);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.025);
+            }
+        }
+
+        @media (max-width: 850px) {
+            body {
+                padding: 32px 18px;
+            }
+
+            .main-card {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 65px 45px 45px;
+            }
+
+            .side-content {
+                padding: 30px 35px 40px;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                border-left: none;
+            }
+
+            h1 {
+                font-size: clamp(65px, 12vw, 90px);
+            }
+
+            .coordinates {
+                margin-top: 35px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 22px 13px;
+            }
+
+            .topbar {
+                margin-bottom: 20px;
+            }
+
+            .top-label {
+                font-size: 8px;
+            }
+
+            .main-card {
+                border-radius: 22px;
+            }
+
+            .hero {
+                padding: 48px 28px 35px;
+            }
+
+            h1 {
+                font-size: clamp(60px, 16vw, 78px);
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .side-content {
+                padding: 15px 18px 25px;
+            }
+
+            .day-card,
+            .quote-card {
+                padding: 25px 22px;
+            }
+
+            .day {
+                font-size: 33px;
+            }
+
+            .quote-text {
+                font-size: 19px;
+            }
+
+            .footer {
+                font-size: 7px;
+                letter-spacing: 0.12em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-light"></div>
+
+    <div class="page">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">✳</div>
+                <span>STILLNESS</span>
+            </div>
+
+            <div class="top-label">
+                Somewhere between earth and sky
+            </div>
+        </header>
+
+        <main class="main-card">
+
+            <section class="hero">
+                <div class="eyebrow">
+                    A little moment of peace
+                </div>
+
+                <h1>
+                    Hello,
+                    <span>World!</span>
+                </h1>
+
+                <p class="hero-description">
+                    Іноді потрібно просто зупинитися,
+                    зробити глибокий вдих і насолодитися
+                    моментом. Світ прекрасний, коли
+                    знаходиш час його помічати.
+                </p>
+
+                <div class="coordinates">
+                    <span>✳</span>
+                    FIND YOUR OWN HORIZON
+                </div>
+            </section>
+
+            <aside class="side-content">
+
+                <section class="day-card">
+                    <div class="section-label">
+                        Today's atmosphere
+                    </div>
+
+                    <h2 class="day">
+                        {{ current_day }}
+                    </h2>
+
+                    <p class="day-description">
+                        Новий день — нова можливість
+                        створити щось прекрасне.
+                    </p>
+                </section>
+
+                <section class="quote-card">
+                    <div class="section-label">
+                        A thought to remember
+                    </div>
+
+                    <div class="quote-symbol">“</div>
+
+                    <blockquote class="quote-text">
+                        {{ random_quote }}
+                    </blockquote>
+
+                    <div class="quote-bottom">
+                        Words worth keeping
+                    </div>
+                </section>
+
+            </aside>
+
+        </main>
+
+        <footer class="footer">
+            <span>STILLNESS — YOUR DAILY ESCAPE</span>
+
+            <div class="footer-right">
+                <span class="footer-dot"></span>
+                <span>TAKE A BREATH. ENJOY THE MOMENT.</span>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
