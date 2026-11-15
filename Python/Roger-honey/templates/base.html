@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#150e08">
     <meta name="color-scheme" content="dark">
-    <meta name="description" content="ROGER HONEY — історія невеликої пасіки, бджоли, мед і продукти бджільництва.">
+    <meta name="description" content="ROGER HONEY — історія пасіки, натуральний мед, продукти бджільництва та світ бджіл.">
 
     <title>{% block title %}ROGER HONEY — пасіка з душею{% endblock %}</title>
 
@@ -40,12 +40,12 @@
             <span></span>
         </button>
 
-        <nav class="main-nav" id="main-navigation" data-main-nav>
-            <a class="{% if active_page == 'home' %}is-active{% endif %}" href="{% url 'home' %}">Головна</a>
-            <a class="{% if active_page == 'news' %}is-active{% endif %}" href="{% url 'news' %}">Щоденник</a>
-            <a class="{% if active_page == 'management' %}is-active{% endif %}" href="{% url 'management' %}">Пасічник</a>
-            <a class="{% if active_page == 'about' %}is-active{% endif %}" href="{% url 'about' %}">Про пасіку</a>
-            <a class="{% if active_page == 'contacts' %}is-active{% endif %}" href="{% url 'contacts' %}">Контакти</a>
+        <nav class="main-nav" id="main-navigation" data-main-nav aria-label="Головна навігація">
+            {% with navigation=base_data.navigation %}
+                {% for item in navigation %}
+                    <a class="{% if active_page == item.active_page %}is-active{% endif %}" href="{% url item.url_name %}">{{ item.label }}</a>
+                {% endfor %}
+            {% endwith %}
         </nav>
 
         <a href="{% url 'contacts' %}" class="header-action">Зв'язатися <span>↗</span></a>
@@ -70,16 +70,16 @@
                         <small>FROM THE WORLD OF BEES</small>
                     </span>
                 </a>
-                <p>Маленька пасіка.<br>Велика любов до своєї справи.</p>
+                <p>{{ base_data.tagline }}</p>
             </div>
 
             <div class="footer-navigation">
                 <span class="footer-label">НАВІГАЦІЯ</span>
-                <a href="{% url 'home' %}">Головна</a>
-                <a href="{% url 'news' %}">Щоденник пасіки</a>
-                <a href="{% url 'about' %}">Про пасіку</a>
-                <a href="{% url 'management' %}">Пасічник</a>
-                <a href="{% url 'contacts' %}">Контакти</a>
+                {% with footer_links=base_data.footer_links %}
+                    {% for item in footer_links %}
+                        <a href="{% url item.url_name %}">{{ item.label }}</a>
+                    {% endfor %}
+                {% endwith %}
             </div>
 
             <div class="footer-message">
@@ -90,8 +90,8 @@
         </div>
 
         <div class="footer-bottom wrap">
-            <span>© 2026 ROGER HONEY. Усі права захищено.</span>
-            <span>Зроблено з повагою до природи <b>✳</b></span>
+            <span>© 2026 {{ base_data.brand_name }}. Усі права захищено.</span>
+            <span>{{ base_data.footer_note }} <b>✳</b></span>
         </div>
     </footer>
 </div>

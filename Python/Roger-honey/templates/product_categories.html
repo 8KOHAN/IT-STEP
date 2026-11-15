@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Категорії продукції — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover products-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">05.1 / PRODUCT CATEGORIES</span>
+        <h1>Знайти свій<br><em>улюблений смак.</em></h1>
+        <p>Категорії допомагають зорієнтуватися у продуктах нашої пасіки.</p>
+    </div>
+</section>
+
+<section class="catalog-section section-space">
+    <div class="wrap">
+        {% with category_list=categories %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>01</span> / КАТЕГОРІЇ</div>
+                    <h2>Напрями<br><em>нашої продукції.</em></h2>
+                </div>
+                <p>Зараз представлено {{ category_list|length }} категорії.</p>
+            </div>
+            <div class="category-grid">
+                {% for category in category_list %}
+                    <article class="category-card reveal">
+                        <span class="category-index">0{{ forloop.counter }}</span>
+                        <h3>{{ category.name }}</h3>
+                        <p>{{ category.description }}</p>
+                        {% if category.children %}
+                            <ul>
+                                {% for child in category.children %}
+                                    <li>{{ child }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="category-empty">Підкатегорії ще не додані.</p>
+                        {% endif %}
+                    </article>
+                {% empty %}
+                    <p class="empty-state">Категорії ще не створені.</p>
+                {% endfor %}
+            </div>
+        {% endwith %}
+        <a class="button button-honey" href="{% url 'product-list' %}">До каталогу <span>↗</span></a>
+    </div>
+</section>
+{% endblock %}

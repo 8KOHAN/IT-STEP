@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Сторінку не знайдено — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="error-page section-space">
+    <div class="wrap error-page-content">
+        <span class="cover-number">ERROR / 404</span>
+        <h1>Сторінку<br><em>не знайдено.</em></h1>
+        <p>Можливо, адресу було змінено або сторінка більше не існує. Поверніться на головну та продовжуйте знайомство з ROGER HONEY.</p>
+        <a class="button button-honey" href="{% url 'home' %}">На головну <span>↗</span></a>
+    </div>
+</section>
+{% endblock %}

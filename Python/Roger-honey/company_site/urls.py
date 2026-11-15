@@ -1,22 +1,13 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
-from . import views
+from main.views import page_not_found
+
+handler404 = "main.views.custom_404"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.home, name="home"),
-    path("news/", views.news, name="news"),
-    path("management/", views.management, name="management"),
-    path("about/", views.about, name="about"),
-    path("contacts/", views.contacts, name="contacts"),
-    path("contact/", views.contacts, name="contact-alt"),
-
-    # Catch-all routes must stay after the exact section routes.
-    # The path converter also captures additional slash-separated segments.
-    path("news/<path:extra>", views.news, name="news-catchall"),
-    path("management/<path:extra>", views.management, name="management-catchall"),
-    path("about/<path:extra>", views.about, name="about-catchall"),
-    path("contacts/<path:extra>", views.contacts, name="contacts-catchall"),
-    path("contact/<path:extra>", views.contacts, name="contact-alt-catchall"),
+    path("", include("main.urls")),
+    path("", include("catalog.urls")),
+    path("<path:unknown_path>", page_not_found, name="page-not-found"),
 ]

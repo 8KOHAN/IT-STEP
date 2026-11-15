@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Наша команда — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover beekeeper-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">03.2 / OUR PEOPLE</span>
+        <h1>Люди за<br><em>пасікою.</em></h1>
+        <p>Робота пасіки — це щоденна увага, відповідальність та бажання вчитися.</p>
+    </div>
+</section>
+<section class="team-section section-space">
+    <div class="wrap">
+        {% with people=team_data.members %}
+            <div class="section-heading">
+                <div><div class="section-label"><span>01</span> / КОМАНДА</div><h2>Наша маленька<br><em>команда.</em></h2></div>
+                <p>У команді {{ people|length }} учасники.</p>
+            </div>
+            <div class="people-list">
+                {% for person in people %}
+                    <article class="person-row reveal">
+                        <span>{{ person.initials }}</span>
+                        <div><h3>{{ person.name }}</h3><small>{{ person.role }}</small><p>{{ person.description }}</p></div>
+                        <b>✳</b>
+                    </article>
+                {% empty %}
+                    <p>Інформація про команду незабаром з'явиться.</p>
+                {% endfor %}
+            </div>
+        {% endwith %}
+        <a class="underlined-link" href="{% url 'management' %}">Про роботу пасічника <span>↗</span></a>
+    </div>
+</section>
+{% endblock %}

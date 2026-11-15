@@ -1,7 +1,34 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}ROGER HONEY — справжній смак пасіки{% endblock %}
+{% block title %}ROGER HONEY — справжній смак пасіки
+<section class="home-values-section section-space">
+    <div class="wrap">
+        {% with highlights=company_data.statistics %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>05</span> / НАШІ ОРІЄНТИРИ</div>
+                    <h2>Принципи, що<br><em>ведуть уперед.</em></h2>
+                </div>
+                <p>Коротко про те, що важливо у щоденній роботі пасіки.</p>
+            </div>
+            <div class="home-values-grid">
+                {% for item in highlights %}
+                    <article class="home-value-card reveal">
+                        <span>{{ item.number }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                    </article>
+                {% empty %}
+                    <p>Інформація про наші принципи незабаром з'явиться.</p>
+                {% endfor %}
+            </div>
+            <p class="home-values-count">Напрямів роботи: {{ highlights|length }}</p>
+        {% endwith %}
+    </div>
+</section>
+
+{% endblock %}
 
 {% block content %}
 
@@ -15,7 +42,7 @@
 
         <div class="hero-overline reveal">
             <span class="status-dot"></span>
-            SMALL APIARY / ODESA REGION / UKRAINE
+            {{ company_data.hero.eyebrow }}
         </div>
 
         <h1 class="reveal">
@@ -25,9 +52,7 @@
         </h1>
 
         <p class="hero-description reveal">
-            Світ бджіл, аромат квітів, тепло сонця
-            і щоденна праця, яка перетворюється
-            на щось по-справжньому особливе.
+            {{ company_data.hero.description }}
         </p>
 
         <div class="hero-actions reveal">
@@ -436,6 +461,33 @@
 
     </div>
 
+</section>
+
+
+<section class="home-values-section section-space">
+    <div class="wrap">
+        {% with highlights=company_data.statistics %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>05</span> / НАШІ ОРІЄНТИРИ</div>
+                    <h2>Принципи, що<br><em>ведуть уперед.</em></h2>
+                </div>
+                <p>Коротко про те, що важливо у щоденній роботі пасіки.</p>
+            </div>
+            <div class="home-values-grid">
+                {% for item in highlights %}
+                    <article class="home-value-card reveal">
+                        <span>{{ item.number }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                    </article>
+                {% empty %}
+                    <p>Інформація про наші принципи незабаром з'явиться.</p>
+                {% endfor %}
+            </div>
+            <p class="home-values-count">Напрямів роботи: {{ highlights|length }}</p>
+        {% endwith %}
+    </div>
 </section>
 
 {% endblock %}

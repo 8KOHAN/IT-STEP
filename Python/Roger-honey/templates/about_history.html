@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Історія компанії — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover about-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">03.1 / OUR HISTORY</span>
+        <h1>Шлях, що<br>триває <em>досі.</em></h1>
+        <p>Історія пасіки складається з практики, спостережень і маленьких щоденних рішень.</p>
+    </div>
+</section>
+<section class="timeline-section section-space">
+    <div class="wrap">
+        <div class="section-heading">
+            <div><div class="section-label"><span>01</span> / ЕТАПИ</div><h2>Крок за <em>кроком.</em></h2></div>
+            <p>Кожен етап додає досвіду та допомагає краще розуміти бджіл.</p>
+        </div>
+        <div class="timeline">
+            {% for milestone in milestones %}
+                <article class="timeline-item reveal">
+                    <div class="timeline-year">{{ milestone.year }}</div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content"><h3>{{ milestone.title }}</h3><p>{{ milestone.description }}</p></div>
+                </article>
+            {% endfor %}
+        </div>
+        <a class="underlined-link" href="{% url 'about' %}">Повернутися до сторінки компанії <span>↗</span></a>
+    </div>
+</section>
+{% endblock %}

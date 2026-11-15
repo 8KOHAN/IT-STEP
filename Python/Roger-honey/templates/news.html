@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Щоденник пасіки — ROGER HONEY{% endblock %}
+{% block title %}Щоденник пасіки — ROGER HONEY
+<section class="subsection-links section-space">
+    <div class="wrap">
+        <div class="section-heading">
+            <div>
+                <div class="section-label"><span>02</span> / КОРИСНІ МАТЕРІАЛИ</div>
+                <h2>Дізнавайтеся<br><em>більше про бджіл.</em></h2>
+            </div>
+            <p>Окрема добірка матеріалів про бджіл, медоносні рослини та продукти пасіки.</p>
+        </div>
+        <a class="button button-honey" href="{% url 'news-education' %}">Перейти до матеріалів <span>↗</span></a>
+    </div>
+</section>
+
+{% endblock %}
 
 {% block content %}
 
@@ -179,6 +193,20 @@
         <h2>Кожен сезон<br><em>має свою історію.</em></h2>
     </div>
 
+</section>
+
+
+<section class="subsection-links section-space">
+    <div class="wrap">
+        <div class="section-heading">
+            <div>
+                <div class="section-label"><span>02</span> / КОРИСНІ МАТЕРІАЛИ</div>
+                <h2>Дізнавайтеся<br><em>більше про бджіл.</em></h2>
+            </div>
+            <p>Окрема добірка матеріалів про бджіл, медоносні рослини та продукти пасіки.</p>
+        </div>
+        <a class="button button-honey" href="{% url 'news-education' %}">Перейти до матеріалів <span>↗</span></a>
+    </div>
 </section>
 
 {% endblock %}

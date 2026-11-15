@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Корисні матеріали — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover news-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">01.1 / LEARN ABOUT BEES</span>
+        <h1>Трохи більше<br><em>про бджіл.</em></h1>
+        <p>Добірка тем, які допоможуть краще зрозуміти бджолиний світ і продукти пасіки.</p>
+    </div>
+</section>
+<section class="catalog-section section-space">
+    <div class="wrap">
+        {% with education_topics=topics %}
+            <div class="section-heading">
+                <div><div class="section-label"><span>01</span> / НАВЧАЛЬНІ ТЕМИ</div><h2>З чого почати<br><em>знайомство.</em></h2></div>
+                <p>Доступно {{ education_topics|length }} тематичні напрями.</p>
+            </div>
+            <div class="category-grid">
+                {% for topic in education_topics %}
+                    <article class="category-card reveal"><span class="category-index">{{ topic.number }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p></article>
+                {% empty %}
+                    <p>Навчальні матеріали незабаром з'являться.</p>
+                {% endfor %}
+            </div>
+        {% endwith %}
+        <a class="underlined-link" href="{% url 'news' %}">Повернутися до щоденника <span>↗</span></a>
+    </div>
+</section>
+{% endblock %}

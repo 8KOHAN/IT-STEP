@@ -1,7 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Про пасіку — ROGER HONEY{% endblock %}
+{% block title %}Про пасіку — ROGER HONEY
+<section class="subsection-links section-space">
+    <div class="wrap">
+        {% with links=about_data.subsections %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>05</span> / ДІЗНАТИСЯ БІЛЬШЕ</div>
+                    <h2>Ближче до<br><em>ROGER HONEY.</em></h2>
+                </div>
+                <p>Окремі сторінки про шлях компанії та людей, які працюють на пасіці.</p>
+            </div>
+            <div class="subsection-grid">
+                {% for item in links %}
+                    <a class="subsection-card reveal" href="{% url item.url_name %}">
+                        <span>{{ item.number }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <b>Відкрити сторінку ↗</b>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endwith %}
+    </div>
+</section>
+
+{% endblock %}
 
 {% block content %}
 
@@ -276,6 +301,31 @@
 
     </div>
 
+</section>
+
+
+<section class="subsection-links section-space">
+    <div class="wrap">
+        {% with links=about_data.subsections %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>05</span> / ДІЗНАТИСЯ БІЛЬШЕ</div>
+                    <h2>Ближче до<br><em>ROGER HONEY.</em></h2>
+                </div>
+                <p>Окремі сторінки про шлях компанії та людей, які працюють на пасіці.</p>
+            </div>
+            <div class="subsection-grid">
+                {% for item in links %}
+                    <a class="subsection-card reveal" href="{% url item.url_name %}">
+                        <span>{{ item.number }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <b>Відкрити сторінку ↗</b>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endwith %}
+    </div>
 </section>
 
 {% endblock %}

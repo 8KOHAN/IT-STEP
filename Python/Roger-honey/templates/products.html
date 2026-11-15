@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load company_filters %}
+
+{% block title %}Продукція — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover products-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">05 / PRODUCTS FROM THE APIARY</span>
+        <h1>Смак, створений<br><em>природою.</em></h1>
+        <p>{{ product_data.description }}</p>
+    </div>
+</section>
+
+<section class="catalog-section section-space">
+    <div class="wrap">
+        {% with product_list=products %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>01</span> / ПРОДУКЦІЯ ROGER HONEY</div>
+                    <h2>Знайомство з<br><em>продуктами пасіки.</em></h2>
+                </div>
+                <p>У каталозі {{ product_list|length }} позицій. Дані можна редагувати через адміністративну панель Django.</p>
+            </div>
+
+            {% if product_data.has_sample_products %}
+                <p class="catalog-demo-note">Додаткові демонстраційні позиції допомагають показати асортимент. Реальні товари та їхні ціни можна редагувати через адміністративну панель Django.</p>
+            {% endif %}
+            <div class="catalog-grid">
+                {% for product in product_list %}
+                    <article class="catalog-card catalog-card--{{ product.image_class|default:'honey' }} reveal">
+                        {% if product.image_url %}
+                            <img class="catalog-card-photo" src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy" decoding="async">
+                        {% else %}
+                            <div class="catalog-card-image" role="img" aria-label="{{ product.name }}"></div>
+                        {% endif %}
+                        <div class="catalog-card-content">
+                            <span class="catalog-card-category">{{ product.category }}</span>
+                            <h3>{{ product.name }}</h3>
+                            <p>{{ product.description }}</p>
+                            <div class="catalog-card-bottom">
+                                <strong>{{ product.price|format_price }}</strong>
+                                {% if product.pk %}
+                                    <a href="{% url 'product-detail' product.pk %}" aria-label="Детальніше про {{ product.name }}">↗</a>
+                                {% else %}
+                                    <a href="{% url 'product-categories' %}" aria-label="Переглянути категорії продукції">↗</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p class="empty-state">Наразі каталог порожній. Додайте перші товари через Django Admin.</p>
+                {% endfor %}
+            </div>
+
+            <div class="catalog-footer-link">
+                <a class="underlined-link" href="{% url 'product-categories' %}">Переглянути категорії <span>↗</span></a>
+            </div>
+        {% endwith %}
+    </div>
+</section>
+{% endblock %}

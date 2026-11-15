@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Наші пасіки — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover apiaries-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">06 / OUR APIARIES</span>
+        <h1>Світ, де<br><em>живуть бджоли.</em></h1>
+        <p>{{ apiary_data.description }}</p>
+    </div>
+</section>
+<section class="catalog-section section-space">
+    <div class="wrap">
+        {% with apiary_list=apiaries %}
+            <div class="section-heading">
+                <div>
+                    <div class="section-label"><span>01</span> / НАШІ ЛОКАЦІЇ</div>
+                    <h2>Місце для<br><em>важливої роботи.</em></h2>
+                </div>
+                <p>У переліку {{ apiary_list|length }} локації. Інформація зберігається у моделі Apiary.</p>
+            </div>
+            {% if not apiary_data.is_database_content %}
+                <p class="catalog-demo-note">Показаний приклад пасіки. Записи з бази даних з'являться тут після додавання через адміністративну панель.</p>
+            {% endif %}
+            <div class="apiary-grid">
+                {% for apiary in apiary_list %}
+                    <article class="apiary-card reveal">
+                        <span class="apiary-card-index">0{{ forloop.counter }}</span>
+                        <span class="apiary-card-label">ROGER HONEY / APIARY</span>
+                        <h3>{{ apiary.name }}</h3>
+                        <p class="apiary-location">{{ apiary.location }}</p>
+                        <p>{{ apiary.description }}</p>
+                        <div class="apiary-card-meta">
+                            <span>{{ apiary.hive_count }} вуликів</span>
+                            {% if apiary.established_year %}<span>З {{ apiary.established_year }} року</span>{% endif %}
+                        </div>
+                    </article>
+                {% empty %}
+                    <p class="empty-state">Інформація про пасіки ще не додана.</p>
+                {% endfor %}
+            </div>
+        {% endwith %}
+    </div>
+</section>
+{% endblock %}

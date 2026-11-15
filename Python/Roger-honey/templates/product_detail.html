@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load company_filters %}
+
+{% block title %}{{ product.name }} — ROGER HONEY{% endblock %}
+
+{% block content %}
+<section class="page-cover products-cover">
+    <div class="page-cover-overlay"></div>
+    <div class="page-cover-content wrap">
+        <span class="cover-number">PRODUCT / ROGER HONEY</span>
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.category.name }}</p>
+    </div>
+</section>
+<section class="section-space">
+    <div class="wrap product-detail-layout">
+        <div>
+            {% if product.image_url %}
+                <img class="product-detail-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+            {% else %}
+                <div class="product-detail-placeholder" role="img" aria-label="{{ product.name }}"></div>
+            {% endif %}
+            <div class="section-label"><span>01</span> / ПРО ПРОДУКТ</div>
+            <h2>{{ product.name }}<br><em>від ROGER HONEY.</em></h2>
+            <p>{{ product.description }}</p>
+            <strong class="product-detail-price">{{ product.price|format_price }}</strong>
+            <a class="button button-honey" href="{% url 'contacts' %}">Запитати про продукт <span>↗</span></a>
+        </div>
+        <aside class="product-detail-aside">
+            <span>КАТЕГОРІЯ</span>
+            <h3>{{ product.category.name }}</h3>
+            <p>{{ product.category.description }}</p>
+        </aside>
+    </div>
+</section>
+{% endblock %}
