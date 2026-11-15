@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#150e08">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="ROGER HONEY — історія невеликої пасіки, бджоли, мед і продукти бджільництва.">
+
+    <title>{% block title %}ROGER HONEY — пасіка з душею{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+<div class="scroll-progress" data-scroll-progress></div>
+<div class="site-shell">
+    <header class="site-header" data-header>
+        <a href="{% url 'home' %}" class="brand">
+            <span class="brand-icon">
+                <svg viewBox="0 0 50 50" fill="none" aria-hidden="true">
+                    <path d="M25 3L45 14.5V37L25 48L5 37V14.5L25 3Z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M25 12L36 18.5V31L25 37.5L14 31V18.5L25 12Z" fill="currentColor"/>
+                    <circle cx="25" cy="25" r="3" fill="#150e08"/>
+                </svg>
+            </span>
+            <span class="brand-text">
+                ROGER <span>HONEY</span>
+                <small>FROM THE WORLD OF BEES</small>
+            </span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="main-navigation" data-menu-toggle>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav" id="main-navigation" data-main-nav>
+            <a class="{% if active_page == 'home' %}is-active{% endif %}" href="{% url 'home' %}">Головна</a>
+            <a class="{% if active_page == 'news' %}is-active{% endif %}" href="{% url 'news' %}">Щоденник</a>
+            <a class="{% if active_page == 'management' %}is-active{% endif %}" href="{% url 'management' %}">Пасічник</a>
+            <a class="{% if active_page == 'about' %}is-active{% endif %}" href="{% url 'about' %}">Про пасіку</a>
+            <a class="{% if active_page == 'contacts' %}is-active{% endif %}" href="{% url 'contacts' %}">Контакти</a>
+        </nav>
+
+        <a href="{% url 'contacts' %}" class="header-action">Зв'язатися <span>↗</span></a>
+    </header>
+
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top wrap">
+            <div class="footer-brand">
+                <a href="{% url 'home' %}" class="brand brand-footer">
+                    <span class="brand-icon">
+                        <svg viewBox="0 0 50 50" fill="none" aria-hidden="true">
+                            <path d="M25 3L45 14.5V37L25 48L5 37V14.5L25 3Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M25 12L36 18.5V31L25 37.5L14 31V18.5L25 12Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="brand-text">
+                        ROGER <span>HONEY</span>
+                        <small>FROM THE WORLD OF BEES</small>
+                    </span>
+                </a>
+                <p>Маленька пасіка.<br>Велика любов до своєї справи.</p>
+            </div>
+
+            <div class="footer-navigation">
+                <span class="footer-label">НАВІГАЦІЯ</span>
+                <a href="{% url 'home' %}">Головна</a>
+                <a href="{% url 'news' %}">Щоденник пасіки</a>
+                <a href="{% url 'about' %}">Про пасіку</a>
+                <a href="{% url 'management' %}">Пасічник</a>
+                <a href="{% url 'contacts' %}">Контакти</a>
+            </div>
+
+            <div class="footer-message">
+                <span class="footer-label">ROGER HONEY / ODESA, UKRAINE</span>
+                <h2>Знайомство<br>починається з <em>привіт.</em></h2>
+                <a href="{% url 'contacts' %}" class="footer-link">Написати нам <span>↗</span></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom wrap">
+            <span>© 2026 ROGER HONEY. Усі права захищено.</span>
+            <span>Зроблено з повагою до природи <b>✳</b></span>
+        </div>
+    </footer>
+</div>
+
+<script src="{% static 'js/main.js' %}" defer></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

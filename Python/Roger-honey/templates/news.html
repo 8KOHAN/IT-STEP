@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Щоденник пасіки — ROGER HONEY{% endblock %}
+
+{% block content %}
+
+<section class="page-cover news-cover">
+
+    <div class="page-cover-overlay"></div>
+
+    <div class="page-cover-content wrap">
+
+        <span class="cover-number">01 / THE APIARY JOURNAL</span>
+
+        <h1>
+            Історії<br>
+            з <em>пасіки.</em>
+        </h1>
+
+        <p>
+            Сезон за сезоном. День за днем.
+            Маленькі історії великого світу бджіл.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="news-section section-space">
+
+    <div class="wrap">
+
+        <div class="section-heading">
+
+            <div>
+                <div class="section-label">
+                    <span>01</span> / ОСТАННІ НОТАТКИ
+                </div>
+
+                <h2>Що нового<br><em>у бджолиному світі?</em></h2>
+            </div>
+
+            <p>
+                Тут з'являються спостереження, сезонні події,
+                фотографії та історії з нашої пасіки.
+            </p>
+
+        </div>
+
+
+        <div class="news-list">
+
+            {% if news_items %}
+
+                {% for item in news_items %}
+
+                    <article class="news-entry reveal">
+
+                        <span class="news-entry-number">
+                            {{ item.number|default:forloop.counter }}
+                        </span>
+
+                        <div class="news-entry-body">
+
+                            <div class="news-meta">
+
+                                <time>
+                                    {{ item.date|default:"НОТАТКА З ПАСІКИ" }}
+                                </time>
+
+                                <span>
+                                    {{ item.category|default:"БДЖІЛЬНИЦТВО" }}
+                                </span>
+
+                            </div>
+
+                            <h3>{{ item.title }}</h3>
+
+                            <p>{{ item.description }}</p>
+
+                        </div>
+
+                        <span class="news-entry-arrow">↗</span>
+
+                    </article>
+
+                {% endfor %}
+
+            {% else %}
+
+                <article class="news-entry reveal">
+
+                    <span class="news-entry-number">01</span>
+
+                    <div class="news-entry-body">
+                        <div class="news-meta">
+                            <time>СЕЗОННІСТЬ</time>
+                            <span>ВЕСНА</span>
+                        </div>
+
+                        <h3>Перші теплі дні на пасіці</h3>
+
+                        <p>
+                            Після зимового спокою починається новий
+                            природний цикл. Бджоли поступово
+                            повертаються до активного життя.
+                        </p>
+                    </div>
+
+                    <span class="news-entry-arrow">↗</span>
+
+                </article>
+
+
+                <article class="news-entry reveal">
+
+                    <span class="news-entry-number">02</span>
+
+                    <div class="news-entry-body">
+                        <div class="news-meta">
+                            <time>СПОСТЕРЕЖЕННЯ</time>
+                            <span>БДЖОЛИ</span>
+                        </div>
+
+                        <h3>Життя всередині вулика</h3>
+
+                        <p>
+                            Як організована бджолина сім'я,
+                            чим займаються робочі бджоли
+                            та чому кожна з них важлива.
+                        </p>
+                    </div>
+
+                    <span class="news-entry-arrow">↗</span>
+
+                </article>
+
+
+                <article class="news-entry reveal">
+
+                    <span class="news-entry-number">03</span>
+
+                    <div class="news-entry-body">
+                        <div class="news-meta">
+                            <time>ПРОДУКТИ ПАСІКИ</time>
+                            <span>МЕД</span>
+                        </div>
+
+                        <h3>Від квітки до меду</h3>
+
+                        <p>
+                            Нектар, бджоли, стільники та щоденна
+                            робота пасічника — історія знайомого
+                            золотого продукту.
+                        </p>
+                    </div>
+
+                    <span class="news-entry-arrow">↗</span>
+
+                </article>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="journal-image-break">
+
+    <div class="journal-image-overlay"></div>
+
+    <div class="journal-image-text reveal">
+        <span>THE ART OF BEEKEEPING</span>
+        <h2>Кожен сезон<br><em>має свою історію.</em></h2>
+    </div>
+
+</section>
+
+{% endblock %}

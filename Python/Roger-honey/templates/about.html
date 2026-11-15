@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Про пасіку — ROGER HONEY{% endblock %}
+
+{% block content %}
+
+<section class="page-cover about-cover">
+
+    <div class="page-cover-overlay"></div>
+
+    <div class="page-cover-content wrap">
+
+        <span class="cover-number">03 / OUR STORY</span>
+
+        <h1>
+            Історія,<br>
+            створена<br>
+            <em>природою.</em>
+        </h1>
+
+        <p>
+            Маленька пасіка на Одещині.
+            Любов до бджіл, постійне навчання
+            та бажання робити свою справу добре.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="about-intro section-space">
+
+    <div class="wrap">
+
+        <div class="about-intro-grid">
+
+            <div class="about-intro-title reveal">
+
+                <div class="section-label">
+                    <span>01</span> / ХТО МИ
+                </div>
+
+                <h2>
+                    Ближче<br>
+                    до природи.<br>
+                    <em>Ближче до життя.</em>
+                </h2>
+
+            </div>
+
+            <div class="about-intro-copy reveal">
+
+                <p class="about-lead">
+                    ROGER HONEY — це історія невеликої
+                    пасіки, де кожен сезон приносить
+                    нові знання та досвід.
+                </p>
+
+                <p>
+                    Бджільництво вимагає уваги до деталей:
+                    від першого весняного обльоту до підготовки
+                    сімей до зими. Тут важливі погода,
+                    рослини, здоров'я бджіл і досвід пасічника.
+                </p>
+
+                <p>
+                    Ми хочемо показувати цей світ таким,
+                    яким він є: красивим, складним,
+                    захопливим і справжнім.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-wide-photo">
+
+    <div class="about-wide-overlay"></div>
+
+    <div class="about-wide-content reveal">
+
+        <span>02 / THE NATURE</span>
+
+        <h2>
+            Усе починається<br>
+            з маленької <em>квітки.</em>
+        </h2>
+
+        <p>
+            Квіти, нектар, пилок і бджоли.
+            Природа створила неймовірну систему,
+            частиною якої ми маємо честь бути.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="about-principles section-space">
+
+    <div class="wrap">
+
+        <div class="section-heading">
+
+            <div>
+                <div class="section-label">
+                    <span>03</span> / НАШІ ПРИНЦИПИ
+                </div>
+
+                <h2>
+                    Не гучні слова.<br>
+                    <em>Реальні справи.</em>
+                </h2>
+            </div>
+
+            <p>
+                Те, як ми ставимося до бджіл,
+                визначає кожен наш крок на пасіці.
+            </p>
+
+        </div>
+
+        <div class="principle-list">
+
+            <article class="principle-item">
+                <span>01</span>
+                <div>
+                    <h3>Турбота про бджіл</h3>
+                    <p>Добробут сімей — основа відповідального бджільництва.</p>
+                </div>
+                <b>✳</b>
+            </article>
+
+            <article class="principle-item">
+                <span>02</span>
+                <div>
+                    <h3>Повага до природних циклів</h3>
+                    <p>Сезонність, погода та цвітіння мають значення.</p>
+                </div>
+                <b>✳</b>
+            </article>
+
+            <article class="principle-item">
+                <span>03</span>
+                <div>
+                    <h3>Постійне навчання</h3>
+                    <p>Кожен рік приносить новий досвід і нові висновки.</p>
+                </div>
+                <b>✳</b>
+            </article>
+
+            <article class="principle-item">
+                <span>04</span>
+                <div>
+                    <h3>Чесність</h3>
+                    <p>Розповідаємо про пасіку без перебільшень та вигаданих історій.</p>
+                </div>
+                <b>✳</b>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="timeline-section section-space">
+
+    <div class="wrap">
+
+        <div class="section-heading">
+
+            <div>
+                <div class="section-label">
+                    <span>04</span> / НАШ ШЛЯХ
+                </div>
+
+                <h2>
+                    Крок за <em>кроком.</em>
+                </h2>
+            </div>
+
+            <p>
+                Історія пасіки — це не одна подія,
+                а багато маленьких кроків.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            {% if milestones %}
+
+                {% for milestone in milestones %}
+
+                    <article class="timeline-item reveal">
+                        <div class="timeline-year">{{ milestone.year }}</div>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>{{ milestone.title }}</h3>
+                            <p>{{ milestone.description }}</p>
+                        </div>
+                    </article>
+
+                {% endfor %}
+
+            {% else %}
+
+                <article class="timeline-item reveal">
+                    <div class="timeline-year">01</div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Перші знайомства з бджолами</h3>
+                        <p>
+                            Інтерес до бджільництва перетворюється
+                            на практику, спостереження та перший досвід.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <div class="timeline-year">02</div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Розвиток пасіки</h3>
+                        <p>
+                            Нові бджолині сім'ї, більше роботи
+                            та глибше розуміння пасічництва.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <div class="timeline-year">03</div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>ROGER HONEY</h3>
+                        <p>
+                            Створення власного бренду та бажання
+                            ділитися світом пасіки з іншими.
+                        </p>
+                    </div>
+                </article>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-ending">
+
+    <div class="about-ending-overlay"></div>
+
+    <div class="about-ending-content reveal">
+
+        <span>ROGER HONEY / OUR STORY</span>
+
+        <h2>
+            У кожного<br>
+            сезону є <em>свій смак.</em>
+        </h2>
+
+    </div>
+
+</section>
+
+{% endblock %}

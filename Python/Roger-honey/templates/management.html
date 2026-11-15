@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Пасічник — ROGER HONEY{% endblock %}
+
+{% block content %}
+
+<section class="page-cover beekeeper-cover">
+
+    <div class="page-cover-overlay"></div>
+
+    <div class="page-cover-content wrap">
+
+        <span class="cover-number">02 / THE BEEKEEPER</span>
+
+        <h1>
+            Людина<br>
+            за <em>пасікою.</em>
+        </h1>
+
+        <p>
+            Бджільництво — це не лише мед.
+            Це досвід, терпіння та відповідальність
+            за тисячі маленьких життів.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="beekeeper-section section-space">
+
+    <div class="wrap beekeeper-grid">
+
+        <div class="beekeeper-photo reveal">
+            <div class="beekeeper-photo-caption">
+                ROGER HONEY / THE DAILY WORK
+            </div>
+        </div>
+
+        <div class="beekeeper-copy reveal">
+
+            <div class="section-label">
+                <span>01</span> / ПАСІЧНИЦТВО
+            </div>
+
+            <h2>
+                Розуміти<br>
+                бджіл — це<br>
+                <em>ціла наука.</em>
+            </h2>
+
+            <p class="beekeeper-lead">
+                За кожним сезоном стоїть багато роботи,
+                рішень і спостережень.
+            </p>
+
+            <p>
+                Кожна бджолина сім'я має свої потреби.
+                Пасічнику важливо помічати зміни, стежити
+                за станом сімей, враховувати погоду
+                та цвітіння рослин.
+            </p>
+
+            <p>
+                У цій справі неможливо знати абсолютно все.
+                Можна постійно вчитися, накопичувати досвід
+                і ставати уважнішим до того, що відбувається
+                навколо.
+            </p>
+
+            <div class="beekeeper-signature">
+                <span></span>
+                <div>
+                    ROGER HONEY
+                    <small>ПАСІКА З ДУШЕЮ</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="beekeeper-values">
+
+    <div class="wrap">
+
+        <div class="section-label section-label-light">
+            <span>02</span> / ПРИНЦИПИ
+        </div>
+
+        <h2>Три речі, які<br><em>мають значення.</em></h2>
+
+        <div class="value-grid">
+
+            <article class="value-item reveal">
+                <span>01</span>
+                <h3>Уважність</h3>
+                <p>
+                    Спостерігати, аналізувати та помічати
+                    навіть незначні зміни.
+                </p>
+            </article>
+
+            <article class="value-item reveal">
+                <span>02</span>
+                <h3>Терпіння</h3>
+                <p>
+                    Не поспішати за природними процесами,
+                    а працювати відповідно до сезону.
+                </p>
+            </article>
+
+            <article class="value-item reveal">
+                <span>03</span>
+                <h3>Відповідальність</h3>
+                <p>
+                    Пам'ятати, що за кожним рішенням
+                    стоїть життя бджолиної сім'ї.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% if managers %}
+
+<section class="team-section section-space">
+
+    <div class="wrap">
+
+        <div class="section-heading">
+            <div>
+                <div class="section-label">
+                    <span>03</span> / ЛЮДИ ПАСІКИ
+                </div>
+
+                <h2>Наша маленька<br><em>команда.</em></h2>
+            </div>
+        </div>
+
+        <div class="people-list">
+
+            {% for person in managers %}
+
+                <article class="person-row reveal">
+                    <span>{{ person.initials|default:"RH" }}</span>
+
+                    <div>
+                        <h3>{{ person.name }}</h3>
+                        <small>{{ person.role|default:"ПАСІКА" }}</small>
+                        <p>{{ person.description }}</p>
+                    </div>
+
+                    <b>✳</b>
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+{% endblock %}

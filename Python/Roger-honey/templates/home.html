@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ROGER HONEY — справжній смак пасіки{% endblock %}
+
+{% block content %}
+
+<!-- Main hero -->
+<section class="home-hero">
+
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content wrap">
+
+        <div class="hero-overline reveal">
+            <span class="status-dot"></span>
+            SMALL APIARY / ODESA REGION / UKRAINE
+        </div>
+
+        <h1 class="reveal">
+            Там, де<br>
+            народжується<br>
+            <em>справжній мед.</em>
+        </h1>
+
+        <p class="hero-description reveal">
+            Світ бджіл, аромат квітів, тепло сонця
+            і щоденна праця, яка перетворюється
+            на щось по-справжньому особливе.
+        </p>
+
+        <div class="hero-actions reveal">
+
+            <a href="#our-world" class="button button-honey">
+                Відкрити наш світ <span>↘</span>
+            </a>
+
+            <a href="{% url 'about' %}" class="hero-text-link">
+                Історія пасіки <span>↗</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-vertical">
+        A LITTLE WORLD OF BEES
+    </div>
+
+    <div class="hero-bottom wrap">
+
+        <span>МЕД · ПИЛОК · БДЖОЛИ</span>
+
+        <a href="#our-world" class="scroll-indicator">
+            ГОРТАЙТЕ НИЖЧЕ <span>↓</span>
+        </a>
+
+        <span>ROGER HONEY © 2026</span>
+
+    </div>
+
+    <div class="hero-orb hero-orb-one"></div>
+    <div class="hero-orb hero-orb-two"></div>
+
+</section>
+
+
+<!-- Introduction -->
+<section class="intro-section section-space" id="our-world">
+
+    <div class="wrap">
+
+        <div class="section-label reveal">
+            <span>01</span>
+            / НАША ФІЛОСОФІЯ
+        </div>
+
+        <div class="intro-layout">
+
+            <h2 class="reveal">
+                Не просто<br>
+                мед. Ціла<br>
+                <em>історія природи.</em>
+            </h2>
+
+            <div class="intro-copy reveal">
+
+                <span class="intro-small">ROGER HONEY — ПАСІКА З ДУШЕЮ</span>
+
+                <p class="intro-lead">
+                    За кожною баночкою меду стоїть набагато
+                    більше, ніж здається на перший погляд.
+                </p>
+
+                <p>
+                    Весняні обльоти, перші квіти, тисячі маленьких
+                    польотів, робота бджолиної сім'ї та уважність
+                    пасічника. Саме з таких моментів складається
+                    життя нашої пасіки.
+                </p>
+
+                <a href="{% url 'about' %}" class="underlined-link">
+                    Більше про нас <span>↗</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="intro-bottom-line">
+            <span>01 / OUR WORLD</span>
+            <span>ОДЕЩИНА, УКРАЇНА</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Full background apiary section -->
+<section class="apiary-film">
+
+    <div class="apiary-film-overlay"></div>
+
+    <div class="apiary-film-content wrap reveal">
+
+        <span class="film-label">02 / ТАМ, ДЕ ВСЕ ПОЧИНАЄТЬСЯ</span>
+
+        <h2>
+            Тиша пасіки.<br>
+            <em>Мільйони маленьких справ.</em>
+        </h2>
+
+        <p>
+            Кожна бджолина сім'я живе своїм ритмом.
+            І кожен день на пасіці — це нова історія.
+        </p>
+
+    </div>
+
+    <div class="film-caption">
+        ROGER HONEY / THE LIFE OF AN APIARY
+    </div>
+
+</section>
+
+
+<!-- Products -->
+<section class="products-section section-space">
+
+    <div class="wrap">
+
+        <div class="section-heading reveal">
+
+            <div>
+                <div class="section-label">
+                    <span>03</span>
+                    / БДЖОЛИНІ СКАРБИ
+                </div>
+
+                <h2>
+                    Більше, ніж<br>
+                    <em>солодкий смак.</em>
+                </h2>
+            </div>
+
+            <p>
+                У світі бджіл є багато дивовижного.
+                Мед, пилок, віск і неймовірна
+                робота маленьких створінь.
+            </p>
+
+        </div>
+
+
+        <div class="products-grid">
+
+            <a href="{% url 'about' %}" class="product-card product-honey reveal">
+
+                <span class="product-index">01 / HONEY</span>
+
+                <div class="product-card-content">
+                    <span>ЗОЛОТО ПАСІКИ</span>
+                    <h3>Мед</h3>
+                    <p>Сонце, квіти та праця тисяч бджіл.</p>
+                    <b>↗</b>
+                </div>
+
+            </a>
+
+
+            <a href="{% url 'about' %}" class="product-card product-pollen reveal">
+
+                <span class="product-index">02 / POLLEN</span>
+
+                <div class="product-card-content">
+                    <span>ЕНЕРГІЯ КВІТІВ</span>
+                    <h3>Пилок</h3>
+                    <p>Маленькі різнокольорові частинки великого світу природи.</p>
+                    <b>↗</b>
+                </div>
+
+            </a>
+
+
+            <a href="{% url 'about' %}" class="product-card product-bees reveal">
+
+                <span class="product-index">03 / BEES</span>
+
+                <div class="product-card-content">
+                    <span>СЕРЦЕ ПАСІКИ</span>
+                    <h3>Бджоли</h3>
+                    <p>Найдивовижніші працівниці цього світу.</p>
+                    <b>↗</b>
+                </div>
+
+            </a>
+
+        </div>
+
+        <p class="products-note">
+            Продукти та їх наявність залежать від сезону.
+            Актуальну інформацію уточнюйте перед замовленням.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- Bee macro background -->
+<section class="bee-story">
+
+    <div class="bee-story-overlay"></div>
+
+    <div class="bee-story-content wrap reveal">
+
+        <span class="film-label">04 / THE LITTLE WORKERS</span>
+
+        <h2>
+            Маленька бджола.<br>
+            <em>Величезний світ.</em>
+        </h2>
+
+        <p>
+            Їхня праця майже непомітна. Але без неї
+            світ навколо нас був би зовсім іншим.
+        </p>
+
+        <a href="{% url 'news' %}" class="button button-light">
+            Дослідити світ бджіл <span>↗</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- Philosophy -->
+<section class="philosophy-section section-space">
+
+    <div class="wrap philosophy-grid">
+
+        <div class="philosophy-title reveal">
+
+            <div class="section-label">
+                <span>05</span>
+                / НАШ ПІДХІД
+            </div>
+
+            <h2>
+                Уважність.<br>
+                Повага.<br>
+                <em>Відповідальність.</em>
+            </h2>
+
+        </div>
+
+        <div class="philosophy-content reveal">
+
+            <div class="philosophy-line">
+                <span>01</span>
+                <div>
+                    <h3>Бджоли передусім</h3>
+                    <p>
+                        Здоров'я та добробут бджолиної сім'ї
+                        важливіші за поспіх.
+                    </p>
+                </div>
+            </div>
+
+            <div class="philosophy-line">
+                <span>02</span>
+                <div>
+                    <h3>Робота з природою</h3>
+                    <p>
+                        Кожен сезон має свій ритм.
+                        Важливо вміти його відчувати.
+                    </p>
+                </div>
+            </div>
+
+            <div class="philosophy-line">
+                <span>03</span>
+                <div>
+                    <h3>Чесний результат</h3>
+                    <p>
+                        Без гучних обіцянок.
+                        Лише справжня історія пасіки.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Journal -->
+<section class="journal-section section-space">
+
+    <div class="wrap">
+
+        <div class="section-heading reveal">
+
+            <div>
+                <div class="section-label">
+                    <span>06</span>
+                    / З ПАСІЧНОГО ЩОДЕННИКА
+                </div>
+
+                <h2>
+                    Життя у ритмі<br>
+                    <em>бджіл.</em>
+                </h2>
+            </div>
+
+            <a href="{% url 'news' %}" class="underlined-link">
+                Усі історії <span>↗</span>
+            </a>
+
+        </div>
+
+        <div class="journal-list">
+
+            {% if news_items %}
+
+                {% for item in news_items|slice:":3" %}
+
+                    <a href="{% url 'news' %}" class="journal-item">
+
+                        <span class="journal-number">
+                            {{ item.number|default:forloop.counter }}
+                        </span>
+
+                        <div class="journal-details">
+
+                            <div class="journal-meta">
+                                {{ item.date|default:"НОТАТКА З ПАСІКИ" }}
+                                <span>{{ item.category|default:"ПАСІКА" }}</span>
+                            </div>
+
+                            <h3>{{ item.title }}</h3>
+
+                            <p>{{ item.description }}</p>
+
+                        </div>
+
+                        <span class="journal-arrow">↗</span>
+
+                    </a>
+
+                {% endfor %}
+
+            {% else %}
+
+                <a href="{% url 'news' %}" class="journal-item">
+                    <span class="journal-number">01</span>
+                    <div class="journal-details">
+                        <div class="journal-meta">ВЕСНА <span>СЕЗОН</span></div>
+                        <h3>Перші теплі дні на пасіці</h3>
+                        <p>Природа прокидається, а бджоли починають новий сезон.</p>
+                    </div>
+                    <span class="journal-arrow">↗</span>
+                </a>
+
+                <a href="{% url 'news' %}" class="journal-item">
+                    <span class="journal-number">02</span>
+                    <div class="journal-details">
+                        <div class="journal-meta">БДЖОЛИ <span>СПОСТЕРЕЖЕННЯ</span></div>
+                        <h3>Маленькі мешканці великого вулика</h3>
+                        <p>Знайомство з неймовірним устроєм бджолиної сім'ї.</p>
+                    </div>
+                    <span class="journal-arrow">↗</span>
+                </a>
+
+                <a href="{% url 'news' %}" class="journal-item">
+                    <span class="journal-number">03</span>
+                    <div class="journal-details">
+                        <div class="journal-meta">МЕД <span>ПАСІКА</span></div>
+                        <h3>Як народжується мед</h3>
+                        <p>Від квіткового нектару до золотого смаку.</p>
+                    </div>
+                    <span class="journal-arrow">↗</span>
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Final image section -->
+<section class="last-word">
+
+    <div class="last-word-overlay"></div>
+
+    <div class="last-word-content reveal">
+
+        <span>ROGER HONEY / ODESA REGION</span>
+
+        <h2>
+            Справжнє має<br>
+            <em>свій смак.</em>
+        </h2>
+
+        <a href="{% url 'contacts' %}" class="button button-honey">
+            Знайти нас <span>↗</span>
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

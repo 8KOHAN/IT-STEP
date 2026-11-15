@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Контакти — ROGER HONEY{% endblock %}
+
+{% block content %}
+
+<section class="page-cover contacts-cover">
+
+    <div class="page-cover-overlay"></div>
+
+    <div class="page-cover-content wrap">
+
+        <span class="cover-number">04 / GET IN TOUCH</span>
+
+        <h1>
+            Будьмо<br>
+            <em>на зв'язку.</em>
+        </h1>
+
+        <p>
+            Запитання про мед, пилок, пасіку
+            або просто бажання познайомитися?
+            Напишіть нам.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="contacts-section section-space">
+
+    <div class="wrap contacts-grid">
+
+        <div class="contacts-main reveal">
+
+            <div class="section-label">
+                <span>01</span> / КОНТАКТНА ІНФОРМАЦІЯ
+            </div>
+
+            <h2>
+                Почнемо<br>
+                зі звичайного <em>привіт.</em>
+            </h2>
+
+            <p class="contacts-description">
+                Будемо раді відповісти на запитання,
+                розповісти більше про продукти пасіки
+                та поділитися нашим досвідом.
+            </p>
+
+            <div class="contact-list">
+
+                {% if contact_email %}
+
+                    <a href="mailto:{{ contact_email }}" class="contact-row">
+                        <span>ЕЛЕКТРОННА ПОШТА</span>
+                        <strong>{{ contact_email }}</strong>
+                        <b>↗</b>
+                    </a>
+
+                {% endif %}
+
+
+                {% if phone_number %}
+
+                    <a href="tel:{{ phone_number }}" class="contact-row">
+                        <span>ТЕЛЕФОН</span>
+                        <strong>{{ phone_number }}</strong>
+                        <b>↗</b>
+                    </a>
+
+                {% endif %}
+
+
+                {% if instagram_url %}
+
+                    <a href="{{ instagram_url }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contact-row">
+
+                        <span>INSTAGRAM</span>
+                        <strong>Наша сторінка</strong>
+                        <b>↗</b>
+
+                    </a>
+
+                {% endif %}
+
+
+                <div class="contact-row contact-row-static">
+                    <span>РОЗТАШУВАННЯ</span>
+                    <strong>Одеська область, Україна</strong>
+                    <b>✳</b>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <aside class="contacts-photo reveal">
+
+            <div class="contacts-photo-overlay"></div>
+
+            <div class="contacts-photo-content">
+
+                <span>ROGER HONEY</span>
+
+                <h3>
+                    Смак літа<br>
+                    у кожній <em>краплі.</em>
+                </h3>
+
+                <a href="{% url 'news' %}" class="contacts-photo-link">
+                    Читати щоденник <span>↗</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+{% endblock %}
