@@ -7,3 +7,4 @@
 <img width="1919" height="1079" alt="Снимок экрана 2026-11-15 173043" src="https://github.com/user-attachments/assets/73264554-0bd4-46c0-8542-97079572be2e" />
 
 <img width="1919" height="1079" alt="Снимок экрана 2026-11-15 173049" src="https://github.com/user-attachments/assets/e0212646-bb2b-452f-bec0-79d49200ae15" />
+ 
